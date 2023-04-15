@@ -1,0 +1,14 @@
+@import "../../styles/partials/variables";
+@import "../../styles/partials/mixins";
+
+.footer {
+  display: flex;
+  justify-content: center;
+
+  background-color: $light-grey;
+
+  &__content {
+    font-size: 11px;
+    color: $instock-black;
+  }
+}
