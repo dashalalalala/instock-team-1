@@ -37,4 +37,38 @@
       background-color: $instock-black;
     }
   }
+  @include tablet {
+    &.header {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    &__nav {
+      display: flex;
+
+      width: auto;
+    }
+
+    &__nav-button {
+      width: auto;
+    }
+  }
+  @include desktop {
+    &.header {
+      flex-direction: row;
+      justify-content: space-between;
+
+      padding: 0 5rem;
+    }
+
+    &__nav {
+      display: flex;
+
+      width: auto;
+    }
+
+    &__nav-button {
+      width: auto;
+    }
+  }
 }
