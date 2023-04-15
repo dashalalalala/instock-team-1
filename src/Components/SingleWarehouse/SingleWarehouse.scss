@@ -1,0 +1,130 @@
+@import "../../styles/partials/_mixins";
+@import "../../styles/partials/_variables";
+
+.warehouse {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	padding: 1.5rem;
+	gap: 1rem;
+	border-bottom: 1px solid $cloud;
+
+	@include tablet {
+		flex-direction: row;
+		flex-wrap: nowrap;
+		padding: 1rem 2rem;
+		gap: 3.5rem;
+		justify-content: space-between;
+	}
+
+	&__address {
+		width: 40%;
+
+		@include tablet {
+			width: 15%;
+		}
+	}
+
+	&__name {
+		width: 40%;
+
+		@include tablet {
+			width: auto;
+		}
+	}
+
+	&__contact--name,
+	&__contact--info {
+		width: 48%;
+
+		@include tablet {
+			width: fit-content;
+		}
+	}
+
+	&__contact--info {
+		display: flex;
+		flex-direction: column;
+	}
+
+	&:hover {
+		background: rgba(46, 102, 230, 0.07);
+	}
+}
+
+.details {
+	display: flex;
+	flex-direction: column;
+	gap: 0;
+}
+
+.title {
+	@include mobile-table-header;
+	font-family: "Titillium Web Regular";
+	font-weight: 600;
+	color: $slate;
+
+	@include tablet {
+		display: none;
+	}
+}
+
+.body {
+	@include mobile-body-small;
+	margin: 0;
+
+	&__icon {
+		height: 1rem;
+		width: auto;
+	}
+}
+
+.label {
+	@include mobile-body-small;
+	margin: 0;
+	font-weight: 600;
+	color: $instock-indigo;
+	display: flex;
+	gap: 0.25rem;
+}
+
+.icons {
+	display: flex;
+	justify-content: space-between;
+	width: -webkit-fill-available;
+
+	@include tablet {
+		width: auto;
+	}
+
+	&__img {
+		width: 1.125rem;
+		height: 1.125rem;
+	}
+}
+
+//Tablet & Desktop Warehouse Navigation
+
+.nav-responsive {
+	display: none;
+
+	@include tablet {
+		display: flex;
+		justify-content: space-between;
+		width: -webkit-fill-available;
+		align-items: baseline;
+		padding: 1rem 2rem;
+		background-color: rgba(46, 102, 230, 0.07);
+	}
+
+	&__title {
+		@include table-header;
+		color: $slate;
+		margin: 0;
+	}
+
+	&__icon {
+		height: 1rem;
+		width: 1rem;
+	}
+}
