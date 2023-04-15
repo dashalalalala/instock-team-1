@@ -1,8 +1,8 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import WarehouseDetailsPage from './Pages/WarehouseDetailsPage/WarehouseDetailsPage';
-import Footer from "./components/Footer/footer";
-import Header from "./components/Header/header";
+import Footer from "./Components/Footer/footer";
+import Header from "./Components/Header/header";
 
 function App() {
   return (
