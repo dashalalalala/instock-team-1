@@ -10,11 +10,11 @@
 	border-bottom: 1px solid $cloud;
 
 	@include tablet {
-		flex-direction: row;
-		flex-wrap: nowrap;
-		padding: 1rem 2rem;
-		gap: 3.5rem;
-		justify-content: space-between;
+		display: none;
+	}
+
+	@include desktop {
+		display: none;
 	}
 
 	&__address {
@@ -104,17 +104,16 @@
 }
 
 //Tablet & Desktop Warehouse Navigation
-
-.nav-responsive {
+.responsive {
+	background-color: rgba(46, 102, 230, 0.07);
 	display: none;
 
 	@include tablet {
-		display: flex;
-		justify-content: space-between;
-		width: -webkit-fill-available;
-		align-items: baseline;
-		padding: 1rem 2rem;
-		background-color: rgba(46, 102, 230, 0.07);
+		display: table-header-group;
+	}
+
+	@include desktop {
+		display: table-header-group;
 	}
 
 	&__title {
@@ -126,5 +125,22 @@
 	&__icon {
 		height: 1rem;
 		width: 1rem;
+	}
+}
+
+.chakra-button {
+	background: #ffffff;
+	min-width: 0;
+}
+
+.chakra-table {
+	display: none;
+
+	@include tablet {
+		display: table;
+	}
+
+	@include desktop {
+		display: table;
 	}
 }

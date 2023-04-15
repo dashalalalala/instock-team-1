@@ -15,9 +15,17 @@
 		border-bottom: none;
 	}
 
+	@include desktop {
+		padding: 2rem;
+		flex-direction: row;
+		justify-content: space-between;
+		border-bottom: none;
+	}
+
 	&__header {
 		@include mobile-header;
 		font-family: "Titillium Web Semi Bold";
+		margin-bottom: 1rem;
 
 		@include tablet {
 			margin: 0;
@@ -30,6 +38,10 @@
 		gap: 1rem;
 
 		@include tablet {
+			flex-direction: row;
+		}
+
+		@include desktop {
 			flex-direction: row;
 		}
 	}
@@ -68,6 +80,11 @@
 			width: -webkit-fill-available;
 
 			@include tablet {
+				height: 2.375rem;
+				padding: 0 1rem;
+			}
+
+			@include desktop {
 				height: 2.375rem;
 				padding: 0 1rem;
 			}
