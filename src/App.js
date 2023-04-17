@@ -1,14 +1,26 @@
 import "./App.css";
-import Footer from "./components/Footer/footer";
-import Header from "./components/Header/header";
+import Footer from "./Components/Footer/footer";
+import Header from "./Components/Header/header";
+import WarehouseListPage from "./Pages/WarehouseListPage/WarehouseListPage";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { ChakraProvider } from "@chakra-ui/react";
+import theme from "./styles/theme.js";
 
 function App() {
-  return (
-    <div className="App">
-      <Header />
-      <Footer />
-    </div>
-  );
+	return (
+		<ChakraProvider theme={theme}>
+			<div className="App">
+				<Header />
+				<BrowserRouter>
+					<Routes>
+						<Route path="/" element={<WarehouseListPage />} />
+						<Route path="/warehouses" element={<WarehouseListPage />} />
+					</Routes>
+				</BrowserRouter>
+				<Footer />
+			</div>
+		</ChakraProvider>
+	);
 }
 
 export default App;

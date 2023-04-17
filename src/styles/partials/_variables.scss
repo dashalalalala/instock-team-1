@@ -1,30 +1,30 @@
 /*Fonts*/
 @font-face {
 	font-family: "Titillium Web Semi Bold";
-	src: url("../../assets//fonts/TitilliumWeb-SemiBold.ttf") format(truetype)
-};
+	src: url("../../assets//fonts/TitilliumWeb-SemiBold.ttf") format(truetype);
+}
 
 @font-face {
 	font-family: "Titillium Web Regular";
-	src: url("../../assets//fonts/TitilliumWeb-Regular.ttf") format(truetype)
-};
+	src: url("../../assets//fonts/TitilliumWeb-Regular.ttf") format(truetype);
+}
 
 /*Primary Colors*/
-$instock-black: #13182C;
-$instock-indigo: #2E66E5;
-$white: #FFFFFF;
+$instock-black: #13182c;
+$instock-indigo: #2e66e5;
+$white: #ffffff;
 
 /*Secondary Colors*/
-$slate: #5C667E;
-$cloud: #BDC5D5;
+$slate: #5c667e;
+$cloud: #bdc5d5;
 
 /*Background Colors*/
 $graphite: #232940;
-$light-grey: #F7F8F9;
+$light-grey: #f7f8f9;
 
 /*Supporting Colors*/
 $green: #158463;
-$red: #C94515;
+$red: #c94515;
 
 /*Breakpoints*/
 $breakpoint-mobile: 767px;
