@@ -1,0 +1,7 @@
+.App {
+	margin: 0;
+	padding: 0;
+	box-sizing: content-box;
+	background-color: #f7f8f9;
+	min-height: 100vh;
+}

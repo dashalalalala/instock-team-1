@@ -16,7 +16,7 @@
 	}
 
 	@include desktop {
-		padding: 2rem;
+		padding: 2rem 2rem 0.5rem 2rem;
 		flex-direction: row;
 		justify-content: space-between;
 		border-bottom: none;
@@ -60,11 +60,15 @@
 			&--icon {
 				position: absolute;
 				right: 1rem;
-				top: 0.5rem;
+				top: 0.4rem;
 			}
 
 			&::placeholder {
 				font-family: "Titillium Web Regular";
+			}
+
+			&:focus {
+				border: 1px solid $instock-indigo;
 			}
 		}
 
@@ -78,6 +82,10 @@
 			height: 2.25rem;
 			font-weight: 600;
 			width: -webkit-fill-available;
+
+			&:hover {
+				background-color: $graphite;
+			}
 
 			@include tablet {
 				height: 2.375rem;
