@@ -1,6 +1,7 @@
 import "./App.css";
 import Footer from "./Components/Footer/footer";
 import Header from "./Components/Header/header";
+import WarehouseDetailsPage from "./Pages/WarehouseDetailsPage/WarehouseDetailsPage";
 import WarehouseListPage from "./Pages/WarehouseListPage/WarehouseListPage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ChakraProvider } from "@chakra-ui/react";
@@ -15,6 +16,7 @@ function App() {
 					<Routes>
 						<Route path="/" element={<WarehouseListPage />} />
 						<Route path="/warehouses" element={<WarehouseListPage />} />
+						<Route path="/warehouses/:id" element={<WarehouseDetailsPage />} />
 					</Routes>
 				</BrowserRouter>
 				<Footer />

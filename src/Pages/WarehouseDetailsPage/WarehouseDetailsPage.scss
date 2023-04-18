@@ -1,0 +1,52 @@
+@import "../../styles/partials/_mixins";
+@import "../../styles/partials/_variables";
+
+/* 
+    ****NOTE TO INSTOCK GROUP MEMBERS:
+    Should each one of us be doing the formatting for our own assigned pages where it is between the header and footer?
+    If we are supposed to format our own pages, how can we format them to make them all the same formatting?
+    How should we make our pages look like the websites in the mockup?
+    Feel free to test this code out if you can.
+    - Richard
+*/
+.warehouse {
+    background-color: $light-grey;
+    height: 16rem;
+    //***
+    // position: relative;
+
+    // &__content {
+    //     margin: 1rem;
+    //     position: absolute;
+    //     //bottom: 2rem;
+    //     width: 18rem;
+    //     bottom: 1rem; 
+    // }
+    
+    //***
+    // @include tablet {
+    //     // &__content {
+    //     //     position: absolute;
+    //     //     bottom: 1rem;
+    //     //     left: 1rem;
+    //     //     width: 43.5rem;
+    //     //     //width: 42.93rem;
+    //     //     margin: 2rem 1rem;
+    //     // }
+    // }
+
+    //***
+    @include desktop {
+        height: 15rem;
+
+        // &__content {
+        //     border: none;
+        //     border-radius: 20px;
+        //     margin: 3rem 5rem;
+        //     position: absolute;
+        //     width: 70rem;
+        //     bottom: 8.5rem;
+        // }
+
+    }
+}

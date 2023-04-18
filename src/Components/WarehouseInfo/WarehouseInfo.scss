@@ -1,0 +1,296 @@
+@import "../../styles/partials/_mixins";
+@import "../../styles/partials/_variables";
+/*
+// //.search
+// .search2 {
+// 	display: flex;
+//     //flex-direction: row;
+//     //***
+// 	flex-direction: column;
+// 	// padding: 1.5rem;
+//     //***
+//     padding: 0.5rem 1.5rem;
+// 	background-color: $white;
+// 	border-bottom: 1px solid $cloud;
+
+//     //*** For formatting content
+//     //padding: 0.5rem 1rem;
+
+// 	@include tablet {
+// 		padding: 2rem;
+// 		flex-direction: row;
+// 		justify-content: space-between;
+// 		border-bottom: none;
+// 	}
+
+// 	@include desktop {
+// 		padding: 2rem;
+// 		flex-direction: row;
+// 		justify-content: space-between;
+// 		border-bottom: none;
+
+//         //*** For formatting content
+//         //border-radius: 0px 0px 5px 5px;
+// 	}
+
+// 	&__header {
+// 		@include mobile-header;
+// 		font-family: "Titillium Web Semi Bold";
+// 		margin-bottom: 1rem;
+
+// 		@include tablet {
+// 			margin: 0;
+// 		}
+// 	}
+// }
+
+// //***
+// .warehouse {
+
+//     //***
+//     &__address {
+//         display: flex;
+//         flex-direction: column;
+//         gap: 0.25rem;
+//         padding: 1rem 0rem;
+//     }
+
+//     &__container {
+//         display: flex;
+//         gap: 0.313rem;
+//         justify-content: space-between;
+//         padding: 1rem 0rem;
+
+//         //*** For formatting content
+//         //gap: 1rem;
+//     }
+
+//     &__contact {
+//         &--name, &--info {
+//             display: flex;
+//             flex-direction: column;
+//             gap: 0.25rem;
+//         }
+//     }
+
+//     @include tablet {
+//         &__address { 
+//             width: 25%;
+//             //***
+//             padding: 0rem;
+//             //*** For formatting content
+//             //width: 30%;
+//         }
+
+//         &__container { 
+//             gap: 3rem;
+//             border-left: 1px solid $cloud;
+//             // padding-left: 3rem;
+//             //***
+//             padding: 0rem 0rem 0rem 3rem;
+//         }
+//     }
+
+//     @include desktop {
+//         &__address { 
+//             width: 18%;
+//             //width: 25%;
+//             //***
+//             padding: 0rem;
+//         }
+
+//         &__container { 
+//             gap: 10rem;
+//             border-left: 1px solid $cloud;
+//             // padding-left: 3rem;
+//             //***
+//             // padding: 0rem 0rem 0rem 3rem;
+//             padding: 0rem 5rem 0rem 3rem;
+//             // padding-right: 5rem;
+//         }
+//     }
+// }
+
+// .title {
+//     //@include mobile-body-medium;
+//     // font-size: 0.8125rem;
+//     // line-height: 1.25rem;
+//     // font-size: 0.6875rem;
+//     // line-height: 1rem;
+    
+//     // @include mobile-table-header;
+//     //***
+//     // @include mobile-label-link-button;
+//     @include mobile-body-small;
+//     color: $slate;
+//     //???
+//     //font-family: "Titillium Web Semi Bold";
+
+//     @include tablet {
+//         //table-header mixin
+//         // @include label-link-button;
+//         @include body-medium;
+//         //font-size: 
+//     }
+
+//     @include desktop {
+//         @include body-large;
+//     }
+// }
+
+// .body {
+//     // font-size: 0.6875rem;
+//     // line-height: 1rem;
+
+//     //***
+//     //font-size: 0.8125rem;
+//     //line-height: 1.25rem;
+//     @include mobile-body-medium;
+//     //???
+//     //font-family: "Titillium Web Semi Regular";
+//     //*** For formatting content
+//     //@include mobile-body-small;
+
+//     @include tablet {
+//         @include body-medium;
+//     }
+
+//     @include desktop {
+//         @include body-large;
+//     }
+// } */
+
+.warehouse-info {
+	display: flex;
+	flex-direction: column;
+    padding: 0.5rem 1.5rem;
+	background-color: $white;
+	border-bottom: 1px solid $cloud;
+
+    //*** For formatting content
+    //padding: 0.5rem 1rem;
+
+	&__address {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+        padding: 1rem 0rem;
+    }
+
+	&__title {
+		//@include mobile-body-medium;
+    	// font-size: 0.8125rem;
+    	// line-height: 1.25rem;
+    	// font-size: 0.6875rem;
+    	// line-height: 1rem;
+    
+        // @include mobile-table-header;
+        //***
+        // @include mobile-label-link-button;
+        @include mobile-body-small;
+        color: $slate;
+        //???
+        //font-family: "Titillium Web Semi Bold";
+	}
+
+	&__body {
+		// font-size: 0.6875rem;
+        // line-height: 1rem;
+
+        //***
+        //font-size: 0.8125rem;
+        //line-height: 1.25rem;
+        @include mobile-body-medium;
+        //???
+        //font-family: "Titillium Web Semi Regular";
+        //*** For formatting content
+        //@include mobile-body-small;
+	}
+
+	&__container {
+		display: flex;
+        gap: 0.313rem;
+        justify-content: space-between;
+        padding: 1rem 0rem;
+
+        //*** For formatting content
+        //gap: 1rem;
+	}
+	
+	 &__contact {
+        &--name, &--info {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+    }
+
+	@include tablet {
+		padding: 2rem;
+		flex-direction: row;
+		justify-content: space-between;
+		border-bottom: none;
+
+		&__address {
+			width: 25%;
+            //***
+            padding: 0rem;
+            //*** For formatting content
+            //width: 30%;
+		}
+
+		&__title {
+			//table-header mixin
+            // @include label-link-button;
+            @include body-medium;
+            //font-size: 
+		}
+		
+		&__body {
+			@include body-medium;
+		}
+
+		&__container { 
+			gap: 3rem;
+            border-left: 1px solid $cloud;
+            // padding-left: 3rem;
+            //***
+            padding: 0rem 0rem 0rem 3rem;
+		}
+	}
+
+	@include desktop {
+		padding: 2rem;
+		flex-direction: row;
+		justify-content: space-between;
+		border-bottom: none;
+
+        //*** For formatting content
+        //border-radius: 0px 0px 5px 5px;
+
+		&__address { 
+            width: 18%;
+            //width: 25%;
+            //***
+            padding: 0rem;
+        }
+
+		&__title {
+			@include body-large;
+		}
+
+		&__body {
+			@include body-large;
+		}
+
+		&__container { 
+            gap: 10rem;
+            border-left: 1px solid $cloud;
+            // padding-left: 3rem;
+            //***
+            // padding: 0rem 0rem 0rem 3rem;
+            padding: 0rem 5rem 0rem 3rem;
+            // padding-right: 5rem;
+        }
+	}
+}
