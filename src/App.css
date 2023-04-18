@@ -1,0 +1,6 @@
+/* Are we supposed to remove the default formatting for the body? */
+* {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}

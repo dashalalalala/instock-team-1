@@ -6,31 +6,26 @@ import { useNavigate } from "react-router-dom";
 function WarehouseHeader() {
 	const navigate = useNavigate();
     
-    return (
-		<div className="search">
-			<div>
-            {/* <img onClick={() => {
-                console.log("Clicked on arrow");
-                redirect("/warehouses");
-                }} className="" src={arrowBack} alt="back arrow"></img>
-            </div> */}
-            <img onClick={() => {
-                console.log("Clicked on arrow");
-                navigate("/warehouses");
-                }} className="" src={arrowBack} alt="back arrow"></img>
+    return (     
+        <div className="warehouse-general">
+			<div className="warehouse-general__left">
+                <div className="warehouse-general__back-container">
+                    <img onClick={() => {
+                    console.log("Clicked on arrow");
+                    navigate("/warehouses");
+                    }} className="warehouse-general__back" src={arrowBack} alt="back arrow"></img>
+                </div>
+                <h1 className="warehouse-general__header">Washington</h1>
             </div>
-            
-
-            <h1 className="search__header">[Washington]</h1>
-			{/* <form className="nav">
-				<div className="form">
-					<div>
-						<img className="form__input--icon" src={searchIcon} alt=""></img>
-					</div>
-					<input className="form__input" placeholder="Search..." />
-				</div>
-				<button className="form__button">+ Add New Warehouse</button>
-			</form> */}
+            <button className="warehouse-general__button"
+                onClick={() => {
+                    console.log("Clicked on edit button");
+                    navigate("/warehouses/:id/edit");
+                }}
+            >
+                <img className="warehouse-general__edit" src={edit} alt="edit"></img>
+                <p className="warehouse-general__edit-text">Edit</p>
+            </button>
 		</div>
 	);
 }
