@@ -10,6 +10,9 @@ import axios from "axios";
 function WarehouseListPage() {
 	const navigate = useNavigate();
 	const [list, setList] = useState([]);
+	const searchTitle = "Warehouses";
+	const searchButton = "+ Add New Warehouse";
+	const path = (`${apiUrl}/add`);
 
 	useEffect(() => {
 		axios
@@ -30,7 +33,7 @@ function WarehouseListPage() {
 
 	return (
 		<div className="warehouse-list">
-			<Search />
+			<Search searchTitle={searchTitle} searchButton={searchButton} path={path}/>
 			<MobileItem list={list} />
 			<TabletDesktopItem list={list} />
 		</div>
