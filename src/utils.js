@@ -1,2 +1,3 @@
 //API Data
-export const apiUrl = "http://localhost:8080/warehouses"; //For testing locally on my end
+export const apiUrl = "http://localhost:8080/warehouses";
+export const inventoriesUrl = "http://localhost:8080/inventories"; 

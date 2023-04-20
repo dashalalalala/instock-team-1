@@ -1,30 +1,20 @@
 @import "../../../styles/partials/_mixins";
 @import "../../../styles/partials/_variables";
 
-//Mobile Inventory List
-.warehouse {
+//Mobile Warehouse List
+.inventory {
 	@include mobile-list;
-
-	&__address {
-		width: 40%;
-	}
 
 	&__name {
 		width: 40%;
 	}
 
-	&__contact--name,
-	&__contact--info {
-		width: 48%;
-
-		@include tablet {
-			width: fit-content;
-		}
+	&__status {
+		width: 40%;
 	}
 
-	&__contact--info {
-		display: flex;
-		flex-direction: column;
+	&__category {
+		width: 40%;
 	}
 }
 
@@ -56,7 +46,7 @@
 		@include body-medium;
 	}
 
-	&__warehouse-name {
+	&__name {
 		color: $instock-indigo;
 		font-weight: 600;
 
@@ -89,5 +79,39 @@
 	&__img {
 		width: 1.125rem;
 		height: 1.125rem;
+	}
+}
+
+.vstack {
+	width: 40%;
+	align-items: flex-start !important;
+	gap: 1rem;
+}
+
+.in-stock {
+	@include stock-status;
+	background: rgba(21, 132, 99, 0.07);
+	color: $green;
+
+	@include tablet {
+		line-height: 1.625rem;
+	}
+
+	@include desktop {
+		line-height: 1.625rem;
+	}
+}
+
+.out-of-stock {
+	@include stock-status;
+	background: rgba(201, 69, 21, 0.07);
+	color: $red;
+
+	@include tablet {
+		line-height: 1.625rem;
+	}
+
+	@include desktop {
+		line-height: 1.625rem;
 	}
 }
