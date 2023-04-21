@@ -46,7 +46,7 @@ function MobileItem({ list }) {
 						<div>
 							<img className="icons__img" src={deleteIcon} alt="" onClick={onOpen}/>
 						</div>
-						<DeleteModal currentWarehouseName={list.warehouse_name} isOpen={isOpen} onClose={onClose}/>
+						<DeleteModal selecteWarehouseName={list.warehouse_name} isOpen={isOpen} onClose={onClose}/>
 						<div>
 							<img className="icons__img" src={editIcon} alt="" />
 						</div>
