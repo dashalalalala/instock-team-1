@@ -3,8 +3,14 @@ import chevronIcon from "../../../assets/icons/chevron_right-24px.svg";
 import deleteIcon from "../../../assets/icons/delete_outline-24px.svg";
 import editIcon from "../../../assets/icons/edit-24px.svg";
 import { Link } from "react-router-dom";
+import { useDisclosure } from "@chakra-ui/react";
+import DeleteModal from "../../../Components/DeleteModal/DeleteModal"
+
 
 function MobileItem({ list }) {
+	
+	const {isOpen, onOpen, onClose} = useDisclosure();
+
 	return (
 		<>
 			{list.map((list) => (
@@ -38,8 +44,9 @@ function MobileItem({ list }) {
 					</div>
 					<div className="icons">
 						<div>
-							<img className="icons__img" src={deleteIcon} alt="" />
+							<img className="icons__img" src={deleteIcon} alt="" onClick={onOpen}/>
 						</div>
+						<DeleteModal currentWarehouseName={list.warehouse_name} isOpen={isOpen} onClose={onClose}/>
 						<div>
 							<img className="icons__img" src={editIcon} alt="" />
 						</div>

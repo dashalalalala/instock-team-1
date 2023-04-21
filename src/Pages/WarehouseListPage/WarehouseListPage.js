@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { apiUrl } from "../../utils.js";
 import axios from "axios";
+import { useDisclosure } from "@chakra-ui/react";
 
 function WarehouseListPage() {
 	const navigate = useNavigate();
