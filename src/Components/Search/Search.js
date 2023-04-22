@@ -1,7 +1,9 @@
 import "./Search.scss";
 import searchIcon from "../../assets/icons/search-24px.svg";
+import { useNavigate } from "react-router-dom";
 
 function Search(props) {
+	const navigate = useNavigate();
 
 	return (
 		<div className="search">
@@ -13,7 +15,10 @@ function Search(props) {
 					</div>
 					<input className="form__input" placeholder="Search..." />
 				</div>
-				<button onClick={() => props.path()} className="form__button">
+				<button
+					onClick={() => navigate(`${props.path}`)}
+					className="form__button"
+				>
 					{props.searchButton}
 				</button>
 			</form>

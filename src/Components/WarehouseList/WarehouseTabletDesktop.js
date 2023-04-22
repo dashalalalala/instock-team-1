@@ -1,9 +1,9 @@
-import "./InventoryTabletDesktop.scss";
-import deleteIcon from "../../../assets/icons/delete_outline-24px.svg";
-import sortIcon from "../../../assets/icons/sort-24px.svg";
-import editIcon from "../../../assets/icons/edit-24px.svg";
-import chevronIcon from "../../../assets/icons/chevron_right-24px.svg";
-import { Link } from "react-router-dom";
+import "../../styles/listsStyling/List.scss";
+import deleteIcon from "../../assets/icons/delete_outline-24px.svg";
+import sortIcon from "../../assets/icons/sort-24px.svg";
+import editIcon from "../../assets/icons/edit-24px.svg";
+import chevronIcon from "../../assets/icons/chevron_right-24px.svg";
+import { Link, useNavigate } from "react-router-dom";
 
 import {
 	Table,
@@ -18,7 +18,9 @@ import {
 	Image,
 } from "@chakra-ui/react";
 
-function InventoryTabletDesktop({ list }) {
+function TabletDesktopItem({ list }) {
+	const navigate = useNavigate();
+
 	return (
 		<TableContainer className="chakra-table">
 			<Table variant="simple" overflowX="auto" size="md">
@@ -26,31 +28,25 @@ function InventoryTabletDesktop({ list }) {
 					<Tr>
 						<Th>
 							<HStack>
-								<p className="responsive__title">INVENTORY ITEM</p>
-								<img className="responsive__icon" src={sortIcon} alt=""></img>
-							</HStack>
-						</Th>
-						<Th>
-							<HStack>
-								<p className="responsive__title">CATEGORY</p>
-								<img className="responsive__icon" src={sortIcon} alt=""></img>
-							</HStack>
-						</Th>
-						<Th>
-							<HStack>
-								<p className="responsive__title">STATUS</p>
-								<img className="responsive__icon" src={sortIcon} alt=""></img>
-							</HStack>
-						</Th>
-						<Th>
-							<HStack>
-								<p className="responsive__title">QTY</p>
-								<img className="responsive__icon" src={sortIcon} alt=""></img>
-							</HStack>
-						</Th>
-						<Th>
-							<HStack>
 								<p className="responsive__title">WAREHOUSE</p>
+								<img className="responsive__icon" src={sortIcon} alt=""></img>
+							</HStack>
+						</Th>
+						<Th>
+							<HStack>
+								<p className="responsive__title">ADDRESS</p>
+								<img className="responsive__icon" src={sortIcon} alt=""></img>
+							</HStack>
+						</Th>
+						<Th>
+							<HStack>
+								<p className="responsive__title">CONTACT NAME</p>
+								<img className="responsive__icon" src={sortIcon} alt=""></img>
+							</HStack>
+						</Th>
+						<Th>
+							<HStack>
+								<p className="responsive__title">CONTACT INFORMATION</p>
 								<img className="responsive__icon" src={sortIcon} alt=""></img>
 							</HStack>
 						</Th>
@@ -60,29 +56,33 @@ function InventoryTabletDesktop({ list }) {
 				<Tbody>
 					{list.map((list) => (
 						<Tr className="row" key={list.id}>
-							<Td className="body__name">
+							<Td className="body__warehouse-name">
 								<HStack>
 									<Link
-										to={`/inventories/${list.id}`}
+										to={`/warehouses/${list.id}`}
 										style={{ textDecoration: "none" }}
 									>
-										<p className="body">{list.item_name}</p>
+										<p className="body">{list.warehouse_name}</p>
 									</Link>
 									<img className="body__icon" src={chevronIcon} alt=""></img>
 								</HStack>
 							</Td>
-							<Td className="body">{list.category}</Td>
-							<Td>
-								{" "}
-								<p className={`body ${
-									list.status === "In Stock" ? "in-stock" : "out-of-stock"
-								}`}>{list.status}</p>
+							<Td className="body body__address">
+								{list.address}, {list.city}, {list.country}
 							</Td>
-							<Td className="body">{list.quantity}</Td>
-							<Td className="body">{list.warehouse_name}</Td>
+							<Td className="body body__contact-name">{list.contact_name}</Td>
+							<Td>
+								<div>
+									<p className="body">{list.contact_phone}</p>
+									<p className="body">{list.contact_email}</p>
+								</div>
+							</Td>
 							<Td>
 								<HStack>
 									<IconButton
+										onClick={() => {
+											navigate(`/warehouses/${list.id}/delete`);
+										}}
 										size="xs"
 										colorScheme="white"
 										className="chakra-button"
@@ -91,6 +91,9 @@ function InventoryTabletDesktop({ list }) {
 										}
 									></IconButton>
 									<IconButton
+										onClick={() => {
+											navigate(`/warehouses/${list.id}/edit`);
+										}}
 										size="xs"
 										colorScheme="white"
 										className="chakra-button"
@@ -108,4 +111,4 @@ function InventoryTabletDesktop({ list }) {
 	);
 }
 
-export default InventoryTabletDesktop;
+export default TabletDesktopItem;

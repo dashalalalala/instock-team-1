@@ -12,65 +12,6 @@
 	}
 }
 
-/*List Styling*/
-@mixin list {
-	margin: 1rem;
-	box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
-	border-radius: 3px;
-	position: absolute;
-	top: 10rem;
-	width: -webkit-fill-available;
-
-	@include tablet {
-		top: 7rem;
-		margin: 1rem 2rem;
-	}
-
-	@include desktop {
-		top: 5rem;
-		margin: 1rem 7rem;
-	}
-}
-
-@mixin mobile-list {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between;
-	padding: 1.5rem;
-	gap: 1rem;
-	border-bottom: 1px solid $cloud;
-	background-color: white;
-
-	&:hover {
-		background: rgba(46, 102, 230, 0.07);
-	}
-
-	@include tablet {
-		display: none;
-	}
-
-	@include desktop {
-		display: none;
-	}
-}
-
-@mixin mobile-list-title {
-	@include mobile-table-header;
-	font-family: "Titillium Web Regular";
-	font-weight: 600;
-	color: $slate;
-}
-
-/*Mixin for Stock Status Styling*/
-@mixin stock-status {
-	width: fit-content;
-	border-radius: 20px;
-	margin-top: 0.5rem;
-	padding: 0 0.5rem;
-	line-height: 1.5rem;
-	font-weight: 600;
-}
-
 /*Desktop & Tablet*/
 @mixin header {
 	font-size: 2rem;
@@ -141,4 +82,82 @@
 @mixin mobile-body-small {
 	font-size: 0.6875rem;
 	line-height: 1rem;
+}
+
+/*List Styling*/
+@mixin list {
+	margin: 1rem;
+	box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
+	border-radius: 3px;
+	position: absolute;
+	top: 10rem;
+	width: -webkit-fill-available;
+
+	@include tablet {
+		top: 7rem;
+		margin: 1rem 2rem;
+	}
+
+	@include desktop {
+		top: 5rem;
+		margin: 1rem 7rem;
+	}
+}
+
+@mixin mobile-list {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	padding: 1.5rem;
+	gap: 1rem;
+	border-bottom: 1px solid $cloud;
+	background-color: white;
+
+	&:hover {
+		background: rgba(46, 102, 230, 0.07);
+	}
+
+	@include tablet {
+		display: none;
+	}
+
+	@include desktop {
+		display: none;
+	}
+}
+
+@mixin mobile-list-body {
+	@include mobile-body-medium;
+	margin: 0;
+	white-space: initial;
+
+	&__icon {
+		height: 1rem;
+		width: auto;
+	}
+
+	@include tablet {
+		@include body-medium;
+	}
+
+	@include desktop {
+		@include body-medium;
+	}
+}
+
+@mixin mobile-list-title {
+	@include mobile-table-header;
+	font-family: "Titillium Web Regular";
+	font-weight: 600;
+	color: $slate;
+}
+
+/*Mixin for Stock Status Styling*/
+@mixin stock-status {
+	width: max-content;
+	border-radius: 20px;
+	margin-top: 0.5rem !important;
+	padding: 0 0.5rem;
+	line-height: 1.5rem;
+	font-weight: 600;
 }

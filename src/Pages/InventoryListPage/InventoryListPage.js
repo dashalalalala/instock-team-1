@@ -1,16 +1,16 @@
-import InventoryMobile from "../../Components/InventoryList/InventoryMobile/InventoryMobile";
+import InventoryMobile from "../../Components/InventoryList/InventoryMobile";
+import InventoryTabletDesktop from "../../Components/InventoryList/InventoryTabletDesktop";
 import Search from "../../Components/Search/Search";
 import { inventoriesUrl } from "../../utils";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import "./InventoryListPage.scss";
-import InventoryTabletDesktop from "../../Components/InventoryList/InventoryTabletDesktop/InventoryTabletDesktop";
 
 function InventoryListPage() {
 	const [list, setList] = useState([]);
 	const searchTitle = "Inventory";
 	const searchButton = "+ Add New Item";
-	const path = `${inventoriesUrl}/add`;
+	const path = "/inventories/add";
 
 	useEffect(() => {
 		axios
@@ -24,14 +24,16 @@ function InventoryListPage() {
 	}, []);
 
 	return (
-		<div className="inventory-list">
-			<Search
-				searchTitle={searchTitle}
-				searchButton={searchButton}
-				path={path}
-			/>
-			<InventoryMobile list={list} />
-			<InventoryTabletDesktop list={list} />
+		<div className="list-card">
+			<div className="inventory-list">
+				<Search
+					searchTitle={searchTitle}
+					searchButton={searchButton}
+					path={path}
+				/>
+				<InventoryMobile list={list} />
+				<InventoryTabletDesktop list={list} />
+			</div>
 		</div>
 	);
 }
