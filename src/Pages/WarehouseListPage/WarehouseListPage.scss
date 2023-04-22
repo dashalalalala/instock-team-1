@@ -1,0 +1,10 @@
+@import "../../styles/partials/_mixins";
+@import "../../styles/partials/_variables";
+
+.warehouse-list {
+	@include list;
+}
+
+.warehouse-card {
+	height: 100vh;
+}

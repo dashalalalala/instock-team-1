@@ -1,0 +1,116 @@
+@import "../../styles/partials/_mixins";
+@import "../../styles/partials/_variables";
+
+.warehouse-info {
+	display: flex;
+	flex-direction: column;
+    padding: 0.5rem 1.5rem;
+	background-color: $white;
+	border-bottom: 1px solid $cloud;
+
+	&__address {
+        display: flex;
+        flex-direction: column;
+        padding: 1rem 0rem;
+    }
+
+	&__title {
+        @include mobile-body-small;
+        color: $slate;
+        font-family: "Titillium Web Regular";
+        font-weight: 600;
+	}
+
+	&__body {
+        @include mobile-body-small;
+	    margin: 0;
+	    white-space: initial;
+	}
+
+	&__container {
+		display: flex;
+        gap: 0.313rem;
+        justify-content: space-between;
+        padding: 1rem 0rem;
+	}
+	
+	 &__contact {
+        &--name, &--info {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+
+	@include tablet {
+		padding: 2rem;
+		flex-direction: row;
+		justify-content: space-between;
+		border-bottom: none;
+
+		&__address {
+			width: 25%;
+            padding: 0rem;
+            gap: 0.5rem;
+            justify-content: space-between;
+		}
+
+		&__title {
+            @include table-header;
+		    color: $slate;
+		    margin: 0;
+		}
+		
+		&__body {
+			@include body-medium;
+		}
+
+		&__container { 
+			gap: 3rem;
+            border-left: 1px solid $cloud;
+            padding: 0rem 0rem 0rem 3rem;
+		}
+
+        &__contact {
+            &--name, &--info {
+                gap: 0.5rem;
+                justify-content: space-between;
+            }
+        }
+	}
+
+	@include desktop {
+		padding: 2rem;
+		flex-direction: row;
+		justify-content: space-between;
+		border-bottom: none;
+
+		&__address { 
+            padding: 0rem;
+            gap: 0.5rem;
+            width: 16%;
+        }
+
+		&__title {
+            @include table-header;
+		    margin: 0;
+		}
+
+		&__body {
+            @include table-header;
+		    margin: 0;
+		}
+
+		&__container { 
+            gap: 10rem;
+            border-left: 1px solid $cloud;
+            padding: 0rem 10rem 0rem 3rem;
+        }
+
+        &__contact {
+            &--name, &--info {
+                gap: 0.5rem;
+                justify-content: space-between;
+            }
+        }
+	}
+}

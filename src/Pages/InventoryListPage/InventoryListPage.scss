@@ -1,0 +1,10 @@
+@import "../../styles/partials/_mixins";
+@import "../../styles/partials/_variables";
+
+.inventory-list {
+	@include list;
+}
+
+.list-card {
+	height: 100vh;
+}
