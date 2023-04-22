@@ -1,0 +1,117 @@
+@import "../../../styles/partials/_mixins";
+@import "../../../styles/partials/_variables";
+
+//Mobile Warehouse List
+.inventory {
+	@include mobile-list;
+
+	&__name {
+		width: 40%;
+	}
+
+	&__status {
+		width: 40%;
+	}
+
+	&__category {
+		width: 40%;
+	}
+}
+
+.details {
+	display: flex;
+	flex-direction: column;
+	gap: 0;
+}
+
+.title {
+	@include mobile-list-title;
+}
+
+.body {
+	@include mobile-body-small;
+	margin: 0;
+	white-space: initial;
+
+	&__icon {
+		height: 1rem;
+		width: auto;
+	}
+
+	@include tablet {
+		@include body-medium;
+	}
+
+	@include desktop {
+		@include body-medium;
+	}
+
+	&__name {
+		color: $instock-indigo;
+		font-weight: 600;
+
+		&:hover {
+			text-decoration: underline 1px solid $instock-indigo;
+			text-underline-offset: 0.1rem;
+		}
+	}
+}
+
+.label {
+	@include mobile-body-small;
+	margin: 0;
+	font-weight: 600;
+	color: $instock-indigo;
+	display: flex;
+	gap: 0.25rem;
+
+	&:hover {
+		text-decoration: underline 1px solid $instock-indigo;
+		text-underline-offset: 0.1rem;
+	}
+}
+
+.icons {
+	display: flex;
+	justify-content: space-between;
+	width: -webkit-fill-available;
+
+	&__img {
+		width: 1.125rem;
+		height: 1.125rem;
+	}
+}
+
+.vstack {
+	width: 40%;
+	align-items: flex-start !important;
+	gap: 1rem;
+}
+
+.in-stock {
+	@include stock-status;
+	background: rgba(21, 132, 99, 0.07);
+	color: $green;
+
+	@include tablet {
+		line-height: 1.625rem;
+	}
+
+	@include desktop {
+		line-height: 1.625rem;
+	}
+}
+
+.out-of-stock {
+	@include stock-status;
+	background: rgba(201, 69, 21, 0.07);
+	color: $red;
+
+	@include tablet {
+		line-height: 1.625rem;
+	}
+
+	@include desktop {
+		line-height: 1.625rem;
+	}
+}

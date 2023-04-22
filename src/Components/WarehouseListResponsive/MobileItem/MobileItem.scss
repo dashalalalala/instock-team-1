@@ -1,0 +1,93 @@
+@import "../../../styles/partials/_mixins";
+@import "../../../styles/partials/_variables";
+
+//Mobile Inventory List
+.warehouse {
+	@include mobile-list;
+
+	&__address {
+		width: 40%;
+	}
+
+	&__name {
+		width: 40%;
+	}
+
+	&__contact--name,
+	&__contact--info {
+		width: 48%;
+
+		@include tablet {
+			width: fit-content;
+		}
+	}
+
+	&__contact--info {
+		display: flex;
+		flex-direction: column;
+	}
+}
+
+.details {
+	display: flex;
+	flex-direction: column;
+	gap: 0;
+}
+
+.title {
+	@include mobile-list-title;
+}
+
+.body {
+	@include mobile-body-small;
+	margin: 0;
+	white-space: initial;
+
+	&__icon {
+		height: 1rem;
+		width: auto;
+	}
+
+	@include tablet {
+		@include body-medium;
+	}
+
+	@include desktop {
+		@include body-medium;
+	}
+
+	&__warehouse-name {
+		color: $instock-indigo;
+		font-weight: 600;
+
+		&:hover {
+			text-decoration: underline 1px solid $instock-indigo;
+			text-underline-offset: 0.1rem;
+		}
+	}
+}
+
+.label {
+	@include mobile-body-small;
+	margin: 0;
+	font-weight: 600;
+	color: $instock-indigo;
+	display: flex;
+	gap: 0.25rem;
+
+	&:hover {
+		text-decoration: underline 1px solid $instock-indigo;
+		text-underline-offset: 0.1rem;
+	}
+}
+
+.icons {
+	display: flex;
+	justify-content: space-between;
+	width: -webkit-fill-available;
+
+	&__img {
+		width: 1.125rem;
+		height: 1.125rem;
+	}
+}
