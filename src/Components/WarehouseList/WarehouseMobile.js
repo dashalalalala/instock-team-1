@@ -1,10 +1,11 @@
-import "./MobileItem.scss";
-import chevronIcon from "../../../assets/icons/chevron_right-24px.svg";
-import deleteIcon from "../../../assets/icons/delete_outline-24px.svg";
-import editIcon from "../../../assets/icons/edit-24px.svg";
-import { Link } from "react-router-dom";
+import "../../styles/listsStyling/List.scss";
+import chevronIcon from "../../assets/icons/chevron_right-24px.svg";
+import deleteIcon from "../../assets/icons/delete_outline-24px.svg";
+import editIcon from "../../assets/icons/edit-24px.svg";
+import { Link, useNavigate } from "react-router-dom";
 
 function MobileItem({ list }) {
+	const navigate = useNavigate();
 	return (
 		<>
 			{list.map((list) => (
@@ -38,10 +39,24 @@ function MobileItem({ list }) {
 					</div>
 					<div className="icons">
 						<div>
-							<img className="icons__img" src={deleteIcon} alt="" />
+							<img
+								onClick={() => {
+									navigate(`/warehouses/${list.id}/delete`);
+								}}
+								className="icons__img"
+								src={deleteIcon}
+								alt=""
+							/>
 						</div>
 						<div>
-							<img className="icons__img" src={editIcon} alt="" />
+							<img
+								onClick={() => {
+									navigate(`/warehouses/${list.id}/edit`);
+								}}
+								className="icons__img"
+								src={editIcon}
+								alt=""
+							/>
 						</div>
 					</div>
 				</div>
