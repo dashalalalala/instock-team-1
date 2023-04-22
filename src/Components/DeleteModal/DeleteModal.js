@@ -9,29 +9,49 @@ import {
     Button,
 } from '@chakra-ui/react'
 
+import axios from 'axios';
+import { apiUrl } from '../../utils';
 
-function DeleteModal({selectedWarehouseName, isOpen, onClose}) {
+function DeleteModal({selectedWarehouseName, selectedWarehouseId, isOpen, onClose}) {
+
+    function deleteWarehouseHandler(selectedWarehouseId, onClose){
+      console.log(selectedWarehouseId)
+      axios
+        .delete(`${apiUrl}/${selectedWarehouseId}`)
+        .then((result)=> {
+          return onClose();
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+    }
+
     return (
       <>
         <Modal 
             isOpen={isOpen} 
             onClose={onClose}
+            closeOnOverlayClick={false}
             border="none"
-            isCentered
-            size={["full", "md", "lg"]}
+            size={{base:"full", md:"40vw", lg: '80vw'}}
+            height={{base:"100%", md: "60vh", lg: "60vh"}}
             >
           <ModalOverlay />
           <ModalContent
-            width="100vw"
-            height="100vh"
+            width={{base:"100%", md: "90%", lg: "60vw"}}
+            mt={{md: "230px", lg:"188px"}}
+            p={{md:"40px"}}
             >
           <ModalHeader
             fontSize="32px"
-            pt="56px"
+            pt={{base:"64px", md:"0"}}
             >
             Delete {selectedWarehouseName} warehouse?</ModalHeader>
           <ModalCloseButton />
-          <ModalBody>
+          <ModalBody
+            pr={{md:"80px", lg:"180px"}}
+            fontSize={{base:"18px"}}
+          >
             <p>Please confirm you'd like to delete {selectedWarehouseName} from the list of warehouses. You won't be able to undo this action.</p>
           </ModalBody>
           <ModalFooter>
@@ -43,7 +63,7 @@ function DeleteModal({selectedWarehouseName, isOpen, onClose}) {
               border="1px"
               borderColor="cloud"
               textColor="slate"
-              w="50%"
+              w={{base: "50%", md: "80px"}}
               onClick={onClose}>
             Cancel
             </Button>
@@ -51,7 +71,8 @@ function DeleteModal({selectedWarehouseName, isOpen, onClose}) {
               bgColor="red"
               borderRadius="20"
               color="white"
-              w="50%"
+              w={{base: "50%", md: "80px"}}
+              onClick={() => { deleteWarehouseHandler(selectedWarehouseId, onClose);}}
               >
               Delete</Button>
           </ModalFooter>

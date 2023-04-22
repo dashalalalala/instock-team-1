@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import DeleteModal from "../../../Components/DeleteModal/DeleteModal"
 
 import TabletDesktopItemTableItem from "./TabletDesktopItemTableItem";
+import { useEffect } from "react";
 
 import {
 	Table,

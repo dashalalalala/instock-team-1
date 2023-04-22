@@ -21,7 +21,7 @@ function WarehouseListPage() {
 			.catch((error) => {
 				console.error(error);
 			});
-	}, []);
+	}, [list]);
 
 	useEffect(() => {
 		if (list.length > 0) {

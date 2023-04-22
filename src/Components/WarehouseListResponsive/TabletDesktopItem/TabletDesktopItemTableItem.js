@@ -51,7 +51,7 @@ function TabletDesktopItemTableItem(props){
                             }
                             onClick={onOpen}
                         ></IconButton>
-                        <DeleteModal selectedWarehouseName={props.warehouse_name} isOpen={isOpen} onClose={onClose}/>
+                        <DeleteModal selectedWarehouseName={props.warehouse_name} selectedWarehouseId={props.id} isOpen={isOpen} onClose={onClose}/>
                         <IconButton
                             size="xs"
                             colorScheme="white"
