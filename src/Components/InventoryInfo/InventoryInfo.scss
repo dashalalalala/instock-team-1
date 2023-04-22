@@ -1,0 +1,154 @@
+@import "../../styles/partials/_mixins";
+@import "../../styles/partials/_variables";
+
+.inventory-info {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem 1.5rem;
+  background-color: $white;
+  border-bottom: 1px solid $cloud;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.313rem;
+    justify-content: space-between;
+    padding: 0rem;
+
+    &--swq {
+      flex-direction: row;
+      padding-right: 3rem;
+    }
+  }
+
+  &__property-box {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem 0rem;
+  }
+
+  &__title {
+    @include mobile-body-small;
+    color: $slate;
+    font-family: "Titillium Web Regular";
+    font-weight: 600;
+  }
+
+  &__body {
+    @include mobile-body-small;
+    margin: 0;
+    white-space: initial;
+  }
+
+  @include tablet {
+    padding: 2rem;
+    flex-direction: row;
+    justify-content: flex-start;
+    border-bottom: none;
+
+    &__container {
+      gap: 3rem;
+      padding: 0rem 0rem 0rem 3rem;
+
+      &--ie {
+        border-right: 1px solid $cloud;
+        width: 50%;
+        gap: 1rem;
+        padding: 0rem 1rem 0rem 0rem;
+      }
+
+      &--swq {
+        padding-left: 3rem;
+        gap: 5rem;
+      }
+    }
+
+    &__title {
+      @include table-header;
+      color: $slate;
+      margin: 0;
+    }
+
+    &__body {
+      @include body-medium;
+
+      &--truncated {
+        width: 85%;
+      }
+    }
+
+    &__property-container {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+  }
+
+  @include desktop {
+    padding: 2rem;
+    flex-direction: row;
+    justify-content: flex-start;
+    border-bottom: none;
+
+    &__container {
+      &--ie {
+        border-right: 1px solid $cloud;
+        gap: 1rem;
+        padding: 0rem 8rem 0rem 0rem;
+      }
+
+      &--swq {
+        padding-left: 3rem;
+        gap: 10rem;
+      }
+    }
+
+    &__title {
+      @include table-header;
+      margin: 0;
+    }
+
+    &__body {
+      @include body-medium;
+      margin: 0;
+
+      &--truncated {
+        width: auto;
+      }
+    }
+
+    &__property-container {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+  }
+}
+
+.inStock-status {
+  @include stock-status;
+  background: rgba(21, 132, 99, 0.07);
+  color: $green;
+
+  @include tablet {
+    line-height: 1.625rem;
+  }
+
+  @include desktop {
+    line-height: 1.625rem;
+  }
+}
+
+.outOfStock-status {
+  @include stock-status;
+  background: rgba(201, 69, 21, 0.07);
+  color: $red;
+
+  @include tablet {
+    line-height: 1.625rem;
+  }
+
+  @include desktop {
+    line-height: 1.625rem;
+  }
+}

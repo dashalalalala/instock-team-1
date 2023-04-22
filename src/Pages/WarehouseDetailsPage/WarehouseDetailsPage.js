@@ -7,33 +7,32 @@ import { apiUrl } from "../../utils.js";
 import axios from "axios";
 
 function WarehouseDetailsPage() {
-    const [warehouseData, setWarehouseData] = useState(null);
-    const { warehouseId } = useParams();
+  const [warehouseData, setWarehouseData] = useState(null);
+  const { warehouseId } = useParams();
 
-    useEffect(() => {
-        axios
-            .get(`${apiUrl}/${warehouseId}`)
-            .then((response) => {
-                setWarehouseData(response.data);
-            }
-            ).catch((error) => {
-                console.error(error);
-            }
-        );
-    }, [warehouseId]);
+  useEffect(() => {
+    axios
+      .get(`${apiUrl}/${warehouseId}`)
+      .then((response) => {
+        setWarehouseData(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, [warehouseId]);
 
-    if (warehouseData === null) {
-        return <main>Loading warehouse data...</main>;
-    }
+  if (warehouseData === null) {
+    return <main>Loading warehouse data...</main>;
+  }
 
-    return (
-        <div className="wh">
-			<div className="wh__content">
-                <WarehouseHeader currentWarehouse={warehouseData} />
-                <WarehouseInfo currentWarehouse={warehouseData}/>
-			</div>
-        </div>
-    );
+  return (
+    <div className="wh">
+      <div className="wh__content">
+        <WarehouseHeader currentWarehouse={warehouseData} />
+        <WarehouseInfo currentWarehouse={warehouseData} />
+      </div>
+    </div>
+  );
 }
 
 export default WarehouseDetailsPage;
