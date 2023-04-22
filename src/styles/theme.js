@@ -20,8 +20,8 @@ const theme = extendTheme({
 		red: "#C94515",
 	},
 	breakpoints: {
-		sm: "767px",
-		md: "1279px",
+		base: "0px",
+		md: "767px",
 		lg: "1280px",
 	},
 });

@@ -4,6 +4,7 @@ import sortIcon from "../../assets/icons/sort-24px.svg";
 import editIcon from "../../assets/icons/edit-24px.svg";
 import chevronIcon from "../../assets/icons/chevron_right-24px.svg";
 import { Link, useNavigate } from "react-router-dom";
+import WarehouseTabletDesktop from "../Warehouse/WarehouseTabletDesktop";
 
 import {
 	Table,
@@ -18,7 +19,7 @@ import {
 	Image,
 } from "@chakra-ui/react";
 
-function TabletDesktopItem({ list }) {
+function WarehouseListTabletDesktop({ list }) {
 	const navigate = useNavigate();
 
 	return (
@@ -54,56 +55,18 @@ function TabletDesktopItem({ list }) {
 					</Tr>
 				</Thead>
 				<Tbody>
-					{list.map((list) => (
-						<Tr className="row" key={list.id}>
-							<Td className="body__warehouse-name">
-								<HStack>
-									<Link
-										to={`/warehouses/${list.id}`}
-										style={{ textDecoration: "none" }}
-									>
-										<p className="body">{list.warehouse_name}</p>
-									</Link>
-									<img className="body__icon" src={chevronIcon} alt=""></img>
-								</HStack>
-							</Td>
-							<Td className="body body__address">
-								{list.address}, {list.city}, {list.country}
-							</Td>
-							<Td className="body body__contact-name">{list.contact_name}</Td>
-							<Td>
-								<div>
-									<p className="body">{list.contact_phone}</p>
-									<p className="body">{list.contact_email}</p>
-								</div>
-							</Td>
-							<Td>
-								<HStack>
-									<IconButton
-										onClick={() => {
-											navigate(`/warehouses/${list.id}/delete`);
-										}}
-										size="xs"
-										colorScheme="white"
-										className="chakra-button"
-										icon={
-											<Image className="icons__img" src={deleteIcon} alt="" />
-										}
-									></IconButton>
-									<IconButton
-										onClick={() => {
-											navigate(`/warehouses/${list.id}/edit`);
-										}}
-										size="xs"
-										colorScheme="white"
-										className="chakra-button"
-										icon={
-											<Image className="icons__img" src={editIcon} alt="" />
-										}
-									></IconButton>
-								</HStack>
-							</Td>
-						</Tr>
+					{list
+						.map((list, index) => (
+							<WarehouseTabletDesktop 
+								key={index}
+								id={list.id}
+								warehouse_name={list.warehouse_name}
+								address={list.address}
+								city={list.city}
+								country={list.country}
+								contact_name={list.contact_name}
+								contact_phone={list.contact_phone}
+								contact_email={list.contact_email}/>
 					))}
 				</Tbody>
 			</Table>
@@ -111,4 +74,4 @@ function TabletDesktopItem({ list }) {
 	);
 }
 
-export default TabletDesktopItem;
+export default WarehouseListTabletDesktop;
