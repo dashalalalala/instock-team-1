@@ -1,9 +1,9 @@
-import "./TabletDesktopItem.scss";
-import deleteIcon from "../../../assets/icons/delete_outline-24px.svg";
-import sortIcon from "../../../assets/icons/sort-24px.svg";
-import editIcon from "../../../assets/icons/edit-24px.svg";
-import chevronIcon from "../../../assets/icons/chevron_right-24px.svg";
-import { Link } from "react-router-dom";
+import "../../styles/listsStyling/List.scss";
+import deleteIcon from "../../assets/icons/delete_outline-24px.svg";
+import sortIcon from "../../assets/icons/sort-24px.svg";
+import editIcon from "../../assets/icons/edit-24px.svg";
+import chevronIcon from "../../assets/icons/chevron_right-24px.svg";
+import { Link, useNavigate } from "react-router-dom";
 
 import {
 	Table,
@@ -18,7 +18,9 @@ import {
 	Image,
 } from "@chakra-ui/react";
 
-function TabletDesktopItem({ list }) {
+function InventoryTabletDesktop({ list, hideWarehouseDiv }) {
+	const navigate = useNavigate();
+
 	return (
 		<TableContainer className="chakra-table">
 			<Table variant="simple" overflowX="auto" size="md">
@@ -26,58 +28,74 @@ function TabletDesktopItem({ list }) {
 					<Tr>
 						<Th>
 							<HStack>
-								<p className="responsive__title">WAREHOUSE</p>
+								<p className="responsive__title">INVENTORY ITEM</p>
 								<img className="responsive__icon" src={sortIcon} alt=""></img>
 							</HStack>
 						</Th>
 						<Th>
 							<HStack>
-								<p className="responsive__title">ADDRESS</p>
+								<p className="responsive__title">CATEGORY</p>
 								<img className="responsive__icon" src={sortIcon} alt=""></img>
 							</HStack>
 						</Th>
 						<Th>
 							<HStack>
-								<p className="responsive__title">CONTACT NAME</p>
+								<p className="responsive__title">STATUS</p>
 								<img className="responsive__icon" src={sortIcon} alt=""></img>
 							</HStack>
 						</Th>
 						<Th>
 							<HStack>
-								<p className="responsive__title">CONTACT INFORMATION</p>
+								<p className="responsive__title">QTY</p>
 								<img className="responsive__icon" src={sortIcon} alt=""></img>
 							</HStack>
 						</Th>
+						{!hideWarehouseDiv && (
+							<Th>
+								<HStack>
+									<p className="responsive__title">WAREHOUSE</p>
+									<img className="responsive__icon" src={sortIcon} alt=""></img>
+								</HStack>
+							</Th>
+						)}
 						<Th className="responsive__title">ACTIONS</Th>
 					</Tr>
 				</Thead>
 				<Tbody>
 					{list.map((list) => (
 						<Tr className="row" key={list.id}>
-							<Td className="body__warehouse-name">
+							<Td className="body__name">
 								<HStack>
 									<Link
-										to={`/warehouses/${list.id}`}
+										to={`/inventories/${list.id}`}
 										style={{ textDecoration: "none" }}
 									>
-										<p className="body">{list.warehouse_name}</p>
+										<p className="body">{list.item_name}</p>
 									</Link>
 									<img className="body__icon" src={chevronIcon} alt=""></img>
 								</HStack>
 							</Td>
-							<Td className="body body__address">
-								{list.address}, {list.city}, {list.country}
-							</Td>
-							<Td className="body body__contact-name">{list.contact_name}</Td>
+							<Td className="body">{list.category}</Td>
 							<Td>
-								<div>
-									<p className="body">{list.contact_phone}</p>
-									<p className="body">{list.contact_email}</p>
-								</div>
+								{" "}
+								<p
+									className={`body ${
+										list.status === "In Stock" ? "in-stock" : "out-of-stock"
+									}`}
+								>
+									{list.status}
+								</p>
 							</Td>
+							<Td className="body">{list.quantity}</Td>
+							{!hideWarehouseDiv && (
+								<Td className="body">{list.warehouse_name}</Td>
+							)}
 							<Td>
 								<HStack>
 									<IconButton
+										onClick={() => {
+											navigate(`/inventories/${list.id}/delete`);
+										}}
 										size="xs"
 										colorScheme="white"
 										className="chakra-button"
@@ -86,6 +104,9 @@ function TabletDesktopItem({ list }) {
 										}
 									></IconButton>
 									<IconButton
+										onClick={() => {
+											navigate(`/inventories/${list.id}/edit`);
+										}}
 										size="xs"
 										colorScheme="white"
 										className="chakra-button"
@@ -103,4 +124,4 @@ function TabletDesktopItem({ list }) {
 	);
 }
 
-export default TabletDesktopItem;
+export default InventoryTabletDesktop;

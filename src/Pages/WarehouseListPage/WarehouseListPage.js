@@ -1,7 +1,7 @@
 import "./WarehouseListPage.scss";
 import Search from "../../Components/Search/Search";
-import TabletDesktopItem from "../../Components/WarehouseListResponsive/TabletDesktopItem/TabletDesktopItem";
-import MobileItem from "../../Components/WarehouseListResponsive/MobileItem/MobileItem";
+import WarehouseListMobile from "../../Components/WarehouseList/WarehouseListMobile";
+import WarehouseListTabletDesktop from "../../Components/WarehouseList/WarehouseListTabletDesktop";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { apiUrl } from "../../utils.js";
@@ -12,7 +12,7 @@ function WarehouseListPage() {
 	const [list, setList] = useState([]);
 	const searchTitle = "Warehouses";
 	const searchButton = "+ Add New Warehouse";
-	const path = (`${apiUrl}/add`);
+	const path = "/warehouses/add";
 
 	useEffect(() => {
 		axios
@@ -23,7 +23,7 @@ function WarehouseListPage() {
 			.catch((error) => {
 				console.error(error);
 			});
-	}, []);
+	}, [list]);
 
 	useEffect(() => {
 		if (list.length > 0) {
@@ -32,10 +32,16 @@ function WarehouseListPage() {
 	}, [list, navigate]);
 
 	return (
-		<div className="warehouse-list">
-			<Search searchTitle={searchTitle} searchButton={searchButton} path={path}/>
-			<MobileItem list={list} />
-			<TabletDesktopItem list={list} />
+		<div className="warehouse-card">
+			<div className="warehouse-list">
+				<Search
+					searchTitle={searchTitle}
+					searchButton={searchButton}
+					path={path}
+				/>
+				<WarehouseListMobile list={list} />
+				<WarehouseListTabletDesktop list={list} />
+			</div>
 		</div>
 	);
 }
