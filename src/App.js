@@ -5,6 +5,7 @@ import WarehouseDetailsPage from "./Pages/WarehouseDetailsPage/WarehouseDetailsP
 import WarehouseListPage from "./Pages/WarehouseListPage/WarehouseListPage";
 import InventoryDetailsPage from "./Pages/InventoryDetailsPage/InventoryDetailsPage";
 import InventoryListPage from "./Pages/InventoryListPage/InventoryListPage";
+import EditWarehousePage from "./Pages/EditWarehouse/EditWarehouse";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ChakraProvider } from "@chakra-ui/react";
 import theme from "./styles/theme.js";
@@ -21,6 +22,10 @@ function App() {
             <Route
               path="/warehouses/:warehouseId"
               element={<WarehouseDetailsPage />}
+            />
+            <Route
+              path="/warehouses/:warehouseId/edit"
+              element={<EditWarehousePage />}
             />
             <Route path="/inventories" element={<InventoryListPage />} />
             <Route

@@ -1,10 +1,10 @@
 import axios from "axios";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { apiUrl } from "../../utils";
 import "./EditWarehouseForm.scss";
 
-const WarehouseDetails = (warehouseId) => {
-  console.log(warehouseId);
+const EditWarehouseForm = () => {
   const [warehouseName, setwarehouseName] = useState();
   const [address, setAddress] = useState();
   const [city, setCity] = useState();
@@ -14,6 +14,7 @@ const WarehouseDetails = (warehouseId) => {
   const [phoneNumber, setPhoneNumber] = useState();
   const [email, setEmail] = useState();
   const navigate = useNavigate();
+  const warehouseId = useParams();
 
   const isFormValid =
     warehouseName &&
@@ -62,7 +63,7 @@ const WarehouseDetails = (warehouseId) => {
 
     if (isFormValid) {
       axios
-        .put(`http://localhost:8080/warehouses/${warehouseId}`, {
+        .put(`${apiUrl}/${warehouseId.warehouseId}`, {
           warehouse_name: warehouseName,
           address: address,
           city: city,
@@ -168,7 +169,7 @@ const WarehouseDetails = (warehouseId) => {
                   className="details__form-input"
                   type="text"
                   name="Phone Number"
-                  placeholder="+1 (647)504-0911"
+                  placeholder="+1 (647) 504-0911"
                   onChange={handlePhoneNumberChange}
                 />
               </label>
@@ -195,4 +196,4 @@ const WarehouseDetails = (warehouseId) => {
   );
 };
 
-export default WarehouseDetails;
+export default EditWarehouseForm;

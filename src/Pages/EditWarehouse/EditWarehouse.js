@@ -1,5 +1,5 @@
 import "./EditWarehouse.scss";
-import WarehouseDetails from "../../components/EditWarehouseForm/EditWarehouseForm";
+import EditWarehouseForm from "../../Components/EditWarehouseForm/EditWarehouseForm";
 import backArrow from "../../assets/icons/arrow_back-24px.svg";
 import { Link } from "react-router-dom";
 
@@ -18,7 +18,7 @@ function EditWarehouse() {
           <h1 className="page__title">Edit Warehouse</h1>
         </div>
         <div className="page__component-container">
-          <WarehouseDetails />
+          <EditWarehouseForm />
         </div>
       </div>
     </>
