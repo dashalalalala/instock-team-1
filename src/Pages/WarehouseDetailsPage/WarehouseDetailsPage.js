@@ -5,8 +5,8 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { apiUrl, inventoriesUrl } from "../../utils.js";
 import axios from "axios";
-import InventoryMobile from "../../Components/InventoryList/InventoryMobile";
-import InventoryTabletDesktop from "../../Components/InventoryList/InventoryTabletDesktop";
+import InventoryListMobile from "../../Components/InventoryList/InventoryListMobile";
+import InventoryListTabletDesktop from "../../Components/InventoryList/InventoryListTabletDesktop";
 
 function WarehouseDetailsPage() {
 	const [warehouseData, setWarehouseData] = useState(null);
@@ -49,8 +49,8 @@ function WarehouseDetailsPage() {
 			<div className="wh__content">
 				<WarehouseHeader currentWarehouse={warehouseData} />
 				<WarehouseInfo currentWarehouse={warehouseData} />
-				<InventoryMobile list={inventoriesData} hideWarehouseDiv />
-				<InventoryTabletDesktop list={inventoriesData} hideWarehouseDiv />
+				<InventoryListMobile list={inventoriesData} hideWarehouseDiv />
+				<InventoryListTabletDesktop list={inventoriesData} hideWarehouseDiv />
 			</div>
 		</div>
 	);
