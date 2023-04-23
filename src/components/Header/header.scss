@@ -6,7 +6,9 @@
   flex-direction: column;
   align-items: center;
 
-  padding: 3rem 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 3rem;
 
   background-color: $graphite;
 
@@ -21,9 +23,13 @@
     margin: 0 1rem;
   }
   &__nav-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     width: 50%;
     height: 36px;
-    padding: 0 1rem;
+
     margin: 1rem 0;
 
     border: none;
@@ -32,25 +38,32 @@
     background-color: $graphite;
     color: $white;
 
-    &:focus,
+    &:active,
     &:visited {
       background-color: $instock-black;
+    }
+
+    &:hover {
+      text-decoration: solid $graphite;
     }
   }
   @include tablet {
     &.header {
       flex-direction: row;
       justify-content: space-between;
+      padding-bottom: 7rem;
     }
 
     &__nav {
       display: flex;
+      gap: 1rem;
 
       width: auto;
     }
 
     &__nav-button {
       width: auto;
+      padding: 0 1rem;
     }
   }
   @include desktop {
@@ -58,7 +71,8 @@
       flex-direction: row;
       justify-content: space-between;
 
-      padding: 3rem 5rem;
+      padding: 0 8rem;
+      padding-bottom: 9.5rem;
     }
 
     &__nav {
@@ -69,6 +83,8 @@
 
     &__nav-button {
       width: auto;
+
+      padding: 0 1rem;
     }
   }
 }
