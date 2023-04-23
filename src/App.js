@@ -9,6 +9,7 @@ import EditWarehousePage from "./Pages/EditWarehouse/EditWarehouse";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ChakraProvider } from "@chakra-ui/react";
 import theme from "./styles/theme.js";
+import AddWarehouse from "./Pages/AddWarehouse/AddWarehouse";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
               path="/warehouses/:warehouseId"
               element={<WarehouseDetailsPage />}
             />
+            <Route path="/warehouses/add" element={<AddWarehouse />} />
             <Route
               path="/warehouses/:warehouseId/edit"
               element={<EditWarehousePage />}
