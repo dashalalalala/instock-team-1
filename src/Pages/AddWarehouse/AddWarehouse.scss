@@ -1,0 +1,59 @@
+@import "../../styles/partials/variables";
+@import "../../styles/partials/mixins";
+
+.add-warehouse {
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 0;
+
+    border-bottom: solid $cloud;
+    background-color: $white;
+  }
+
+  &__title {
+    padding-left: 0.25rem;
+
+    font-size: 28px;
+    font-family: "Titillium Web Semi Bold";
+  }
+
+  &__component-container {
+    background-color: $white;
+  }
+
+  @include tablet {
+    box-shadow: 0px 1px 2px 0px $cloud;
+    position: absolute;
+    top: 5.2rem;
+    width: 90%;
+    left: 2.3rem;
+
+    &__container {
+      background-color: $white;
+    }
+    &__component-container {
+      display: flex;
+
+      background-color: $white;
+    }
+  }
+  @include desktop {
+    box-shadow: 0px 1px 2px 0px $cloud;
+    position: absolute;
+    top: 9.5rem;
+    width: 85%;
+    right: 7rem;
+    left: 6rem;
+
+    &__container {
+      background-color: $white;
+    }
+    &__component-container {
+      display: flex;
+
+      background-color: $white;
+    }
+  }
+}
