@@ -56,7 +56,7 @@ function WarehouseTabletDesktop(props){
                                 <Image className="icons__img" src={deleteIcon} alt="" />
                             }
                         ></IconButton>
-                        <DeleteModal selectedWarehouseName={props.warehouse_name} selectedWarehouseId={props.id} isOpen={isOpen} onClose={onClose}/>
+                        <DeleteModal selectedElement={props.warehouse_name} selectedElementId={props.id} isOpen={isOpen} onClose={onClose} isWarehouse={true}/>
                         <IconButton
                             onClick={() => {
                                 navigate(`/warehouses/${props.id}/edit`);

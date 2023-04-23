@@ -3,10 +3,16 @@ import chevronIcon from "../../assets/icons/chevron_right-24px.svg";
 import deleteIcon from "../../assets/icons/delete_outline-24px.svg";
 import editIcon from "../../assets/icons/edit-24px.svg";
 import { Link, useNavigate } from "react-router-dom";
-import { VStack } from "@chakra-ui/react";
+import { VStack, useDisclosure } from "@chakra-ui/react";
+
+import DeleteModal from "../DeleteModal/DeleteModal";
+
+
 
 function InventoryMobile({ list, hideWarehouseDiv }) {
 	const navigate = useNavigate();
+
+	const {isOpen, onClose, onOpen} = useDisclosure();
 
 	return (
 		<>
@@ -54,14 +60,13 @@ function InventoryMobile({ list, hideWarehouseDiv }) {
 						<div className="icons">
 							<div>
 								<img
-									onClick={() => {
-										navigate(`/inventories/${list.id}/delete`);
-									}}
+									onClick={onOpen}
 									className="icons__img"
 									src={deleteIcon}
 									alt=""
 								/>
 							</div>
+							<DeleteModal selectedElement={list.item_name} selectedElementId={list.id} isOpen={isOpen} onClose={onClose} isWarehouse={false}/>
 							<div>
 								<img
 									onClick={() => {

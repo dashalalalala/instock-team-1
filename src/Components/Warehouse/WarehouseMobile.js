@@ -50,7 +50,7 @@ function WarehouseMobile(props){
                             alt=""
                         />
                     </div>
-                    <DeleteModal selectedWarehouseName={props.warehouse_name} selectedWarehouseId={props.id} isOpen={isOpen} onClose={onClose}/>
+                    <DeleteModal selectedElement={props.warehouse_name} selectedElementId={props.id} isOpen={isOpen} onClose={onClose} isWarehouse={true}/>
                     <div>
                         <img
                             onClick={() => {

@@ -4,6 +4,7 @@ import sortIcon from "../../assets/icons/sort-24px.svg";
 import editIcon from "../../assets/icons/edit-24px.svg";
 import chevronIcon from "../../assets/icons/chevron_right-24px.svg";
 import { Link, useNavigate } from "react-router-dom";
+import DeleteModal from "../DeleteModal/DeleteModal";
 
 import {
 	Table,
@@ -16,10 +17,13 @@ import {
 	HStack,
 	IconButton,
 	Image,
+	useDisclosure
 } from "@chakra-ui/react";
 
 function InventoryTabletDesktop({ list, hideWarehouseDiv }) {
 	const navigate = useNavigate();
+
+	const {isOpen, onClose, onOpen} = useDisclosure();
 
 	return (
 		<TableContainer className="chakra-table">
@@ -93,9 +97,7 @@ function InventoryTabletDesktop({ list, hideWarehouseDiv }) {
 							<Td>
 								<HStack>
 									<IconButton
-										onClick={() => {
-											navigate(`/inventories/${list.id}/delete`);
-										}}
+										onClick={onOpen}
 										size="xs"
 										colorScheme="white"
 										className="chakra-button"
@@ -103,6 +105,7 @@ function InventoryTabletDesktop({ list, hideWarehouseDiv }) {
 											<Image className="icons__img" src={deleteIcon} alt="" />
 										}
 									></IconButton>
+									<DeleteModal selectedElement={list.item_name} selectedElementId={list.id} isOpen={isOpen} onClose={onClose} isWarehouse={false}/>
 									<IconButton
 										onClick={() => {
 											navigate(`/inventories/${list.id}/edit`);
