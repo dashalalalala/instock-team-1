@@ -1,5 +1,5 @@
-import InventoryMobile from "../../Components/InventoryList/InventoryMobile";
-import InventoryTabletDesktop from "../../Components/InventoryList/InventoryTabletDesktop";
+import InventoryListMobile from "../../Components/InventoryList/InventoryListMobile";
+import InventoryListTabletDesktop from "../../Components/InventoryList/InventoryListTabletDesktop";
 import Search from "../../Components/Search/Search";
 import { inventoriesUrl } from "../../utils";
 import { useEffect, useState } from "react";
@@ -21,7 +21,7 @@ function InventoryListPage() {
 			.catch((error) => {
 				console.error(error);
 			});
-	}, []);
+	}, [list]);
 
 	return (
 		<div className="list-card">
@@ -31,8 +31,8 @@ function InventoryListPage() {
 					searchButton={searchButton}
 					path={path}
 				/>
-				<InventoryMobile list={list} />
-				<InventoryTabletDesktop list={list} />
+				<InventoryListMobile list={list} />
+				<InventoryListTabletDesktop list={list} />
 			</div>
 		</div>
 	);
