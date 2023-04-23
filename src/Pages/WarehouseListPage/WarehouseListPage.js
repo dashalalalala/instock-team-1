@@ -1,7 +1,7 @@
 import "./WarehouseListPage.scss";
 import Search from "../../Components/Search/Search";
-import TabletDesktopItem from "../../Components/WarehouseList/WarehouseTabletDesktop";
-import MobileItem from "../../Components/WarehouseList/WarehouseMobile";
+import WarehouseListMobile from "../../Components/WarehouseList/WarehouseListMobile";
+import WarehouseListTabletDesktop from "../../Components/WarehouseList/WarehouseListTabletDesktop";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { apiUrl } from "../../utils.js";
@@ -23,7 +23,7 @@ function WarehouseListPage() {
 			.catch((error) => {
 				console.error(error);
 			});
-	}, []);
+	}, [list]);
 
 	useEffect(() => {
 		if (list.length > 0) {
@@ -39,8 +39,8 @@ function WarehouseListPage() {
 					searchButton={searchButton}
 					path={path}
 				/>
-				<MobileItem list={list} />
-				<TabletDesktopItem list={list} />
+				<WarehouseListMobile list={list} />
+				<WarehouseListTabletDesktop list={list} />
 			</div>
 		</div>
 	);
