@@ -21,13 +21,30 @@ const EditInventoryForm = () => {
     axios
         .get(`${apiUrl}`)
         .then((result) => {
-          console.log("FROMUSE", result.data)
           setWarehouseList(result.data);
         })
         .catch((err) => {
           console.log(err)
         })
   }, []);
+
+  useEffect(() => {
+    console.log("USEEFFECTWORKING")
+  }, [status])
+
+  function renderQuantityForm(){
+    return (
+      <label className="details__form-container">
+      <h6 className="details__form-title">Quantity</h6>
+      <input
+        //className="details__form-input"
+        className="details__form-input"
+        type="text"
+        onChange={handleQuantityChange}
+      />
+    </label>
+    )
+  }
 
   const isFormValid =
     itemName &&
@@ -49,6 +66,7 @@ const EditInventoryForm = () => {
   };
 
   const handleStatusChange = (event) => {
+    console.log(event.target.value)
     setStatus(event.target.value);
   };
 
@@ -133,25 +151,26 @@ const EditInventoryForm = () => {
 
               <label className="details__form-container">
                 <h6 className="details__form-title">Status</h6>
+                <label for="InStock">In Stock</label>
                 <input
-                  className="details__form-input"
-                  type="text"
-                  name="Contact Name"
-                  placeholder="Graeme Lyon"
+                  //className="details__form-input"
+                  type="radio"
+                  name="Stock"
+                  id="InStock"
+                  value="In Stock"
+                  onChange={handleStatusChange}
+                />
+                <label for="OutOfStock">Out of Stock</label>
+                <input
+                  //className="details__form-input"
+                  type="radio"
+                  name="Stock"
+                  id="OutOfStock"
+                  value="Out of Stock"
                   onChange={handleStatusChange}
                 />
               </label>
-
-              <label className="details__form-container">
-                <h6 className="details__form-title">Quantity</h6>
-                <input
-                  className="details__form-input"
-                  type="text"
-                  name="Position"
-                  placeholder="Warehouse Manager"
-                  onChange={handleQuantityChange}
-                />
-              </label>
+              {status === "In Stock" && renderQuantityForm()}
 
               <label className="details__form-container">
                 <h6 className="details__form-title">Warehouse</h6>
@@ -161,7 +180,7 @@ const EditInventoryForm = () => {
                   onChange={handleWarehouseIdChange}
                 />
                 <datalist id="warehouseList">
-                  {warehouseList.map((item, key) => <option key={key} value={item.warehouse_name}/>)}
+                  {/*warehouseList.map((item, key) => <option key={key} value={item.warehouse_name}/>)*/}
                 </datalist>
               </label>
             </div>
