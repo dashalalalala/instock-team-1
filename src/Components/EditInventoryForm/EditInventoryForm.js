@@ -4,31 +4,39 @@ import { useNavigate, useParams } from "react-router-dom";
 import { apiUrl, inventoriesUrl } from "../../utils";
 import "./EditInventoryForm.scss";
 
-function EditInventoryForm(item, warehouseList){
+function EditInventoryForm(item){
   const navigate = useNavigate();
   const inventoryItemId = useParams();
-  const [inStock, setInStock] = useState();
+
+  const [status, setStatus] = useEffect(item.item.status);
   
-  function renderQuantityForm(){
+  function renderQuantityForm(status){
+    if (status === "Out of Stock"){
+      return null
+    } else {
     return (
       <label className="details__form-container">
       <h6 className="details__form-title">Quantity</h6>
       <input
         className="details__form-input"
         type="text"
-        value={item.quantity}
+        value={item.item.quantity}
       />
     </label>
+    )}
+  }
+
+  function renderWarehouseListOptions(){
+    return (
+    <select className="details__form-input" id="warehouseList">
+        {item.warehouseList.map((item, key) => 
+          <option key={key} value={item.warehouse_name}>{item.warehouse_name}</option>)}
+    </select>
     )
   }
 
-  function renderWarehouseListOptions(warehouseList){
-    return (
-    <datalist id="warehouseList">
-        {/*warehouseList.map((item, key) => 
-          <option key={key} value={item.warehouse_name}/>)*/}
-    </datalist>
-    )
+  function handleStatusChange(){
+
   }
 
   const handleSubmit = (event) => {
@@ -74,7 +82,7 @@ function EditInventoryForm(item, warehouseList){
                   type="text"
                   name="Warehouse Name"
                   id="itemNameInput"
-                  value={item.item_name}
+                  value={item.item.item_name}
               />
 
               <label className="details__form-container">Description</label>
@@ -83,7 +91,7 @@ function EditInventoryForm(item, warehouseList){
                   type="text"
                   name="Street Address"
                   id="descriptionInput"
-                  value={item.description}
+                  value={item.item.description}
               />
 
               <label className="details__form-container">Category</label>
@@ -92,7 +100,7 @@ function EditInventoryForm(item, warehouseList){
                   type="text"
                   name="City"
                   id="categoryInput"
-                  value={item.category}
+                  value={item.item.category}
               />
             </div>
             <div className="details__form-contact">
@@ -105,7 +113,8 @@ function EditInventoryForm(item, warehouseList){
                 name="Stock"
                 id="InStock"
                 value="In Stock"
-                checked={item.status === "In Stock"}
+                onChange={handleStatusChange("In Stock")}
+                checked={item.item.status === "In Stock"}
               />
               <label htmlFor="OutOfStock">Out of Stock</label>
               <input
@@ -114,17 +123,12 @@ function EditInventoryForm(item, warehouseList){
                 name="Stock"
                 id="OutOfStock"
                 value="Out of Stock"
-                checked={item.status === "Out of Stock"}
+                onChange={handleStatusChange("Out of Stock")}
+                checked={item.item.status === "Out of Stock"}
               />
-              {renderQuantityForm()}
+              {renderQuantityForm(item.item.status)}
               <h6 className="details__form-title">Warehouse</h6>
-              <input
-                list="warehouseList"
-                className="details__form-input"
-                value={item.warehouse_name}
-                id="warehouseInput"
-              />
-              {renderWarehouseListOptions(warehouseList)}
+              {renderWarehouseListOptions()}
             </div>
           </div>
           <div className="details__button-container">
