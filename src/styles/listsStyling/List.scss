@@ -185,12 +185,10 @@
 
 	@include tablet {
 		display: table;
-		height: 99vh;
 	}
 
 	@include desktop {
 		display: table;
-		height: 100vh;
 	}
 }
 
