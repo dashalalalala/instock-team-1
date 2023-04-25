@@ -8,10 +8,10 @@ function EditInventoryForm(item){
   const navigate = useNavigate();
   const inventoryItemId = useParams();
 
-  const [status, setStatus] = useEffect(item.item.status);
+  const [inStock ,setInStock] = useState(item.item.status);
   
-  function renderQuantityForm(status){
-    if (status === "Out of Stock"){
+  function renderQuantityForm(inStock){
+    if (inStock === "Out of Stock"){
       return null
     } else {
     return (
@@ -26,17 +26,18 @@ function EditInventoryForm(item){
     )}
   }
 
-  function renderWarehouseListOptions(){
+  function renderWarehouseListOptions(warehouseList){
+    console.log(warehouseList)
     return (
     <select className="details__form-input" id="warehouseList">
-        {item.warehouseList.map((item, key) => 
+        {warehouseList.map((item, key) => 
           <option key={key} value={item.warehouse_name}>{item.warehouse_name}</option>)}
     </select>
     )
   }
 
-  function handleStatusChange(){
-
+  const handleStatusChange = event =>{
+    setInStock(event.target.value)
   }
 
   const handleSubmit = (event) => {
@@ -113,8 +114,8 @@ function EditInventoryForm(item){
                 name="Stock"
                 id="InStock"
                 value="In Stock"
-                onChange={handleStatusChange("In Stock")}
-                checked={item.item.status === "In Stock"}
+                checked={inStock === "In Stock"}
+                onChange={handleStatusChange}
               />
               <label htmlFor="OutOfStock">Out of Stock</label>
               <input
@@ -123,12 +124,12 @@ function EditInventoryForm(item){
                 name="Stock"
                 id="OutOfStock"
                 value="Out of Stock"
-                onChange={handleStatusChange("Out of Stock")}
-                checked={item.item.status === "Out of Stock"}
+                checked={inStock === "Out of Stock"}
+                onChange={handleStatusChange}
               />
-              {renderQuantityForm(item.item.status)}
+              {renderQuantityForm(inStock)}
               <h6 className="details__form-title">Warehouse</h6>
-              {renderWarehouseListOptions()}
+              {renderWarehouseListOptions(item.warehouseList)}
             </div>
           </div>
           <div className="details__button-container">
