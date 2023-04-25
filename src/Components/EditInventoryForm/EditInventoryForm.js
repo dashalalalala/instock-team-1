@@ -3,8 +3,9 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { apiUrl, inventoriesUrl } from "../../utils";
 import "./EditInventoryForm.scss";
+import { nullLiteral } from "@babel/types";
 
-const EditInventoryForm = () => {
+function EditInventoryForm(){
   const [itemName, setItemName] = useState();
   const [description, setDescription] = useState();
   const [category, setCategory] = useState();
@@ -13,15 +14,18 @@ const EditInventoryForm = () => {
   const [warehouseId, setWarehouseId] = useState();
 
   const [warehouseList, setWarehouseList] = useState();
+  const [item, setItem] = useState();
 
   const navigate = useNavigate();
   const inventoryItemId = useParams();
 
-  useEffect(()=> {
+  console.log(warehouseList)
+
+  useEffect(() => {
     axios
         .get(`${apiUrl}`)
         .then((result) => {
-          setWarehouseList(result.data);
+          setWarehouseList(result.data)
         })
         .catch((err) => {
           console.log(err)
@@ -29,18 +33,26 @@ const EditInventoryForm = () => {
   }, []);
 
   useEffect(() => {
-    console.log("USEEFFECTWORKING")
-  }, [status])
-
+    axios
+        .get(`${inventoriesUrl}/${inventoryItemId.inventoryItemId}`)
+        .then((result) => {
+          setItem(result.data);
+          setStatus(result.data.status);
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+  }, []);
+  
   function renderQuantityForm(){
     return (
       <label className="details__form-container">
       <h6 className="details__form-title">Quantity</h6>
       <input
-        //className="details__form-input"
         className="details__form-input"
         type="text"
         onChange={handleQuantityChange}
+        value={item.quantity}
       />
     </label>
     )
@@ -66,7 +78,6 @@ const EditInventoryForm = () => {
   };
 
   const handleStatusChange = (event) => {
-    console.log(event.target.value)
     setStatus(event.target.value);
   };
 
@@ -106,6 +117,10 @@ const EditInventoryForm = () => {
     }
   };
 
+  if (!item){
+    return "Loading"
+  } else {
+  //handleStatusChange(item.status)
   return (
     <>
       <div className="details">
@@ -113,76 +128,69 @@ const EditInventoryForm = () => {
           <div className="details__form">
             <div className="details__form-warehouse">
               <h2 className="details__form-subheader">Item Details</h2>
-              <label className="details__form-container">
-                <h6 className="details__form-title">Item Name</h6>
-                <input
+
+              <label className="details__form-container">Item Name</label>
+              <input
                   className="details__form-input"
                   type="text"
                   name="Warehouse Name"
-                  placeholder="Washington"
+                  value={item.item_name}
                   onChange={handleItemNameChange}
-                />
-              </label>
+              />
 
-              <label className="details__form-container">
-                <h6 className="details__form-title">Description</h6>
-                <input
+              <label className="details__form-container">Description</label>
+              <input
                   className="details__form-input"
                   type="text"
                   name="Street Address"
-                  placeholder="33 Pearl Street SW"
+                  value={item.description}
                   onChange={handleDescriptionChange}
-                />
-              </label>
+              />
 
-              <label className="details__form-container">
-                <h6 className="details__form-title">Category</h6>
-                <input
+              <label className="details__form-container">Category</label>
+              <input
                   className="details__form-input"
                   type="text"
                   name="City"
-                  placeholder="Washington"
+                  value={item.category}
                   onChange={handleCategoryChange}
-                />
-              </label>
+              />
             </div>
             <div className="details__form-contact">
               <h2 className="details__form-subheader">Item Availabilty</h2>
-
-              <label className="details__form-container">
-                <h6 className="details__form-title">Status</h6>
-                <label for="InStock">In Stock</label>
-                <input
-                  //className="details__form-input"
-                  type="radio"
-                  name="Stock"
-                  id="InStock"
-                  value="In Stock"
-                  onChange={handleStatusChange}
-                />
-                <label for="OutOfStock">Out of Stock</label>
-                <input
-                  //className="details__form-input"
-                  type="radio"
-                  name="Stock"
-                  id="OutOfStock"
-                  value="Out of Stock"
-                  onChange={handleStatusChange}
-                />
-              </label>
+              <h6 className="details__form-title">Status</h6>
+              <label htmlFor="InStock">In Stock</label>
+              <input
+                //className="details__form-input"
+                type="radio"
+                name="Stock"
+                id="InStock"
+                value="In Stock"
+                checked={item.status === "In Stock"}
+                onChange={handleStatusChange}
+              />
+              <label htmlFor="OutOfStock">Out of Stock</label>
+              <input
+                //className="details__form-input"
+                type="radio"
+                name="Stock"
+                id="OutOfStock"
+                value="Out of Stock"
+                checked={item.status === "Out of Stock"}
+                onChange={handleStatusChange}
+              />
               {status === "In Stock" && renderQuantityForm()}
-
-              <label className="details__form-container">
-                <h6 className="details__form-title">Warehouse</h6>
-                <input
-                  list="warehouseList"
-                  className="details__form-input"
-                  onChange={handleWarehouseIdChange}
-                />
-                <datalist id="warehouseList">
-                  {/*warehouseList.map((item, key) => <option key={key} value={item.warehouse_name}/>)*/}
-                </datalist>
-              </label>
+              <h6 className="details__form-title">Warehouse</h6>
+              <input
+                list="warehouseList"
+                className="details__form-input"
+                onChange={handleWarehouseIdChange}
+                value={item.warehouse_name}
+              />
+              <datalist id="warehouseList">
+                {warehouseList.map((item, key) => 
+                  <option key={key} value={item.warehouse_name}/>)}
+              </datalist>
             </div>
           </div>
           <div className="details__button-container">
@@ -192,7 +200,7 @@ const EditInventoryForm = () => {
         </form>
       </div>
     </>
-  );
+  )};
 };
 
 export default EditInventoryForm;

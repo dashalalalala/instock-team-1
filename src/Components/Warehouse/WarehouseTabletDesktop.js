@@ -59,6 +59,7 @@ function WarehouseTabletDesktop(props){
                         <DeleteModal selectedElement={props.warehouse_name} selectedElementId={props.id} isOpen={isOpen} onClose={onClose} isWarehouse={true}/>
                         <IconButton
                             onClick={() => {
+                                console.log(props.id)
                                 navigate(`/warehouses/${props.id}/edit`);
                             }}
                             size="xs"
