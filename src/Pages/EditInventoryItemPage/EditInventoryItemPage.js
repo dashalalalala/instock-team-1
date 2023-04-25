@@ -35,7 +35,9 @@ function EditInventoryItemPage(){
         })
   }, []);
 
-
+  if (!item){
+    return "Loading"
+  } else {
   return (
     <>
       <div className="page">
@@ -50,10 +52,10 @@ function EditInventoryItemPage(){
           <h1 className="page__title">Edit Inventory Item</h1>
         </div>
         <div className="page__component-container">
-          <EditInventoryForm item={item} setItem={setItem} warehouseList={warehouseList} setWarehouseList={setWarehouseList}/>
+          <EditInventoryForm item={item} warehouseList={warehouseList}/>
         </div>
       </div>
     </>
-  );
+  )};
 }
 export default EditInventoryItemPage;

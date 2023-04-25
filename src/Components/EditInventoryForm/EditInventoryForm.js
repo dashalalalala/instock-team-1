@@ -3,46 +3,11 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { apiUrl, inventoriesUrl } from "../../utils";
 import "./EditInventoryForm.scss";
-import { nullLiteral } from "@babel/types";
 
-function EditInventoryForm(){
-  const [itemName, setItemName] = useState();
-  const [description, setDescription] = useState();
-  const [category, setCategory] = useState();
-  const [status, setStatus] = useState();
-  const [quantity, setQuantity] = useState();
-  const [warehouseId, setWarehouseId] = useState();
-
-  const [warehouseList, setWarehouseList] = useState();
-  const [item, setItem] = useState();
-
+function EditInventoryForm(item, warehouseList){
   const navigate = useNavigate();
   const inventoryItemId = useParams();
-
-  console.log(warehouseList)
-
-  useEffect(() => {
-    axios
-        .get(`${apiUrl}`)
-        .then((result) => {
-          setWarehouseList(result.data)
-        })
-        .catch((err) => {
-          console.log(err)
-        })
-  }, []);
-
-  useEffect(() => {
-    axios
-        .get(`${inventoriesUrl}/${inventoryItemId.inventoryItemId}`)
-        .then((result) => {
-          setItem(result.data);
-          setStatus(result.data.status);
-        })
-        .catch((err) => {
-          console.log(err)
-        })
-  }, []);
+  const [inStock, setInStock] = useState();
   
   function renderQuantityForm(){
     return (
@@ -51,56 +16,36 @@ function EditInventoryForm(){
       <input
         className="details__form-input"
         type="text"
-        onChange={handleQuantityChange}
         value={item.quantity}
       />
     </label>
     )
   }
 
-  const isFormValid =
-    itemName &&
-    description &&
-    category &&
-    status &&
-    quantity
-
-  const handleItemNameChange = (event) => {
-    setItemName(event.target.value);
-  };
-
-  const handleDescriptionChange = (event) => {
-    setDescription(event.target.value);
-  };
-
-  const handleCategoryChange = (event) => {
-    setCategory(event.target.value);
-  };
-
-  const handleStatusChange = (event) => {
-    setStatus(event.target.value);
-  };
-
-  const handleQuantityChange = (event) => {
-    setQuantity(event.target.value);
-  };
-
-  const handleWarehouseIdChange = (event) => {
-    setWarehouseId(event.target.value);
+  function renderWarehouseListOptions(warehouseList){
+    return (
+    <datalist id="warehouseList">
+        {/*warehouseList.map((item, key) => 
+          <option key={key} value={item.warehouse_name}/>)*/}
+    </datalist>
+    )
   }
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    if (isFormValid) {
+    const itemNameInput = event.target.itemNameInput
+    const descriptionInput = event.target.descriptionInput
+    const categoryInput = event.target.categoryInput
+    const statusInput = event.target.statusInput
+    const warehouse = event.target.warehouseInput
+
+    if (!itemNameInput || !descriptionInput || !categoryInput || !statusInput || !warehouse ){
+      alert("You are missing a field in the form, make sure everything is filled out")
+    } else {
       axios
         .put(`${inventoriesUrl}/${inventoryItemId.inventoryItemId}`, {
-          warehouse_id: warehouseId,
-          item_name: itemName,
-          description: description,
-          category: category,
-          status: status,
-          quantity: quantity
+
         })
         .then((result) => {
           if (result.status === 200) {
@@ -112,15 +57,9 @@ function EditInventoryForm(){
           console.error(error);
         });
       alert("Inventory Item Updated");
-    } else {
-      alert("Failed to Update Inventory Item");
     }
   };
 
-  if (!item){
-    return "Loading"
-  } else {
-  //handleStatusChange(item.status)
   return (
     <>
       <div className="details">
@@ -134,8 +73,8 @@ function EditInventoryForm(){
                   className="details__form-input"
                   type="text"
                   name="Warehouse Name"
+                  id="itemNameInput"
                   value={item.item_name}
-                  onChange={handleItemNameChange}
               />
 
               <label className="details__form-container">Description</label>
@@ -143,8 +82,8 @@ function EditInventoryForm(){
                   className="details__form-input"
                   type="text"
                   name="Street Address"
+                  id="descriptionInput"
                   value={item.description}
-                  onChange={handleDescriptionChange}
               />
 
               <label className="details__form-container">Category</label>
@@ -152,8 +91,8 @@ function EditInventoryForm(){
                   className="details__form-input"
                   type="text"
                   name="City"
+                  id="categoryInput"
                   value={item.category}
-                  onChange={handleCategoryChange}
               />
             </div>
             <div className="details__form-contact">
@@ -167,7 +106,6 @@ function EditInventoryForm(){
                 id="InStock"
                 value="In Stock"
                 checked={item.status === "In Stock"}
-                onChange={handleStatusChange}
               />
               <label htmlFor="OutOfStock">Out of Stock</label>
               <input
@@ -177,20 +115,16 @@ function EditInventoryForm(){
                 id="OutOfStock"
                 value="Out of Stock"
                 checked={item.status === "Out of Stock"}
-                onChange={handleStatusChange}
               />
-              {status === "In Stock" && renderQuantityForm()}
+              {renderQuantityForm()}
               <h6 className="details__form-title">Warehouse</h6>
               <input
                 list="warehouseList"
                 className="details__form-input"
-                onChange={handleWarehouseIdChange}
                 value={item.warehouse_name}
+                id="warehouseInput"
               />
-              <datalist id="warehouseList">
-                {warehouseList.map((item, key) => 
-                  <option key={key} value={item.warehouse_name}/>)}
-              </datalist>
+              {renderWarehouseListOptions(warehouseList)}
             </div>
           </div>
           <div className="details__button-container">
@@ -200,7 +134,7 @@ function EditInventoryForm(){
         </form>
       </div>
     </>
-  )};
+  );
 };
 
 export default EditInventoryForm;
