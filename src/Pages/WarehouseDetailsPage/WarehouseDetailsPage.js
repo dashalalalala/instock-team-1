@@ -25,20 +25,15 @@ function WarehouseDetailsPage() {
 	}, [warehouseId]);
 
 	useEffect(() => {
-		// if (warehouseData) console.log(warehouseData);
-		const warehouseName = warehouseData?.warehouse_name;
 		axios
-			.get(`${inventoriesUrl}`)
+			.get(`${apiUrl}/${warehouseId}/inventories`)
 			.then((response) => {
-				const filteredInventories = response.data.filter(
-					(inventory) => inventory.warehouse_name === warehouseName
-				);
-				setInventoriesData(filteredInventories);
+				setInventoriesData(response.data);
 			})
 			.catch((error) => {
 				console.error(error);
 			});
-	}, [warehouseData]);
+	}, [warehouseId]);
 
 	if (warehouseData === null) {
 		return <main>Loading warehouse data...</main>;
