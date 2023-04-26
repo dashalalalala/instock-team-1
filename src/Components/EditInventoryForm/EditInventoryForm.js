@@ -8,8 +8,6 @@ function EditInventoryForm(item){
   const navigate = useNavigate();
   const inventoryItemId = useParams();
 
-  console.log(item)
-
   const [inStock ,setInStock] = useState(item.item.status);
   const [itemName, setItemName] = useState(item.item.item_name);
   const [description, setDescription] = useState(item.item.description)
@@ -31,6 +29,7 @@ function EditInventoryForm(item){
         className="details__form-input"
         type="text"
         value={quantity}
+        id="quantityInput"
         onChange={quantityChangeHandler}
       />
     </label>
@@ -43,7 +42,7 @@ function EditInventoryForm(item){
     } else {
     const warehouseListFiltered = warehouseList.map(warehouse => warehouse.warehouse_name)
     return (
-    <select className="details__form-input" id="warehouseList">
+    <select className="details__form-input" id="warehouseSelect">
         {warehouseListFiltered.map((element, key) => {
           if (element === warehouse){
               return <option key={key} value={element} selected>{element}</option>
@@ -59,7 +58,7 @@ function EditInventoryForm(item){
 
   function renderCategoryList(categoriesList){
     return(
-    <select className="details__form-input" id="categoriesList">
+    <select className="details__form-input" id="categoriesSelect">
         {categoriesList.map((element, key) => {
           if (element === category){
               return <option key={key} value={element} selected>{element}</option>
@@ -92,22 +91,46 @@ function EditInventoryForm(item){
     setQuantity(event.target.value)
   }
 
+  function findWarehouseId(warehouseName, warehouseList) {
+    for (let i = 0; i < warehouseList.length; i++) {
+      if (warehouseList[i].warehouse_name === warehouseName) {
+        return warehouseList[i].id;
+      }
+    }
+    return null;
+  }
+
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    const itemNameInput = event.target.itemNameInput
-    const descriptionInput = event.target.descriptionInput
-    const categoryInput = event.target.categoryInput
-    const statusInput = event.target.statusInput
-    const warehouse = event.target.warehouseInput
+    const itemNameInput = event.target.itemNameInput.value
+    const descriptionInput = event.target.descriptionInput.value
+    const categoryInput = event.target.categoriesSelect.value
+    const statusInput = inStock;
+    var quantityInput = "0"
+
+    if (inStock === "Out of Stock"){
+        quantityInput = "0"
+    } else {
+        quantityInput = event.target.quantityInput.value
+    }
+
+    const warehouse = event.target.warehouseSelect.value
+
+    const inventoryItemData = {
+        item_name: itemNameInput,
+        description: descriptionInput,
+        category: categoryInput,
+        status: statusInput,
+        quantity: quantityInput, 
+        warehouse_id: findWarehouseId(warehouse, warehouseList)
+    }
 
     if (!itemNameInput || !descriptionInput || !categoryInput || !statusInput || !warehouse ){
       alert("You are missing a field in the form, make sure everything is filled out")
     } else {
       axios
-        .put(`${inventoriesUrl}/${inventoryItemId.inventoryItemId}`, {
-
-        })
+        .put(`${inventoriesUrl}/${inventoryItemId.inventoryItemId}`, {inventoryItemData})
         .then((result) => {
           if (result.status === 200) {
             navigate("/inventories");
