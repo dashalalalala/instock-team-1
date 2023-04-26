@@ -14,7 +14,6 @@ function InventoryDetailsPage() {
     axios
       .get(`${inventoriesUrl}/${inventoryId}`)
       .then((response) => {
-        //console.log(response.data);
         setInventoryData(response.data);
       })
       .catch((error) => {

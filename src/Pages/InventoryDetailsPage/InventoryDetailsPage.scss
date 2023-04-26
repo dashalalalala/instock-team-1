@@ -2,31 +2,7 @@
 @import "../../styles/partials/_variables";
 
 .invDetails {
-  background-color: $light-grey;
-  height: 16rem;
-
-  &__content {
-    margin: 1rem;
-    box-shadow: 0px 1px 5px rgba(19, 24, 44, 0.1);
-    border-radius: 3px;
-    position: absolute;
-    top: 10rem;
-    width: -webkit-fill-available;
-  }
-
-  @include tablet {
-    &__content {
-      top: 7rem;
-      margin: 1rem 2rem;
-    }
-  }
-
-  @include desktop {
-    height: 15rem;
-
-    &__content {
-      top: 5rem;
-      margin: 1rem 7rem;
-    }
-  }
+	&__content {
+		@include list;
+	}
 }
