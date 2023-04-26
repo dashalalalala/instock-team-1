@@ -20,8 +20,10 @@ function EditInventoryForm(item){
 
   const categoriesList = ["Gear", "Accessories", "Electronics", "Health", "Apparel"]
 
-  function renderFormFieldError(error){
-    if (error === true){
+  function renderFormFieldError(error, type){
+    if (type === "quantity" && inStock === "Out of Stock"){
+      return null
+    } else if (error === true){
     return(
       <div className="details__error">
           <img src={errorIcon} alt="error" className="details__error--icon"></img>
@@ -70,7 +72,7 @@ function EditInventoryForm(item){
     return(
     <select className="details__form-input details__form--selection" id="categoriesSelect" defaultValue={category}>
         {categoriesList.map((element, key) => {
-            return <option key={key} value={element} selected>{element}</option>
+            return <option key={key} value={element} >{element}</option>
         }
         )}
     </select>
@@ -147,7 +149,11 @@ function EditInventoryForm(item){
 
     if (inStock === "Out of Stock"){
         quantityInput = "0"
+    } else if (event.target.quantityInput.value === "0" && inStock === "In Stock"){
+        setQuantityInputError(true)
+        return (alert("Your stock status and quantity do not line up, please update"))
     } else {
+        setQuantityInputError(false)
         quantityInput = event.target.quantityInput.value
     }
 
@@ -215,7 +221,7 @@ function EditInventoryForm(item){
                   value={itemName}
                   onChange={itemNameHandler}
               />
-              {renderFormFieldError(itemNameError)}
+              {renderFormFieldError(itemNameError, "input")}
               <label className="details__form-container">Description</label>
               <textarea
                   className={getDescriptionInputClasses()}
@@ -225,7 +231,7 @@ function EditInventoryForm(item){
                   value={description}
                   onChange={descriptionChangeHandler}
               />
-              {renderFormFieldError(descriptionInputError)}
+              {renderFormFieldError(descriptionInputError, "description")}
               <label className="details__form-container">Category</label>
               {renderCategoryList(categoriesList)}
             </div>
@@ -255,7 +261,7 @@ function EditInventoryForm(item){
                 <label htmlFor="OutOfStock">Out of Stock</label>
               </div>
               {renderQuantityForm(inStock)}
-              {renderFormFieldError(quantityInputError)}
+              {renderFormFieldError(quantityInputError, "quantity")}
               <h6 className="details__form-title">Warehouse</h6>
               {renderWarehouseListOptions()}
             </div>
