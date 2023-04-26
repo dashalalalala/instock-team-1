@@ -1,4 +1,4 @@
-import "./header.scss";
+import "./Header.scss";
 import logo from "../../assets/logo/InStock-Logo_1x.png";
 import { Link } from "react-router-dom";
 const Header = () => {

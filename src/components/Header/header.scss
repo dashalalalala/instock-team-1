@@ -6,9 +6,10 @@
   flex-direction: column;
   align-items: center;
 
+  padding-top: 1rem;
   padding-left: 1rem;
   padding-right: 1rem;
-  padding-bottom: 3rem;
+  padding-bottom: 4.5rem;
 
   background-color: $graphite;
 
@@ -29,8 +30,9 @@
 
     width: 50%;
     height: 36px;
+    gap: 1rem;
 
-    margin: 1rem 0;
+    margin: 0.5rem 0;
 
     border: none;
     border-radius: 20px;
@@ -38,8 +40,9 @@
     background-color: $graphite;
     color: $white;
 
-    &:active,
-    &:visited {
+    @include mobile-body-medium;
+
+    &:active {
       background-color: $instock-black;
     }
 
@@ -52,6 +55,7 @@
       flex-direction: row;
       justify-content: space-between;
       padding-bottom: 7rem;
+      padding-top: 1rem;
     }
 
     &__nav {
@@ -63,7 +67,8 @@
 
     &__nav-button {
       width: auto;
-      padding: 0 1rem;
+      gap: 1.5rem;
+      padding: 0.75rem;
     }
   }
   @include desktop {
@@ -71,14 +76,21 @@
       flex-direction: row;
       justify-content: space-between;
 
-      padding: 0 8rem;
-      padding-bottom: 9.5rem;
+      padding-left: 7rem;
+      padding-bottom: 7.5rem;
+      padding-right: 6rem;
     }
 
     &__nav {
       display: flex;
 
       width: auto;
+      gap: 1rem;
+    }
+
+    &__logo {
+      padding-top: 1.5rem;
+      padding-left: 0;
     }
 
     &__nav-button {

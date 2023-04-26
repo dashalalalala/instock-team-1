@@ -23,7 +23,7 @@ function WarehouseListPage() {
 			.catch((error) => {
 				console.error(error);
 			});
-	}, [list]);
+	}, [setList]);
 
 	useEffect(() => {
 		if (list.length > 0) {
