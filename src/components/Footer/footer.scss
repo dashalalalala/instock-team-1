@@ -6,6 +6,7 @@
   justify-content: center;
 
   background-color: $light-grey;
+  padding: 2.5rem 0;
 
   &__content {
     font-size: 11px;
@@ -18,6 +19,7 @@
     }
   }
   @include desktop {
+    padding: 3rem;
     &__content {
       font-size: 12px;
     }
