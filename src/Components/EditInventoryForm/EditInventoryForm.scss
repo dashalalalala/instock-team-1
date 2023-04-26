@@ -2,34 +2,43 @@
 @import "../../styles/partials/mixins";
 
 .details {
-  margin: 1rem 2rem;
+  margin: 0;
+  padding: 0; 
+  background-color: $white;
 
   &__form-subheader {
-    margin: 1rem 0;
-
     font-family: "Titillium Web Semi Bold";
-    font-size: 20px;
+    font-size: 24px;  
+    padding-bottom: 20px;
   }
+
   &__form-warehouse {
     display: flex;
     flex-direction: column;
+    padding: 0.5rem 2rem;
+    border-bottom: solid 1px $cloud;
+  }
 
-    padding: 0.5rem 0;
+  &__form-container{
+    padding-bottom: 8px;
+    font-weight: 700;
   }
 
   &__form-title {
-    margin: 0.25rem 0;
-
+    font-weight: 700;
+    margin: 16px 0;
     font-family: "Titillium Web Regular";
   }
 
   &__form-input {
     height: 36px;
     width: 100%;
-
-    border: solid $cloud;
+    border: solid 1px $cloud;
     border-radius: 20px;
     font-family: "Titillium Web Regular";
+    padding-left: 20px;
+    margin-bottom: 20px;
+    height: 40px;
 
     &::placeholder {
       padding-left: 1rem;
@@ -47,27 +56,66 @@
     }
   }
 
+  &__form-description{
+    padding-top: 8px;
+    padding-bottom: 140px;
+    padding-right: 24px;
+    overflow: hidden;
+    resize: none;
+  }
+
+  &__form--radio{
+    height: 16px;
+    width: 16px;
+    margin-right: 8px;
+  }
+
+  &__form--radio-title{
+    padding-right: 30%;
+  }
+
+  &__form--radioContainer{
+    display: flex;
+    align-items: center;
+  }
+
+  &__form--selection{
+    -webkit-appearance: none;
+    padding-right: 20px;
+    background: url("../../assets/icons/arrow_drop_down-24px.svg") no-repeat center right;
+    background-position: 97%;
+  }
+
+  &__form-contact{
+    padding: 0 2rem;
+  }
+
   &__button-container {
     display: flex;
     justify-content: center;
     gap: 1rem;
-
-    margin-top: 2rem;
-    margin-left: 1rem;
-    margin-right: 1rem;
-
+    padding: 2rem;
     background-color: $light-grey;
+    margin: 0;
   }
 
-  &__cancel {
-    padding: 0.25rem 1rem;
+  &__cancel{
+    padding: 0.75rem 1rem;
     width: 100%;
 
     background-color: $white;
-    border: solid $cloud;
+    border: solid 2px $cloud;
     border-radius: 20px;
+    color: $slate;
+    font-weight: 700;
+    justify-content: center;
+    display: flex;
 
-    font-family: "Titillium Web Regular";
+    &--text{
+      //align-self: center;
+      font-weight: 700;
+      font-family: "Titillium Web Regular";
+    }
   }
 
   &__save {
@@ -78,6 +126,8 @@
     color: $white;
     border: solid $instock-indigo;
     border-radius: 20px;
+    font-weight: 600;
+    letter-spacing: 0.05rem;
 
     font-family: "Titillium Web Regular";
   }
@@ -121,6 +171,7 @@
       }
     }
   }
+  
   @include desktop {
     width: 100%;
 

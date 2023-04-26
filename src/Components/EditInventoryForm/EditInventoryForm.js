@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { apiUrl, inventoriesUrl } from "../../utils";
 import "./EditInventoryForm.scss";
+import { Link } from "react-router-dom";
 
 function EditInventoryForm(item){
   const navigate = useNavigate();
@@ -42,7 +43,7 @@ function EditInventoryForm(item){
     } else {
     const warehouseListFiltered = warehouseList.map(warehouse => warehouse.warehouse_name)
     return (
-    <select className="details__form-input" id="warehouseSelect">
+    <select className="details__form-input details__form--selection" id="warehouseSelect">
         {warehouseListFiltered.map((element, key) => {
           if (element === warehouse){
               return <option key={key} value={element} selected>{element}</option>
@@ -58,7 +59,7 @@ function EditInventoryForm(item){
 
   function renderCategoryList(categoriesList){
     return(
-    <select className="details__form-input" id="categoriesSelect">
+    <select className="details__form-input details__form--selection" id="categoriesSelect">
         {categoriesList.map((element, key) => {
           if (element === category){
               return <option key={key} value={element} selected>{element}</option>
@@ -163,9 +164,9 @@ function EditInventoryForm(item){
               />
 
               <label className="details__form-container">Description</label>
-              <input
-                  className="details__form-input"
-                  type="text"
+              <textarea
+                  className="details__form-input details__form-description"
+                  type="textarea"
                   name="Street Address"
                   id="descriptionInput"
                   value={description}
@@ -178,33 +179,37 @@ function EditInventoryForm(item){
             <div className="details__form-contact">
               <h2 className="details__form-subheader">Item Availabilty</h2>
               <h6 className="details__form-title">Status</h6>
-              <label htmlFor="InStock">In Stock</label>
-              <input
-                //className="details__form-input"
-                type="radio"
-                name="Stock"
-                id="InStock"
-                value="In Stock"
-                checked={inStock === "In Stock"}
-                onChange={handleStatusChange}
-              />
-              <label htmlFor="OutOfStock">Out of Stock</label>
-              <input
-                //className="details__form-input"
-                type="radio"
-                name="Stock"
-                id="OutOfStock"
-                value="Out of Stock"
-                checked={inStock === "Out of Stock"}
-                onChange={handleStatusChange}
-              />
+              <div className="details__form--radioContainer">
+                <input
+                  className="details__form--radio"
+                  type="radio"
+                  name="Stock"
+                  id="InStock"
+                  value="In Stock"
+                  checked={inStock === "In Stock"}
+                  onChange={handleStatusChange}
+                />
+                <label htmlFor="InStock" className="details__form--radio-title">In Stock</label>
+                <input
+                  className="details__form--radio"
+                  type="radio"
+                  name="Stock"
+                  id="OutOfStock"
+                  value="Out of Stock"
+                  checked={inStock === "Out of Stock"}
+                  onChange={handleStatusChange}
+                />
+                <label htmlFor="OutOfStock">Out of Stock</label>
+              </div>
               {renderQuantityForm(inStock)}
               <h6 className="details__form-title">Warehouse</h6>
               {renderWarehouseListOptions()}
             </div>
           </div>
           <div className="details__button-container">
-            <button className="details__cancel">Cancel</button>
+            <Link to="/inventories" className="details__cancel">
+              <button className="details__cancel--text">Cancel</button>
+            </Link>
             <button className="details__save">Save</button>
           </div>
         </form>
