@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { apiUrl, inventoriesUrl } from "../../utils";
 import "./EditInventoryForm.scss";
 import { Link } from "react-router-dom";
+import errorIcon from "../../assets/icons/error-24px.svg"
 
 function EditInventoryForm(item){
   const navigate = useNavigate();
@@ -18,6 +19,18 @@ function EditInventoryForm(item){
   const [warehouseList, setWarehouseList] = useState(item.warehouseList);
 
   const categoriesList = ["Gear", "Accessories", "Electronics", "Health", "Apparel"]
+
+  function renderFormFieldError(error){
+    if (error === true){
+    return(
+      <div className="details__error">
+          <img src={errorIcon} alt="error" className="details__error--icon"></img>
+          <span className="details__error--message">This field is required</span>
+      </div>
+    )} else {
+      return null
+    }
+  }
   
   function renderQuantityForm(inStock){
     if (inStock === "Out of Stock"){
@@ -27,13 +40,13 @@ function EditInventoryForm(item){
       <label className="details__form-container">
       <h6 className="details__form-title">Quantity</h6>
       <input
-        className="details__form-input"
+        className={getQuantityInputClasses()}
         type="text"
         value={quantity}
         id="quantityInput"
         onChange={quantityChangeHandler}
       />
-    </label>
+      </label>
     )}
   }
 
@@ -43,13 +56,9 @@ function EditInventoryForm(item){
     } else {
     const warehouseListFiltered = warehouseList.map(warehouse => warehouse.warehouse_name)
     return (
-    <select className="details__form-input details__form--selection" id="warehouseSelect">
+    <select className="details__form-input details__form--selection" id="warehouseSelect" defaultValue={warehouse}>
         {warehouseListFiltered.map((element, key) => {
-          if (element === warehouse){
-              return <option key={key} value={element} selected>{element}</option>
-          } else {
             return <option key={key} value={element}>{element}</option>
-          }
         }
         )}
     </select>
@@ -59,13 +68,9 @@ function EditInventoryForm(item){
 
   function renderCategoryList(categoriesList){
     return(
-    <select className="details__form-input details__form--selection" id="categoriesSelect">
+    <select className="details__form-input details__form--selection" id="categoriesSelect" defaultValue={category}>
         {categoriesList.map((element, key) => {
-          if (element === category){
-              return <option key={key} value={element} selected>{element}</option>
-          } else {
-            return <option key={key} value={element}>{element}</option>
-          }
+            return <option key={key} value={element} selected>{element}</option>
         }
         )}
     </select>
@@ -101,6 +106,36 @@ function EditInventoryForm(item){
     return null;
   }
 
+  //VALIDATION CLASSES
+
+  const [itemNameError, setItemNameError] = useState(false)
+  const [descriptionInputError, setDescriptionInputError] = useState(false); 
+  const [quantityInputError, setQuantityInputError] = useState(false);
+
+  function getItemNameInputClasses(){
+    if (itemNameError === false){
+    return "details__form-input";
+    } else {
+        return "details__form-input details__form-input-error";
+    }
+  }
+
+  function getDescriptionInputClasses(){
+    if (descriptionInputError === false){
+    return "details__form-input details__form-description";
+    } else {
+        return "details__form-input details__form-description details__form-input-error";
+    }
+  }
+
+  function getQuantityInputClasses(){
+    if (quantityInputError === false){
+    return "details__form-input";
+    } else {
+        return "details__form-input details__form-input-error";
+    }
+  }
+
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -115,6 +150,23 @@ function EditInventoryForm(item){
     } else {
         quantityInput = event.target.quantityInput.value
     }
+
+    if (itemNameInput === ""){
+      setItemNameError(true); 
+    } else if (descriptionInput === ""){
+      setItemNameError(false); 
+      setDescriptionInputError(true);
+      if (quantityInput === ""){
+        setQuantityInputError(true);
+      } else {
+        setQuantityInputError(false);
+      }
+    } else if (quantityInput === ""){
+      setDescriptionInputError(false);
+      setQuantityInputError(true);
+    } else {
+      setQuantityInputError(false);
+    
 
     const warehouse = event.target.warehouseSelect.value
 
@@ -143,6 +195,7 @@ function EditInventoryForm(item){
         });
       alert("Inventory Item Updated");
     }
+  }
   };
 
   return (
@@ -155,24 +208,24 @@ function EditInventoryForm(item){
 
               <label className="details__form-container">Item Name</label>
               <input
-                  className="details__form-input"
+                  className={getItemNameInputClasses()}
                   type="text"
                   name="Warehouse Name"
                   id="itemNameInput"
                   value={itemName}
                   onChange={itemNameHandler}
               />
-
+              {renderFormFieldError(itemNameError)}
               <label className="details__form-container">Description</label>
               <textarea
-                  className="details__form-input details__form-description"
+                  className={getDescriptionInputClasses()}
                   type="textarea"
                   name="Street Address"
                   id="descriptionInput"
                   value={description}
                   onChange={descriptionChangeHandler}
               />
-
+              {renderFormFieldError(descriptionInputError)}
               <label className="details__form-container">Category</label>
               {renderCategoryList(categoriesList)}
             </div>
@@ -202,6 +255,7 @@ function EditInventoryForm(item){
                 <label htmlFor="OutOfStock">Out of Stock</label>
               </div>
               {renderQuantityForm(inStock)}
+              {renderFormFieldError(quantityInputError)}
               <h6 className="details__form-title">Warehouse</h6>
               {renderWarehouseListOptions()}
             </div>

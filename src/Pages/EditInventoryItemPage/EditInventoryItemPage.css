@@ -55,9 +55,10 @@
 @media (min-width: 768px) and (max-width: 1279px) {
   .page {
     position: absolute;
-    top: 5.2rem;
+    top: 3rem;
     width: 90%;
     left: 2.3rem;
+    box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
   }
   .page__container {
     background-color: #ffffff;
@@ -70,10 +71,10 @@
 @media (min-width: 1280px) {
   .page {
     position: absolute;
-    top: 9.5rem;
-    width: 85%;
+    top: 5.5rem;
+    width: 80%;
     right: 7rem;
-    left: 6rem;
+    left: 7.7rem;
   }
   .page__container {
     background-color: #ffffff;
