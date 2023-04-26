@@ -20,7 +20,6 @@ function InventoryItemTabletDesktop(props){
 
     const {isOpen, onClose, onOpen} = useDisclosure();
 
-
     return (
         <Tr className="row" key={props.id}>
             <Td className="body__name">

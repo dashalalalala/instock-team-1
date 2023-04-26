@@ -1,10 +1,8 @@
-import "../../styles/listsStyling/List.scss";
-import deleteIcon from "../../assets/icons/delete_outline-24px.svg";
-import editIcon from "../../assets/icons/edit-24px.svg";
-import chevronIcon from "../../assets/icons/chevron_right-24px.svg";
-import { Link, useNavigate } from "react-router-dom";
-import DeleteModal from "../DeleteModal/DeleteModal";
-import { useDisclosure } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
+import chevronIcon from "../../../assets/icons/chevron_right-24px.svg";
+import deleteIcon from "../../../assets/icons/delete_outline-24px.svg";
+import editIcon from "../../../assets/icons/edit-24px.svg";
+import DeleteModal from "../../DeleteModal/DeleteModal";
 
 import {
 	Tr,
@@ -12,17 +10,14 @@ import {
 	HStack,
 	IconButton,
 	Image,
+    useDisclosure,
 } from "@chakra-ui/react";
 
-
-
-
-function WarehouseTabletDesktop(props){
-    const navigate = useNavigate();
+function TabletDesktopItemTableItem(props){
 
     const {isOpen, onClose, onOpen} = useDisclosure();
 
-    return (
+    return(
             <Tr className="row" key={props.id}>
                 <Td className="body__warehouse-name">
                     <HStack>
@@ -38,7 +33,7 @@ function WarehouseTabletDesktop(props){
                 <Td className="body body__address">
                     {props.address}, {props.city}, {props.country}
                 </Td>
-                <Td className="body body__contact-name">{props.contact_name}</Td>
+                <Td className="body body__name">{props.contact_name}</Td>
                 <Td>
                     <div>
                         <p className="body">{props.contact_phone}</p>
@@ -48,20 +43,16 @@ function WarehouseTabletDesktop(props){
                 <Td>
                     <HStack>
                         <IconButton
-                            onClick={onOpen}
                             size="xs"
                             colorScheme="white"
                             className="chakra-button"
                             icon={
                                 <Image className="icons__img" src={deleteIcon} alt="" />
                             }
+                            onClick={onOpen}
                         ></IconButton>
-                        <DeleteModal selectedElement={props.warehouse_name} selectedElementId={props.id} isOpen={isOpen} onClose={onClose} isWarehouse={true}/>
+                        <DeleteModal selectedWarehouseName={props.warehouse_name} selectedWarehouseId={props.id} isOpen={isOpen} onClose={onClose}/>
                         <IconButton
-                            onClick={() => {
-                                console.log(props.id)
-                                navigate(`/warehouses/${props.id}/edit`);
-                            }}
                             size="xs"
                             colorScheme="white"
                             className="chakra-button"
@@ -75,4 +66,4 @@ function WarehouseTabletDesktop(props){
         )
 }
 
-export default WarehouseTabletDesktop;
+export default TabletDesktopItemTableItem;
