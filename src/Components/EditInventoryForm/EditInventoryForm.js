@@ -8,7 +8,17 @@ function EditInventoryForm(item){
   const navigate = useNavigate();
   const inventoryItemId = useParams();
 
+  console.log(item)
+
   const [inStock ,setInStock] = useState(item.item.status);
+  const [itemName, setItemName] = useState(item.item.item_name);
+  const [description, setDescription] = useState(item.item.description)
+  const [category, setCategory] = useState(item.item.category)
+  const [quantity, setQuantity] = useState(item.item.quantity)
+  const [warehouse, setWarehouse] = useState(item.item.warehouse_name)
+  const [warehouseList, setWarehouseList] = useState(item.warehouseList);
+
+  const categoriesList = ["Gear", "Accessories", "Electronics", "Health", "Apparel"]
   
   function renderQuantityForm(inStock){
     if (inStock === "Out of Stock"){
@@ -20,24 +30,66 @@ function EditInventoryForm(item){
       <input
         className="details__form-input"
         type="text"
-        value={item.item.quantity}
+        value={quantity}
+        onChange={quantityChangeHandler}
       />
     </label>
     )}
   }
 
-  function renderWarehouseListOptions(warehouseList){
-    console.log(warehouseList)
+  function renderWarehouseListOptions(){
+    if (warehouseList === undefined){
+      return "Loading"
+    } else {
+    const warehouseListFiltered = warehouseList.map(warehouse => warehouse.warehouse_name)
     return (
     <select className="details__form-input" id="warehouseList">
-        {warehouseList.map((item, key) => 
-          <option key={key} value={item.warehouse_name}>{item.warehouse_name}</option>)}
+        {warehouseListFiltered.map((element, key) => {
+          if (element === warehouse){
+              return <option key={key} value={element} selected>{element}</option>
+          } else {
+            return <option key={key} value={element}>{element}</option>
+          }
+        }
+        )}
     </select>
     )
+    }
+  }
+
+  function renderCategoryList(categoriesList){
+    return(
+    <select className="details__form-input" id="categoriesList">
+        {categoriesList.map((element, key) => {
+          if (element === category){
+              return <option key={key} value={element} selected>{element}</option>
+          } else {
+            return <option key={key} value={element}>{element}</option>
+          }
+        }
+        )}
+    </select>
+        )
   }
 
   const handleStatusChange = event =>{
     setInStock(event.target.value)
+  }
+
+  const itemNameHandler = event => {
+    setItemName(event.target.value)
+  }
+
+  const descriptionChangeHandler = event => {
+    setDescription(event.target.value)
+  }
+
+  const categoryChangeHandler = event => {
+    setCategory(event.target.value)
+  }
+
+  const quantityChangeHandler = event => {
+    setQuantity(event.target.value)
   }
 
   const handleSubmit = (event) => {
@@ -83,7 +135,8 @@ function EditInventoryForm(item){
                   type="text"
                   name="Warehouse Name"
                   id="itemNameInput"
-                  value={item.item.item_name}
+                  value={itemName}
+                  onChange={itemNameHandler}
               />
 
               <label className="details__form-container">Description</label>
@@ -92,17 +145,12 @@ function EditInventoryForm(item){
                   type="text"
                   name="Street Address"
                   id="descriptionInput"
-                  value={item.item.description}
+                  value={description}
+                  onChange={descriptionChangeHandler}
               />
 
               <label className="details__form-container">Category</label>
-              <input
-                  className="details__form-input"
-                  type="text"
-                  name="City"
-                  id="categoryInput"
-                  value={item.item.category}
-              />
+              {renderCategoryList(categoriesList)}
             </div>
             <div className="details__form-contact">
               <h2 className="details__form-subheader">Item Availabilty</h2>
@@ -129,7 +177,7 @@ function EditInventoryForm(item){
               />
               {renderQuantityForm(inStock)}
               <h6 className="details__form-title">Warehouse</h6>
-              {renderWarehouseListOptions(item.warehouseList)}
+              {renderWarehouseListOptions()}
             </div>
           </div>
           <div className="details__button-container">
