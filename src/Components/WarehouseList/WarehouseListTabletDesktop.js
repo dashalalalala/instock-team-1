@@ -5,7 +5,6 @@ import editIcon from "../../assets/icons/edit-24px.svg";
 import chevronIcon from "../../assets/icons/chevron_right-24px.svg";
 import { Link, useNavigate } from "react-router-dom";
 import WarehouseTabletDesktop from "../Warehouse/WarehouseTabletDesktop";
-//***
 import axios from "axios";
 import { apiUrl } from "../../utils";
 import { useState } from "react";
@@ -25,7 +24,7 @@ import {
 
 function WarehouseListTabletDesktop({ list, setList }) {
   const navigate = useNavigate();
-  //***
+
   const [warehouseNameOrder, setWarehouseNameOrder] = useState("asc");
   const [addressOrder, setAddressOrder] = useState("N/A");
   const [contactNameOrder, setContactNameOrder] = useState("N/A");
