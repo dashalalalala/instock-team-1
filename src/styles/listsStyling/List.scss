@@ -37,6 +37,7 @@
 	&__img {
 		width: 1.125rem;
 		height: 1.125rem;
+		cursor: pointer;
 	}
 }
 
@@ -177,6 +178,7 @@
 .chakra-button {
 	background: none;
 	min-width: 0.25rem;
+	cursor: pointer;
 }
 
 .chakra-table {

@@ -23,7 +23,6 @@ import {
   Image,
 } from "@chakra-ui/react";
 
-//function WarehouseListTabletDesktop({ list }) {
 function WarehouseListTabletDesktop({ list, setList }) {
   const navigate = useNavigate();
   //***
