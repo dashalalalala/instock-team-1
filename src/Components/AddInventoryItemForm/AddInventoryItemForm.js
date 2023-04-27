@@ -364,6 +364,7 @@ function AddInventoryItemForm(list) {
 			</div>
 		</>
 	);
-}
+};
+
 
 export default AddInventoryItemForm;

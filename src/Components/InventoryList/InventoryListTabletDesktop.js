@@ -114,7 +114,7 @@ function InventoryListTabletDesktop({
             </Th>
             <Th>
               <HStack>
-                <p className="responsive__title">QTY</p>
+                <p className="responsive__title">QUANTITY</p>
                 <img
                   className="responsive__icon"
                   src={sortIcon}
