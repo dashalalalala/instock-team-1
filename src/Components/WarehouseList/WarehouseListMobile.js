@@ -1,5 +1,4 @@
 import "../../styles/listsStyling/List.scss";
-
 import WarehouseMobile from "../Warehouse/WarehouseMobile";
 
 function WarehouseListMobile({ list }) {

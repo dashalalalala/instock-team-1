@@ -1,13 +1,7 @@
 import "./TabletDesktopItem.scss";
-import deleteIcon from "../../../assets/icons/delete_outline-24px.svg";
 import sortIcon from "../../../assets/icons/sort-24px.svg";
-import editIcon from "../../../assets/icons/edit-24px.svg";
-import chevronIcon from "../../../assets/icons/chevron_right-24px.svg";
-import { Link } from "react-router-dom";
-import DeleteModal from "../../../Components/DeleteModal/DeleteModal"
 
 import TabletDesktopItemTableItem from "./TabletDesktopItemTableItem";
-import { useEffect } from "react";
 
 import {
 	Table,
@@ -15,12 +9,8 @@ import {
 	Tbody,
 	Tr,
 	Th,
-	Td,
 	TableContainer,
 	HStack,
-	IconButton,
-	Image,
-	useDisclosure,
 } from "@chakra-ui/react";
 
 function TabletDesktopItem({ list }) {
