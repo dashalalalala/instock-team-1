@@ -232,79 +232,93 @@ function AddInventoryItemForm(list){
   };
 
   return (
-    <>
-      <div className="inventoryForm">
-        <form onSubmit={handleSubmit}>
-          <div className="inventoryForm__form">
-            <div className="inventoryForm__form-warehouse">
-              <h2 className="inventoryForm__form-subheader">Item Details</h2>
+		<>
+			<div className="inventoryForm">
+				<form onSubmit={handleSubmit}>
+					<div className="inventoryForm__form">
+						<div className="inventoryForm__form-warehouse">
+							<h2 className="inventoryForm__form-subheader">Item Details</h2>
 
-              <label className="inventoryForm__form-container">Item Name</label>
-              <input
-                  className={getItemNameInputClasses()}
-                  type="text"
-                  name="Warehouse Name"
-                  id="itemNameInput"
-                  placeholder="Item Name"
-                  onChange={itemNameHandler}
-              />
-              {renderFormFieldError(itemNameError, "input")}
-              <label className="inventoryForm__form-container">Description</label>
-              <textarea
-                  className={getDescriptionInputClasses()}
-                  type="textarea"
-                  name="Street Address"
-                  id="descriptionInput"
-                  placeholder="Please enter a brief item description..."
-                  onChange={descriptionChangeHandler}
-              />
-              {renderFormFieldError(descriptionInputError, "description")}
-              <label className="inventoryForm__form-container">Category</label>
-              {renderCategoryList(categoriesList)}
-              {renderFormFieldError(categoryInputError, "category")}
-            </div>
-            <div className="inventoryForm__form-contact">
-              <h2 className="inventoryForm__form-subheader">Item Availabilty</h2>
-              <h6 className="inventoryForm__form-title">Status</h6>
-              <div className="inventoryForm__form--radioContainer">
-                <input
-                  className="inventoryForm__form--radio"
-                  type="radio"
-                  name="Stock"
-                  id="InStock"
-                  value="In Stock"
-                  checked={inStock === "In Stock"}
-                  onChange={handleStatusChange}
-                />
-                <label htmlFor="InStock" className="inventoryForm__form--radio-title">In Stock</label>
-                <input
-                  className="inventoryForm__form--radio"
-                  type="radio"
-                  name="Stock"
-                  id="OutOfStock"
-                  value="Out of Stock"
-                  checked={inStock === "Out of Stock"}
-                  onChange={handleStatusChange}
-                />
-                <label htmlFor="OutOfStock">Out of Stock</label>
-              </div>
-              {renderQuantityForm(inStock)}
-              {renderFormFieldError(quantityInputError, "quantity")}
-              <h6 className="inventoryForm__form-title">Warehouse</h6>
-              {renderWarehouseListOptions()}
-              {renderFormFieldError(warehouseInputError, "warehouse")}
-            </div>
-          </div>
-          <div className="inventoryForm__button-container">
-            <Link to="/inventories" className="inventoryForm__cancel">
-              <button className="inventoryForm__cancel--text">Cancel</button>
-            </Link>
-            <button className="inventoryForm__save">Save</button>
-          </div>
-        </form>
-      </div>
-    </>
-  );
+							<label className="inventoryForm__form-container">Item Name</label>
+							<input
+								className={getItemNameInputClasses()}
+								type="text"
+								name="Warehouse Name"
+								id="itemNameInput"
+								placeholder="Item Name"
+								onChange={itemNameHandler}
+							/>
+							{renderFormFieldError(itemNameError, "input")}
+							<label className="inventoryForm__form-container">
+								Description
+							</label>
+							<textarea
+								className={getDescriptionInputClasses()}
+								type="textarea"
+								name="Street Address"
+								id="descriptionInput"
+								placeholder="Please enter a brief item description..."
+								onChange={descriptionChangeHandler}
+							/>
+							{renderFormFieldError(descriptionInputError, "description")}
+							<label className="inventoryForm__form-container">Category</label>
+							{renderCategoryList(categoriesList)}
+							{renderFormFieldError(categoryInputError, "category")}
+						</div>
+						<div className="inventoryForm__form-contact">
+							<h2 className="inventoryForm__form-subheader">
+								Item Availabilty
+							</h2>
+							<h6 className="inventoryForm__form-title">Status</h6>
+							<div className="inventoryForm__form--radioContainer">
+								<input
+									className="inventoryForm__form--radio"
+									type="radio"
+									name="Stock"
+									id="InStock"
+									value="In Stock"
+									checked={inStock === "In Stock"}
+									onChange={handleStatusChange}
+								/>
+								<label
+									htmlFor="InStock"
+									className="inventoryForm__form--radio-title"
+								>
+									In Stock
+								</label>
+								<input
+									className="inventoryForm__form--radio"
+									type="radio"
+									name="Stock"
+									id="OutOfStock"
+									value="Out of Stock"
+									checked={inStock === "Out of Stock"}
+									onChange={handleStatusChange}
+								/>
+								<label
+									htmlFor="OutOfStock"
+									className="inventoryForm__form--radio-title"
+								>
+									Out of Stock
+								</label>
+							</div>
+							{renderQuantityForm(inStock)}
+							{renderFormFieldError(quantityInputError, "quantity")}
+							<h6 className="inventoryForm__form-title">Warehouse</h6>
+							{renderWarehouseListOptions()}
+							{renderFormFieldError(warehouseInputError, "warehouse")}
+						</div>
+					</div>
+					<div className="inventoryForm__button-container">
+						<Link to="/inventories" className="inventoryForm__cancel">
+							<button className="inventoryForm__cancel--text">Cancel</button>
+						</Link>
+						<button className="inventoryForm__save">Save</button>
+					</div>
+				</form>
+			</div>
+		</>
+	);
 };
 
 export default AddInventoryItemForm;

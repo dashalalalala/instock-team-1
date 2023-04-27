@@ -311,7 +311,12 @@ function EditInventoryForm(item) {
 									checked={inStock === "Out of Stock"}
 									onChange={handleStatusChange}
 								/>
-								<label htmlFor="OutOfStock">Out of Stock</label>
+								<label
+									htmlFor="OutOfStock"
+									className="inventoryForm__form--radio-title"
+								>
+									Out of Stock
+								</label>
 							</div>
 							{renderQuantityForm(inStock)}
 							{renderFormFieldError(quantityInputError, "quantity")}
