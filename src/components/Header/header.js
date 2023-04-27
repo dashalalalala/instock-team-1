@@ -1,4 +1,4 @@
-import "./Header.scss";
+import "./header.scss";
 import logo from "../../assets/logo/InStock-Logo_1x.png";
 import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";

@@ -7,35 +7,35 @@ import axios from "axios";
 import "./InventoryListPage.scss";
 
 function InventoryListPage() {
-	const [list, setList] = useState([]);
-	const searchTitle = "Inventory";
-	const searchButton = "+ Add New Item";
-	const path = "/inventories/add";
+  const [list, setList] = useState([]);
+  const searchTitle = "Inventory";
+  const searchButton = "+ Add New Item";
+  const path = "/inventories/add";
 
-	useEffect(() => {
-		axios
-			.get(`${inventoriesUrl}`)
-			.then((response) => {
-				setList(response.data);
-			})
-			.catch((error) => {
-				console.error(error);
-			});
-	}, [setList]);
+  useEffect(() => {
+    axios
+      .get(`${inventoriesUrl}`)
+      .then((response) => {
+        setList(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, [setList]);
 
-	return (
-		<div className="list-card">
-			<div className="inventory-list">
-				<Search
-					searchTitle={searchTitle}
-					searchButton={searchButton}
-					path={path}
-				/>
-				<InventoryListMobile list={list} />
-				<InventoryListTabletDesktop list={list} />
-			</div>
-		</div>
-	);
+  return (
+    <div className="list-card">
+      <div className="inventory-list">
+        <Search
+          searchTitle={searchTitle}
+          searchButton={searchButton}
+          path={path}
+        />
+        <InventoryListMobile list={list} />
+        <InventoryListTabletDesktop list={list} setList={setList} />
+      </div>
+    </div>
+  );
 }
 
 export default InventoryListPage;
