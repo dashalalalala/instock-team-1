@@ -9,46 +9,51 @@ import InventoryListMobile from "../../Components/InventoryList/InventoryListMob
 import InventoryListTabletDesktop from "../../Components/InventoryList/InventoryListTabletDesktop";
 
 function WarehouseDetailsPage() {
-	const [warehouseData, setWarehouseData] = useState(null);
-	const [inventoriesData, setInventoriesData] = useState([]);
-	const { warehouseId } = useParams();
+  const [warehouseData, setWarehouseData] = useState(null);
+  const [inventoriesData, setInventoriesData] = useState([]);
+  const { warehouseId } = useParams();
 
-	useEffect(() => {
-		axios
-			.get(`${apiUrl}/${warehouseId}`)
-			.then((response) => {
-				setWarehouseData(response.data);
-			})
-			.catch((error) => {
-				console.error(error);
-			});
-	}, [warehouseId]);
+  useEffect(() => {
+    axios
+      .get(`${apiUrl}/${warehouseId}`)
+      .then((response) => {
+        setWarehouseData(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, [warehouseId]);
 
-	useEffect(() => {
-		axios
-			.get(`${apiUrl}/${warehouseId}/inventories`)
-			.then((response) => {
-				setInventoriesData(response.data);
-			})
-			.catch((error) => {
-				console.error(error);
-			});
-	}, [warehouseId]);
+  useEffect(() => {
+    axios
+      .get(`${apiUrl}/${warehouseId}/inventories`)
+      .then((response) => {
+        setInventoriesData(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, [warehouseId]);
 
-	if (warehouseData === null) {
-		return <main>Loading warehouse data...</main>;
-	}
+  if (warehouseData === null) {
+    return <main>Loading warehouse data...</main>;
+  }
 
-	return (
-		<div className="wh">
-			<div className="wh__content">
-				<WarehouseHeader currentWarehouse={warehouseData} />
-				<WarehouseInfo currentWarehouse={warehouseData} />
-				<InventoryListMobile list={inventoriesData} hideWarehouseDiv />
-				<InventoryListTabletDesktop list={inventoriesData} hideWarehouseDiv />
-			</div>
-		</div>
-	);
+  return (
+    <div className="wh">
+      <div className="wh__content">
+        <WarehouseHeader currentWarehouse={warehouseData} />
+        <WarehouseInfo currentWarehouse={warehouseData} />
+        <InventoryListMobile list={inventoriesData} hideWarehouseDiv />
+        <InventoryListTabletDesktop
+          list={inventoriesData}
+          setList={setInventoriesData}
+          warehouse={warehouseId}
+          hideWarehouseDiv
+        />
+      </div>
+    </div>
+  );
 }
 
 export default WarehouseDetailsPage;

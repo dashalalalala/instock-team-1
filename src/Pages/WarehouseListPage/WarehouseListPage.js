@@ -40,7 +40,7 @@ function WarehouseListPage() {
 					path={path}
 				/>
 				<WarehouseListMobile list={list} />
-				<WarehouseListTabletDesktop list={list} />
+				<WarehouseListTabletDesktop list={list} setList={setList}/>
 			</div>
 		</div>
 	);
