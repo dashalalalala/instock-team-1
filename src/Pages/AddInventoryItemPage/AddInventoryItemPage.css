@@ -30,7 +30,7 @@
 /*Mobile*/
 /*List Styling*/
 /*Mixin for Stock Status Styling*/
-.editInventoryPage {
+.inventoryPage {
   background-color: #ffffff;
   margin: 20px;
   padding-top: 32px;
@@ -39,7 +39,7 @@
   border-radius: 5px;
   box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
 }
-.editInventoryPage__container {
+.inventoryPage__container {
   display: flex;
   align-items: center;
   background-color: #ffffff;
@@ -47,39 +47,39 @@
   padding-bottom: 32px;
   border-bottom: solid 1px #bdc5d5;
 }
-.editInventoryPage__title {
+.inventoryPage__title {
   padding-left: 1rem;
   font-size: 32px;
   font-family: "Titillium Web Semi Bold";
 }
 @media (min-width: 768px) and (max-width: 1279px) {
-  .editInventoryPage {
+  .inventoryPage {
     position: absolute;
     top: 55px;
     left: 32px;
     right: 32px;
     box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
   }
-  .editInventoryPage__container {
+  .inventoryPage__container {
     background-color: #ffffff;
   }
-  .editInventoryPage__component-container {
+  .inventoryPage__component-container {
     display: flex;
     background-color: #ffffff;
   }
 }
 @media (min-width: 1280px) {
-  .editInventoryPage {
+  .inventoryPage {
     position: absolute;
     top: 71px;
     right: 130px;
     left: 130px;
   }
-  .editInventoryPage__container {
+  .inventoryPage__container {
     background-color: #ffffff;
   }
-  .editInventoryPage__component-container {
+  .inventoryPage__component-container {
     display: flex;
     background-color: #ffffff;
   }
-}/*# sourceMappingURL=EditInventoryItemPage.css.map */
+}/*# sourceMappingURL=AddInventoryItemPage.css.map */

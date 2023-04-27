@@ -30,26 +30,10 @@
 /*Mobile*/
 /*List Styling*/
 /*Mixin for Stock Status Styling*/
-.footer {
-  display: flex;
-  justify-content: center;
-  background-color: #f7f8f9;
-  padding: 2.5rem 0;
-}
-.footer__content {
-  font-size: 11px;
-  color: #13182c;
-}
-@media (min-width: 768px) and (max-width: 1279px) {
-  .footer__content {
-    font-size: 12px;
-  }
-}
-@media (min-width: 1280px) {
-  .footer {
-    padding: 3rem;
-  }
-  .footer__content {
-    font-size: 12px;
-  }
-}/*# sourceMappingURL=Footer.css.map */
+.inventoryForm__form--selectionAdd {
+  -webkit-appearance: none;
+  padding-right: 20px;
+  background: url("../../assets/icons/arrow_drop_down-24px.svg") no-repeat center right;
+  background-position: 97%;
+  color: #5c667e;
+}/*# sourceMappingURL=AddInventoryItemForm.css.map */

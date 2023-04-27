@@ -1,22 +1,20 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { apiUrl, inventoriesUrl } from "../../utils";
-import "./EditInventoryForm.scss";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { inventoriesUrl } from "../../utils";
+import "./AddInventoryItemForm.scss";
 import { Link } from "react-router-dom";
 import errorIcon from "../../assets/icons/error-24px.svg"
 
-function EditInventoryForm(item){
+function AddInventoryItemForm(list){
   const navigate = useNavigate();
-  const inventoryItemId = useParams();
 
-  const [inStock ,setInStock] = useState(item.item.status);
-  const [itemName, setItemName] = useState(item.item.item_name);
-  const [description, setDescription] = useState(item.item.description)
-  const [category, setCategory] = useState(item.item.category)
-  const [quantity, setQuantity] = useState(item.item.quantity)
-  const [warehouse, setWarehouse] = useState(item.item.warehouse_name)
-  const [warehouseList, setWarehouseList] = useState(item.warehouseList);
+  const [inStock ,setInStock] = useState("In Stock");
+  const [itemName, setItemName] = useState();
+  const [description, setDescription] = useState()
+  const [category, setCategory] = useState()
+  const [quantity, setQuantity] = useState()
+  const [warehouse, setWarehouse] = useState()
 
   const categoriesList = ["Gear", "Accessories", "Electronics", "Health", "Apparel"]
 
@@ -44,7 +42,7 @@ function EditInventoryForm(item){
       <input
         className={getQuantityInputClasses()}
         type="text"
-        value={quantity}
+        placeholder="0"
         id="quantityInput"
         onChange={quantityChangeHandler}
       />
@@ -53,13 +51,14 @@ function EditInventoryForm(item){
   }
 
   function renderWarehouseListOptions(){
-    if (warehouseList === undefined){
-      return "Loading"
+    if (list.list === undefined){
+        return "Loading"
     } else {
-    const warehouseListFiltered = warehouseList.map(warehouse => warehouse.warehouse_name)
+    const warehouseList = list.list.map(warehouse => warehouse.warehouse_name)
     return (
-    <select className="inventoryForm__form-input inventoryForm__form--selection" id="warehouseSelect" defaultValue={warehouse}>
-        {warehouseListFiltered.map((element, key) => {
+    <select className={getWarehouseInputClasses()} id="warehouseSelect" placeholder="Please Select">
+        <option value="" disabled selected hidden>Please select</option>
+        {warehouseList.map((element, key) => {
             return <option key={key} value={element}>{element}</option>
         }
         )}
@@ -70,7 +69,8 @@ function EditInventoryForm(item){
 
   function renderCategoryList(categoriesList){
     return(
-    <select className="inventoryForm__form-input inventoryForm__form--selection" id="categoriesSelect" defaultValue={category}>
+    <select className={getCategoriesInputClasses()} id="categoriesSelect" placeholder="Please Select">
+        <option value="" disabled selected hidden>Please select</option>
         {categoriesList.map((element, key) => {
             return <option key={key} value={element} >{element}</option>
         }
@@ -113,6 +113,8 @@ function EditInventoryForm(item){
   const [itemNameError, setItemNameError] = useState(false)
   const [descriptionInputError, setDescriptionInputError] = useState(false); 
   const [quantityInputError, setQuantityInputError] = useState(false);
+  const [categoryInputError, setCategoryInputError] = useState(false);
+  const [warehouseInputError, setWarehouseInputError] = useState(false);
 
   function getItemNameInputClasses(){
     if (itemNameError === false){
@@ -138,6 +140,22 @@ function EditInventoryForm(item){
     }
   }
 
+  function getCategoriesInputClasses(){
+    if (categoryInputError === false){
+      return "inventoryForm__form-input inventoryForm__form--selectionAdd"
+    } else {
+      return "inventoryForm__form-input inventoryForm__form-input-error inventoryForm__form--selectionAdd"
+    }
+  }
+
+  function getWarehouseInputClasses(){
+    if (warehouseInputError === false){
+      return "inventoryForm__form-input inventoryForm__form--selectionAdd"
+    } else {
+      return "inventoryForm__form-input inventoryForm__form-input-error inventoryForm__form--selectionAdd"
+    }
+  }
+
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -146,32 +164,41 @@ function EditInventoryForm(item){
     const categoryInput = event.target.categoriesSelect.value
     const statusInput = inStock;
     var quantityInput = "0"
-
-    if (inStock === "Out of Stock"){
-        quantityInput = "0"
-    } else if (event.target.quantityInput.value === "0" && inStock === "In Stock"){
-        setQuantityInputError(true)
-        return (alert("Your stock status and quantity do not line up, please update"))
-    } else {
-        setQuantityInputError(false)
-        quantityInput = event.target.quantityInput.value
-    }
+    const warehouseInput = event.target.warehouseSelect.value;
 
     if (itemNameInput === ""){
       setItemNameError(true); 
-    } else if (descriptionInput === ""){
-      setItemNameError(false); 
-      setDescriptionInputError(true);
-      if (quantityInput === ""){
-        setQuantityInputError(true);
-      } else {
-        setQuantityInputError(false);
-      }
-    } else if (quantityInput === ""){
-      setDescriptionInputError(false);
-      setQuantityInputError(true);
     } else {
-      setQuantityInputError(false);
+      setItemNameError(false)
+    }
+
+    if (descriptionInput === ""){
+      setDescriptionInputError(true);
+    } else {
+      setDescriptionInputError(false)
+    }
+
+    if (categoryInput === ""){
+      setCategoryInputError(true)
+    } else {
+      setCategoryInputError(false)
+    }
+
+    if (inStock === "Out of Stock"){
+      quantityInput = "0"
+    } else if ((event.target.quantityInput.value === "0" || event.target.quantityInput.value === "") && inStock === "In Stock"){
+      setQuantityInputError(true)
+      alert("Your stock status and quantity do not line up, please update")
+    } else {
+      setQuantityInputError(false)
+      quantityInput = event.target.quantityInput.value
+    }
+
+    if (warehouseInput === ""){
+      setWarehouseInputError(true)
+    } else {
+      setWarehouseInputError(false)
+    }
     
 
     const warehouse = event.target.warehouseSelect.value
@@ -182,26 +209,26 @@ function EditInventoryForm(item){
         category: categoryInput,
         status: statusInput,
         quantity: quantityInput, 
-        warehouse_id: findWarehouseId(warehouse, warehouseList)
+        warehouse_id: findWarehouseId(warehouse, list.list)
     }
 
     if (!itemNameInput || !descriptionInput || !categoryInput || !statusInput || !warehouse ){
       alert("You are missing a field in the form, make sure everything is filled out")
     } else {
       axios
-        .put(`${inventoriesUrl}/${inventoryItemId.inventoryItemId}`, {inventoryItemData})
+        .post(`${inventoriesUrl}`, {inventoryItemData})
         .then((result) => {
           if (result.status === 200) {
+            alert("Inventory Item Added");
             navigate("/inventories");
           }
           event.target.reset();
         })
         .catch((error) => {
+          alert("There was an issue adding your inventory item");
           console.error(error);
         });
-      alert("Inventory Item Updated");
     }
-  }
   };
 
   return (
@@ -218,7 +245,7 @@ function EditInventoryForm(item){
                   type="text"
                   name="Warehouse Name"
                   id="itemNameInput"
-                  value={itemName}
+                  placeholder="Item Name"
                   onChange={itemNameHandler}
               />
               {renderFormFieldError(itemNameError, "input")}
@@ -228,12 +255,13 @@ function EditInventoryForm(item){
                   type="textarea"
                   name="Street Address"
                   id="descriptionInput"
-                  value={description}
+                  placeholder="Please enter a brief item description..."
                   onChange={descriptionChangeHandler}
               />
               {renderFormFieldError(descriptionInputError, "description")}
               <label className="inventoryForm__form-container">Category</label>
               {renderCategoryList(categoriesList)}
+              {renderFormFieldError(categoryInputError, "category")}
             </div>
             <div className="inventoryForm__form-contact">
               <h2 className="inventoryForm__form-subheader">Item Availabilty</h2>
@@ -264,6 +292,7 @@ function EditInventoryForm(item){
               {renderFormFieldError(quantityInputError, "quantity")}
               <h6 className="inventoryForm__form-title">Warehouse</h6>
               {renderWarehouseListOptions()}
+              {renderFormFieldError(warehouseInputError, "warehouse")}
             </div>
           </div>
           <div className="inventoryForm__button-container">
@@ -278,4 +307,4 @@ function EditInventoryForm(item){
   );
 };
 
-export default EditInventoryForm;
+export default AddInventoryItemForm;

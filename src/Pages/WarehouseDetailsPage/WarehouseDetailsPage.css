@@ -30,30 +30,19 @@
 /*Background Colors*/
 /*Supporting Colors*/
 /*Breakpoints*/
-.wh {
-  background-color: #f7f8f9;
-  height: 16rem;
-}
 .wh__content {
-  margin: 1rem;
+  margin: -4rem 1rem 1rem 1rem;
   box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
   border-radius: 3px;
-  position: absolute;
-  top: 10rem;
   width: -webkit-fill-available;
 }
 @media (min-width: 768px) and (max-width: 1279px) {
   .wh__content {
-    top: 7rem;
-    margin: 1rem 2rem;
+    margin: -6.5rem 2rem 1rem 2rem;
   }
 }
 @media (min-width: 1280px) {
-  .wh {
-    height: 15rem;
-  }
   .wh__content {
-    top: 5rem;
-    margin: 1rem 7rem;
+    margin: -5.8rem 7rem 1rem 7rem;
   }
 }/*# sourceMappingURL=WarehouseDetailsPage.css.map */
