@@ -2,59 +2,88 @@
 @import "../../styles/partials/mixins";
 
 .inventoryPage {
-  background-color: $white;
-  margin: 20px;
-  padding-top: 32px;
-  position: relative;
-  top: -80px;
-  border-radius: 5px;
-  box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
+	@include list;
+	background-color: $white;
+	// margin: 20px;
+	// padding-top: 32px;
+	// position: relative;
+	// top: -80px;
+	border-radius: 5px;
+	box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
 
-  &__container {
-    display: flex;
-    align-items: center;
-    background-color: $white;
-    padding: 0 1rem;
-    padding-bottom: 32px;
-    border-bottom: solid 1px $cloud;
-  }
+	&__container {
+		// display: flex;
+		// align-items: center;
+		// background-color: $white;
+		// padding: 0 1rem;
+		// padding-bottom: 32px;
+		// border-bottom: solid 1px $cloud;
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		padding: 1.75rem;
 
-  &__title {
-    padding-left: 1rem;
+		border-bottom: 1px solid $cloud;
+		background-color: $white;
+	}
 
-    font-size: 32px;
-    font-family: "Titillium Web Semi Bold";
-  }
+	&__title {
+		// padding-left: 1rem;
 
-  @include tablet {
-    position: absolute;
-    top: 55px;
-    left: 32px;
-    right: 32px;
-    box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
+		// font-size: 32px;
+		// font-family: "Titillium Web Semi Bold";
+		padding-left: 0.75rem;
 
-    &__container {
-      background-color: $white;
-    }
-    &__component-container {
-      display: flex;
+		font-size: 28px;
+		font-family: "Titillium Web Semi Bold";
+		line-height: 2rem;
 
-      background-color: $white;
-    }
-  }
-  @include desktop {
-    position: absolute;
-    top: 71px;
-    right: 130px;
-    left: 130px;
+		@include tablet {
+			@include header;
+		}
 
-    &__container {
-      background-color: $white;
-    }
-    &__component-container {
-      display: flex;
+		@include desktop {
+			@include header;
+		}
+	}
 
-      background-color: $white;
-    }
-  }
+	@include tablet {
+		// position: absolute;
+		// top: 55px;
+		// left: 32px;
+		// right: 32px;
+		margin: -5.6rem 2rem 1rem 2rem;
+
+		// box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
+
+		&__container {
+			background-color: $white;
+			padding: 1.5rem 0 1.5rem 2rem;
+			justify-content: flex-start;
+		}
+		&__component-container {
+			display: flex;
+
+			background-color: $white;
+		}
+	}
+	@include desktop {
+		margin: -6.025rem 7rem 1rem 7rem;
+
+		// position: absolute;
+		// top: 71px;
+		// right: 130px;
+		// left: 130px;
+
+		&__container {
+			background-color: $white;
+			padding: 2rem 0 1.5rem 2.75rem;
+			justify-content: flex-start;
+		}
+		&__component-container {
+			display: flex;
+
+			background-color: $white;
+		}
+	}
 }

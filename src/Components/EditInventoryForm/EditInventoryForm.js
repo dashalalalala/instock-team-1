@@ -255,7 +255,6 @@ function EditInventoryForm(item) {
 					<div className="inventoryForm__form">
 						<div className="inventoryForm__form-warehouse">
 							<h2 className="inventoryForm__form-subheader">Item Details</h2>
-
 							<label className="inventoryForm__form-container">Item Name</label>
 							<input
 								className={getItemNameInputClasses()}
@@ -334,6 +333,7 @@ function EditInventoryForm(item) {
 			</div>
 		</>
 	);
-}
+};
+
 
 export default EditInventoryForm;
