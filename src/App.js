@@ -7,6 +7,7 @@ import InventoryDetailsPage from "./Pages/InventoryDetailsPage/InventoryDetailsP
 import InventoryListPage from "./Pages/InventoryListPage/InventoryListPage";
 import EditWarehousePage from "./Pages/EditWarehouse/EditWarehouse";
 import EditInventoryItemPage from "./Pages/EditInventoryItemPage/EditInventoryItemPage";
+import AddInventoryItemPage from "./Pages/AddInventoryItemPage/AddInventoryItemPage";
 import AddWarehouse from "./Pages/AddWarehouse/AddWarehouse";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ChakraProvider } from "@chakra-ui/react";
@@ -38,6 +39,10 @@ function App() {
             <Route
               path="/inventories/:inventoryItemId/edit"
               element={<EditInventoryItemPage />}
+            />
+            <Route
+              path="/inventories/add"
+              element={<AddInventoryItemPage />}
             />
           </Routes>
         </BrowserRouter>

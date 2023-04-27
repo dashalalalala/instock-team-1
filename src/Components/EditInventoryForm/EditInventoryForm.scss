@@ -5,10 +5,10 @@
 	margin-bottom: 0;
 }
 
-.details {
-	margin: 0;
-	padding: 0;
-	background-color: $white;
+.inventoryForm{
+  margin: 0;
+  padding: 0; 
+  background-color: $white;
 
 	&__form-subheader {
 		font-family: "Titillium Web Semi Bold";
@@ -49,6 +49,9 @@
 			@include label-link-button;
 		}
 	}
+    &::placeholder {
+      color: $slate;
+    }
 
 	&__form-title {
 		// font-weight: 700;

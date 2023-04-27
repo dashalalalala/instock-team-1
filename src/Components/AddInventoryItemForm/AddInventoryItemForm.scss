@@ -1,0 +1,12 @@
+@import "../../styles/partials/variables";
+@import "../../styles/partials/mixins";
+
+.inventoryForm{
+    &__form--selectionAdd{
+        -webkit-appearance: none;
+        padding-right: 20px;
+        background: url("../../assets/icons/arrow_drop_down-24px.svg") no-repeat center right;
+        background-position: 97%;
+        color: $slate;
+    }
+}
