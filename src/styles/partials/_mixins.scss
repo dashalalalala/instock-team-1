@@ -91,14 +91,13 @@
 	border-radius: 3px;
 	width: -webkit-fill-available;
 	overflow: hidden;
-	perspective: 1px;
 
 	@include tablet {
-		margin: -6.5rem 2rem 1rem 2rem;
+		margin: -5.9rem 2rem 1rem 2rem;
 	}
 
 	@include desktop {
-		margin: -5.8rem 7rem 1rem 7rem;
+		margin: -5.8rem 8.125rem 1rem 8.125rem;
 	}
 }
 
@@ -108,7 +107,7 @@
 	justify-content: space-between;
 	padding: 1.5rem;
 	gap: 1rem;
-	border-top: 1px solid $cloud;
+	border-bottom: 1px solid $cloud;
 	background-color: white;
 
 	&:hover {
@@ -148,13 +147,13 @@
 	font-family: "Titillium Web Regular";
 	font-weight: 600;
 	color: $slate;
-	padding-bottom: 0.25rem;
 }
 
 /*Mixin for Stock Status Styling*/
 @mixin stock-status {
 	width: max-content;
 	border-radius: 20px;
+	margin-top: 0.5rem !important;
 	padding: 0 0.5rem;
 	line-height: 1.5rem;
 	font-weight: 600;
