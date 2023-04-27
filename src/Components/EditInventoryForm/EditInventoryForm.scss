@@ -36,11 +36,11 @@
 		padding: 1rem 1.5rem;
 
 		@include tablet {
-			padding: 0rem 1.5rem 0.5rem 1.5rem;
+			padding: 0rem 2rem 0.5rem 2rem;
 		}
 
 		@include desktop {
-			padding: 0rem 1.5rem 0.5rem 1.5rem;
+			padding: 0rem 2.5rem 0.5rem 2.5rem;
 		}
 	}
 
@@ -51,13 +51,13 @@
 		border-top: 1px solid #bdc5d5;
 
 		@include tablet {
-			padding: 0rem 1.5rem 0.5rem 1.5rem;
+			padding: 0rem 2rem 0.5rem 2rem;
 			border-top: none;
 		}
 
 		@include desktop {
 			border-top: none;
-			padding: 0rem 1.5rem 0.5rem 1.5rem;
+			padding: 0rem 2.5rem 0.5rem 2.5rem;
 		}
 	}
 
@@ -87,7 +87,7 @@
 		// margin: 16px 0;
 		// font-family: "Titillium Web Regular";
 
-		padding-top: 1rem;
+		// padding-top: 1rem;
 		margin: 0.25rem 0;
 
 		font-family: "Titillium Web Semi Bold";
@@ -98,6 +98,7 @@
 		}
 
 		@include desktop {
+			padding-top: 1rem;
 			@include label-link-button;
 		}
 	}
@@ -316,12 +317,12 @@
 		&__form-warehouse {
 			width: 100%;
 			border-right: 1px solid $cloud;
-			padding-right: 2rem;
+			// padding-right: 2rem;
 		}
 
 		&__form-contact {
 			width: 100%;
-			padding-left: 2rem;
+			// padding-left: 2rem;
 		}
 
 		&__form-description {
@@ -372,12 +373,12 @@
 		&__form-warehouse {
 			width: 100%;
 			border-right: 1px solid $cloud;
-			padding-right: 2rem;
+			// padding-right: 2rem;
 		}
 
 		&__form-contact {
 			width: 100%;
-			padding-left: 2rem;
+			// padding-left: 2rem;
 		}
 
 		// &__form-warehouse {
