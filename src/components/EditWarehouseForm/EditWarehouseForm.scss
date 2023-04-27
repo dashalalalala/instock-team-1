@@ -14,9 +14,9 @@
 
 		@include desktop {
 			@include subheader;
-			// margin-top: -1rem;
 		}
 	}
+	
 	&__form-warehouse {
 		display: flex;
 		flex-direction: column;
@@ -176,6 +176,7 @@
 			}
 		}
 	}
+
 	@include desktop {
 		width: 100%;
 
