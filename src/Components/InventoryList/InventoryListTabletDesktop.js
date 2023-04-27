@@ -44,7 +44,7 @@ function InventoryListTabletDesktop({ list, hideWarehouseDiv }) {
 						</Th>
 						<Th>
 							<HStack>
-								<p className="responsive__title">QTY</p>
+								<p className="responsive__title">QUANTITY</p>
 								<img className="responsive__icon" src={sortIcon} alt=""></img>
 							</HStack>
 						</Th>
