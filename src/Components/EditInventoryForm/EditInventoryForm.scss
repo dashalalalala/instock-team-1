@@ -1,305 +1,432 @@
 @import "../../styles/partials/variables";
 @import "../../styles/partials/mixins";
 
-#quantityInput{
-  margin-bottom: 0;
+#quantityInput {
+	margin-bottom: 0;
 }
 
-.inventoryForm{
-  margin: 0;
-  padding: 0; 
-  background-color: $white;
+.inventoryForm {
+	margin: 0;
+	padding: 0;
+	background-color: $white;
 
-  &__form-subheader {
-    font-family: "Titillium Web Semi Bold";
-    font-size: 24px;  
-    //padding-bottom: 20px;
-  }
+	&__form-subheader {
+		font-family: "Titillium Web Semi Bold";
+		font-size: 20px;
+		//padding-bottom: 20px;
+		@include tablet {
+			@include subheader;
+		}
 
-  &__form-warehouse {
-    display: flex;
-    flex-direction: column;
-    padding: 0.5rem 2rem;
-    border-bottom: solid 1px $cloud;
-  }
+		@include desktop {
+			@include subheader;
+		}
+	}
 
-  &__form-container{
-    padding-bottom: 8px;
-    font-weight: 700;
-    margin-top: 20px;
-  }
+	// &__form-warehouse {
+	// 	display: flex;
+	// 	flex-direction: column;
+	// 	padding: 0.5rem 2rem;
+	// 	border-bottom: solid 1px $cloud;
+	// }
 
-  &__form-title {
-    font-weight: 700;
-    margin: 16px 0;
-    font-family: "Titillium Web Regular";
-  }
+	&__form-warehouse {
+		display: flex;
+		flex-direction: column;
+		padding: 1rem 1.5rem;
 
-  &__form-input {
-    height: 36px;
-    width: 100%;
-    border: solid 1px $cloud;
-    border-radius: 20px;
-    font-family: "Titillium Web Regular";
-    padding-left: 20px;
-    height: 40px;
+		@include tablet {
+			padding: 0rem 1.5rem 0.5rem 1.5rem;
+		}
 
-    &:last-child{
-      margin-bottom: 20px;
-    }
+		@include desktop {
+			padding: 0rem 1.5rem 0.5rem 1.5rem;
+		}
+	}
 
-    &::placeholder {
-      color: $slate;
-    }
+	&__form-contact {
+		display: flex;
+		flex-direction: column;
+		padding: 1rem 1.5rem;
+		border-top: 1px solid #bdc5d5;
 
-    &:focus {
-      outline: none;
-      border-color: $instock-indigo;
-    }
+		@include tablet {
+			padding: 0rem 1.5rem 0.5rem 1.5rem;
+			border-top: none;
+		}
 
-    &-error {
-      border: solid 2px $red;
-      background-image: url(../../assets/icons/error-24px.svg) no-repeat;
-      background-position: 50% 50%;
-    }
-  }
+		@include desktop {
+			border-top: none;
+			padding: 0rem 1.5rem 0.5rem 1.5rem;
+		}
+	}
 
-  &__form-description{
-    padding-top: 8px;
-    padding-bottom: 140px;
-    padding-right: 24px;
-    overflow: hidden;
-    resize: none;
-  }
+	&__form-container {
+		// padding-bottom: 8px;
+		// font-weight: 700;
+		// margin-top: 20px;
 
-  &__form--radio{
-    height: 16px;
-    width: 16px;
-    margin-right: 8px;
-  }
+		padding-top: 1rem;
 
-  &__form--radio-title{
-    padding-right: 30%;
-  }
+		margin: 0.25rem 0;
 
-  &__form--radioContainer{
-    display: flex;
-    align-items: center;
-  }
+		font-family: "Titillium Web Semi Bold";
+		font-size: 13px;
 
-  &__form--selection{
-    -webkit-appearance: none;
-    padding-right: 20px;
-    background: url("../../assets/icons/arrow_drop_down-24px.svg") no-repeat center right;
-    background-position: 97%;
-  }
+		@include tablet {
+			@include label-link-button;
+		}
 
-  &__form-contact{
-    padding: 0 2rem;
-  }
+		@include desktop {
+			@include label-link-button;
+		}
+	}
 
-  &__button-container {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    padding: 2rem;
-    background-color: $light-grey;
-    margin: 0;
-  }
+	&__form-title {
+		// font-weight: 700;
+		// margin: 16px 0;
+		// font-family: "Titillium Web Regular";
 
-  &__cancel{
-    padding: 0.75rem 1rem;
-    width: 100%;
+		padding-top: 1rem;
+		margin: 0.25rem 0;
 
-    background-color: $white;
-    border: solid 2px $cloud;
-    border-radius: 20px;
-    color: $slate;
-    font-weight: 700;
-    justify-content: center;
-    display: flex;
+		font-family: "Titillium Web Semi Bold";
+		font-size: 13px;
 
-    &:hover{
-      border: solid 2px $instock-indigo;
-      color: $instock-indigo;
-    }
-    
+		@include tablet {
+			@include label-link-button;
+		}
 
-    &--text{
-      //align-self: center;
-      font-weight: 700;
-      font-family: "Titillium Web Regular";
-    }
-  }
+		@include desktop {
+			@include label-link-button;
+		}
+	}
 
-  &__save {
-    padding: 0.5rem 1rem;
-    width: 100%;
+	&__form-input {
+		height: 36px;
+		width: 100%;
+		border: solid 1px $cloud;
+		border-radius: 20px;
+		font-family: "Titillium Web Regular";
+		padding-left: 20px;
+		height: 40px;
+		font-size: 13px;
 
-    background-color: $instock-indigo;
-    color: $white;
-    border: solid $instock-indigo;
-    border-radius: 20px;
-    font-weight: 600;
-    letter-spacing: 0.05rem;
+		@include tablet {
+			@include mobile-body-medium;
+		}
 
-    font-family: "Titillium Web Regular";
-  }
+		@include desktop {
+			@include mobile-body-medium;
+		}
 
-  &__save:hover{
-    background-color: $graphite;
-    color: $white;
-    border: solid 2px $graphite;
-  }
+		// &:last-child {
+		// 	margin-bottom: 20px;
+		// }
 
-  &__error{
-    color: $red;
-    margin: 0;
-    margin-top: 2px;
-    display: flex;
-    align-items: center;
+		// &::placeholder {
+		// 	color: $slate;
+		// }
 
-    &--message{
-      background-image: url(../../assets/icons/error-24px.svg) no-repeat;
-      background-position: left;
-    }
+		border: 1px solid $cloud;
+		border-radius: 20px;
+		font-family: "Titillium Web Regular";
 
-    &--icon{
-      height: 20px;
-      width: 20px;
-      margin-right: 4px;
-    }
-  }
+		&::placeholder {
+			padding-left: 1rem;
+			color: $slate;
+			font-size: 13px;
+		}
 
-  @include tablet {
-    width: 100%;
+		&:focus {
+			outline: none;
+			border-color: $instock-indigo;
+		}
 
-    &__form {
-      display: flex;
-      align-items: start;
-      padding-top: 0;
-      margin-top: 24px;
+		&-error {
+			border: solid 2px $red;
+			background-image: url(../../assets/icons/error-24px.svg) no-repeat;
+			background-position: 50% 50%;
+		}
+	}
 
-      &-subheader{
-        margin: 0;
-      }
+	&__form-description {
+		padding-top: 8px;
+		padding-bottom: 140px;
+		padding-right: 24px;
+		overflow: hidden;
+		resize: none;
+	}
 
-      &-title{
-       margin-top: 20px;
-      }
+	&__form--radio {
+		height: 16px;
+		width: 16px;
+		margin-right: 8px;
+	}
 
-      &--radioContainer{
-      }
+	&__form--radio-title {
+		// padding-right: 30%;
+		padding-right: 10%;
+		font-size: 13px;
 
-    }
+		@include tablet {
+			@include mobile-body-medium;
+		}
 
-    &__form-warehouse {
-      width: 100%;
-      border-right: solid 2px $cloud;
-      border-bottom: none;
-      padding-right: 2rem;
-      padding-top: 0;
-      padding-bottom: 0;
-      margin-bottom: 24px;
-    }
+		@include desktop {
+			@include mobile-body-medium;
+		}
+	}
 
-    &__form-contact {
-      width: 100%;
-      padding-left: 2rem;
-      align-items:start
-    }
+	&__form--radioContainer {
+		display: flex;
+		align-items: center;
+	}
 
-    &__form-description{
-      padding-bottom: 160px;
-    }
+	&__form--selection {
+		-webkit-appearance: none;
+		padding-right: 20px;
+		background: url("../../assets/icons/arrow_drop_down-24px.svg") no-repeat
+			center right;
+		background-position: 97%;
+	}
 
-    &__button-container {
-      justify-content: flex-end;
-      padding-top: 16px;
-      padding-bottom: 16px;
-      padding-right: 32px;
-      margin-top: 0;
-      margin-left: 0;
-      margin-right: 0;
-    }
+	// &__form-contact {
+	// 	padding: 0 2rem;
+	// }
 
-    &__save,
-    &__cancel {
-      width: 100px;
-      border-radius: 40px;
-    }
+	&__button-container {
+		display: flex;
+		justify-content: center;
+		gap: 1rem;
+		// padding: 2rem;
+		padding: 1rem 1.5rem;
+		background-color: $light-grey;
+		margin: 0;
+	}
 
-    &__cancel {
-      &:hover {
-        border: solid 2px $instock-indigo;
-        color: $instock-indigo;
-      }
-    }
+	&__cancel {
+		padding: 0.5rem 1rem;
+		width: 100%;
 
-    #quantityInput{
-      margin-bottom: 20;
-    }
+		background-color: $white;
+		border: solid 1px $cloud;
+		border-radius: 20px;
+		color: $slate;
+		// font-weight: 700;
+		justify-content: center;
+		display: flex;
 
-  }
-  
-  @include desktop {
-    width: 100%;
+		font-family: "Titillium Web Regular";
+		font-size: 13px;
+		font-weight: 600;
 
-    &__form {
-      display: flex;
-      align-items: start;
-      padding-top: 0;
-      margin-top: 24px;
+		&:hover {
+			border: solid 1px $instock-indigo;
+			color: $instock-indigo;
+		}
 
-    }
+		&--text {
+			//align-self: center;
+			font-weight: 700;
+			font-family: "Titillium Web Regular";
+		}
+	}
 
-    &__form-warehouse {
-      width: 100%;
-      border-right: solid 2px $cloud;
-      border-bottom: none;
-      padding-right: 2rem;
-      padding-top: 0;
-      padding-bottom: 0;
-      margin-bottom: 24px;
-    }
+	&__save {
+		padding: 0.5rem 1rem;
+		width: 100%;
 
-    &__form-contact {
-      width: 100%;
-      padding-left: 2rem;
-      align-items:start
-    }
+		background-color: $instock-indigo;
+		color: $white;
+		border: 1px solid $instock-indigo;
+		border-radius: 20px;
+		font-weight: 600;
+		letter-spacing: 0.05rem;
 
-    &__form-description{
-      padding-bottom: 160px;
-    }
+		font-family: "Titillium Web Regular";
+		font-size: 13px;
+	}
 
-    &__button-container {
-      justify-content: flex-end;
-      padding-top: 16px;
-      padding-bottom: 16px;
-      padding-right: 32px;
-      margin-top: 0;
-      margin-left: 0;
-      margin-right: 0;
-    }
+	&__save:hover {
+		background-color: $graphite;
+		color: $white;
+		border: solid 1px $graphite;
+	}
 
-    &__save,
-    &__cancel {
-      width: 100px;
-      border-radius: 40px;
-    }
+	&__error {
+		color: $red;
+		margin: 0;
+		margin-top: 2px;
+		display: flex;
+		align-items: center;
 
-    &__save:hover{
-      background-color: $graphite;
-      color: $white;
-      border: solid 2px $graphite;
-    }
+		&--message {
+			background-image: url(../../assets/icons/error-24px.svg) no-repeat;
+			background-position: left;
+		}
 
-    &__cancel {
-      &:hover {
-        border: solid 2px $instock-indigo;
-        color: $instock-indigo;
-      }
-    }
-  }
+		&--icon {
+			height: 20px;
+			width: 20px;
+			margin-right: 4px;
+		}
+	}
+
+	@include tablet {
+		width: 100%;
+
+		&__form {
+			// display: flex;
+			// align-items: start;
+			// padding-top: 0;
+			// margin-top: 24px;
+			display: flex;
+			align-items: start;
+			padding: 1.5rem 0;
+
+			&-subheader {
+				margin: 0;
+			}
+
+			&-title {
+				margin-top: 20px;
+			}
+
+			// &--radioContainer{
+			// }
+		}
+
+		// &__form-warehouse {
+		// 	width: 100%;
+		// 	border-right: solid 1px $cloud;
+		// 	border-bottom: none;
+		// 	padding-right: 2rem;
+		// 	padding-top: 0;
+		// 	padding-bottom: 0;
+		// 	margin-bottom: 24px;
+		// }
+
+		// &__form-contact {
+		// 	width: 100%;
+		// 	padding-left: 2rem;
+		// 	align-items: start;
+		// }
+
+		&__form-warehouse {
+			width: 100%;
+			border-right: 1px solid $cloud;
+			padding-right: 2rem;
+		}
+
+		&__form-contact {
+			width: 100%;
+			padding-left: 2rem;
+		}
+
+		&__form-description {
+			padding-bottom: 160px;
+		}
+
+		&__button-container {
+			justify-content: flex-end;
+			padding-top: 16px;
+			padding-bottom: 16px;
+			padding-right: 32px;
+			margin-top: 0;
+			margin-left: 0;
+			margin-right: 0;
+		}
+
+		&__save,
+		&__cancel {
+			width: 100px;
+			border-radius: 40px;
+		}
+
+		&__cancel {
+			&:hover {
+				border: solid 1px $instock-indigo;
+				color: $instock-indigo;
+			}
+		}
+
+		#quantityInput {
+			margin-bottom: 20;
+		}
+	}
+
+	@include desktop {
+		width: 100%;
+
+		&__form {
+			// display: flex;
+			// align-items: start;
+			// padding-top: 0;
+			// margin-top: 24px;
+			display: flex;
+			align-items: start;
+			padding: 1.5rem 0;
+		}
+
+		&__form-warehouse {
+			width: 100%;
+			border-right: 1px solid $cloud;
+			padding-right: 2rem;
+		}
+
+		&__form-contact {
+			width: 100%;
+			padding-left: 2rem;
+		}
+
+		// &__form-warehouse {
+		// 	width: 100%;
+		// 	border-right: solid 2px $cloud;
+		// 	border-bottom: none;
+		// 	padding-right: 2rem;
+		// 	padding-top: 0;
+		// 	padding-bottom: 0;
+		// 	margin-bottom: 24px;
+		// }
+
+		// &__form-contact {
+		// 	width: 100%;
+		// 	padding-left: 2rem;
+		// 	align-items: start;
+		// }
+
+		&__form-description {
+			padding-bottom: 160px;
+		}
+
+		&__button-container {
+			justify-content: flex-end;
+			padding-top: 16px;
+			padding-bottom: 16px;
+			padding-right: 32px;
+			margin-top: 0;
+			margin-left: 0;
+			margin-right: 0;
+		}
+
+		&__save,
+		&__cancel {
+			width: 100px;
+			border-radius: 40px;
+		}
+
+		&__save:hover {
+			background-color: $graphite;
+			color: $white;
+			border: solid 1px $graphite;
+		}
+
+		&__cancel {
+			&:hover {
+				border: solid 1px $instock-indigo;
+				color: $instock-indigo;
+			}
+		}
+	}
 }
