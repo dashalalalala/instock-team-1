@@ -40,18 +40,18 @@ function EditInventoryItemPage(){
   } else {
   return (
     <>
-      <div className="page">
-        <div className="page__container">
+      <div className="editInventoryPage">
+        <div className="editInventoryPage__container">
           <Link to="/inventories">
             <img
-              className="page__back-icon"
+              className="editInventoryPage__back-icon"
               src={backArrow}
               alt="Back Arrow Icon"
             ></img>
           </Link>
-          <h1 className="page__title">Edit Inventory Item</h1>
+          <h1 className="editInventoryPage__title">Edit Inventory Item</h1>
         </div>
-        <div className="page__component-container">
+        <div className="editInventoryPage__component-container">
           <EditInventoryForm item={item} warehouseList={warehouseList}/>
         </div>
       </div>

@@ -25,9 +25,9 @@ function EditInventoryForm(item){
       return null
     } else if (error === true){
     return(
-      <div className="details__error">
-          <img src={errorIcon} alt="error" className="details__error--icon"></img>
-          <span className="details__error--message">This field is required</span>
+      <div className="inventoryForm__error">
+          <img src={errorIcon} alt="error" className="inventoryForm__error--icon"></img>
+          <span className="inventoryForm__error--message">This field is required</span>
       </div>
     )} else {
       return null
@@ -39,8 +39,8 @@ function EditInventoryForm(item){
       return null
     } else {
     return (
-      <label className="details__form-container">
-      <h6 className="details__form-title">Quantity</h6>
+      <label className="inventoryForm__form-container">
+      <h6 className="inventoryForm__form-title">Quantity</h6>
       <input
         className={getQuantityInputClasses()}
         type="text"
@@ -58,7 +58,7 @@ function EditInventoryForm(item){
     } else {
     const warehouseListFiltered = warehouseList.map(warehouse => warehouse.warehouse_name)
     return (
-    <select className="details__form-input details__form--selection" id="warehouseSelect" defaultValue={warehouse}>
+    <select className="inventoryForm__form-input inventoryForm__form--selection" id="warehouseSelect" defaultValue={warehouse}>
         {warehouseListFiltered.map((element, key) => {
             return <option key={key} value={element}>{element}</option>
         }
@@ -70,7 +70,7 @@ function EditInventoryForm(item){
 
   function renderCategoryList(categoriesList){
     return(
-    <select className="details__form-input details__form--selection" id="categoriesSelect" defaultValue={category}>
+    <select className="inventoryForm__form-input inventoryForm__form--selection" id="categoriesSelect" defaultValue={category}>
         {categoriesList.map((element, key) => {
             return <option key={key} value={element} >{element}</option>
         }
@@ -116,25 +116,25 @@ function EditInventoryForm(item){
 
   function getItemNameInputClasses(){
     if (itemNameError === false){
-    return "details__form-input";
+    return "inventoryForm__form-input";
     } else {
-        return "details__form-input details__form-input-error";
+        return "inventoryForm__form-input inventoryForm__form-input-error";
     }
   }
 
   function getDescriptionInputClasses(){
     if (descriptionInputError === false){
-    return "details__form-input details__form-description";
+    return "inventoryForm__form-input inventoryForm__form-description";
     } else {
-        return "details__form-input details__form-description details__form-input-error";
+        return "inventoryForm__form-input inventoryForm__form-description inventoryForm__form-input-error";
     }
   }
 
   function getQuantityInputClasses(){
     if (quantityInputError === false){
-    return "details__form-input";
+    return "inventoryForm__form-input";
     } else {
-        return "details__form-input details__form-input-error";
+        return "inventoryForm__form-input inventoryForm__form-input-error";
     }
   }
 
@@ -206,13 +206,13 @@ function EditInventoryForm(item){
 
   return (
     <>
-      <div className="details">
+      <div className="inventoryForm">
         <form onSubmit={handleSubmit}>
-          <div className="details__form">
-            <div className="details__form-warehouse">
-              <h2 className="details__form-subheader">Item Details</h2>
+          <div className="inventoryForm__form">
+            <div className="inventoryForm__form-warehouse">
+              <h2 className="inventoryForm__form-subheader">Item Details</h2>
 
-              <label className="details__form-container">Item Name</label>
+              <label className="inventoryForm__form-container">Item Name</label>
               <input
                   className={getItemNameInputClasses()}
                   type="text"
@@ -222,7 +222,7 @@ function EditInventoryForm(item){
                   onChange={itemNameHandler}
               />
               {renderFormFieldError(itemNameError, "input")}
-              <label className="details__form-container">Description</label>
+              <label className="inventoryForm__form-container">Description</label>
               <textarea
                   className={getDescriptionInputClasses()}
                   type="textarea"
@@ -232,15 +232,15 @@ function EditInventoryForm(item){
                   onChange={descriptionChangeHandler}
               />
               {renderFormFieldError(descriptionInputError, "description")}
-              <label className="details__form-container">Category</label>
+              <label className="inventoryForm__form-container">Category</label>
               {renderCategoryList(categoriesList)}
             </div>
-            <div className="details__form-contact">
-              <h2 className="details__form-subheader">Item Availabilty</h2>
-              <h6 className="details__form-title">Status</h6>
-              <div className="details__form--radioContainer">
+            <div className="inventoryForm__form-contact">
+              <h2 className="inventoryForm__form-subheader">Item Availabilty</h2>
+              <h6 className="inventoryForm__form-title">Status</h6>
+              <div className="inventoryForm__form--radioContainer">
                 <input
-                  className="details__form--radio"
+                  className="inventoryForm__form--radio"
                   type="radio"
                   name="Stock"
                   id="InStock"
@@ -248,9 +248,9 @@ function EditInventoryForm(item){
                   checked={inStock === "In Stock"}
                   onChange={handleStatusChange}
                 />
-                <label htmlFor="InStock" className="details__form--radio-title">In Stock</label>
+                <label htmlFor="InStock" className="inventoryForm__form--radio-title">In Stock</label>
                 <input
-                  className="details__form--radio"
+                  className="inventoryForm__form--radio"
                   type="radio"
                   name="Stock"
                   id="OutOfStock"
@@ -262,15 +262,15 @@ function EditInventoryForm(item){
               </div>
               {renderQuantityForm(inStock)}
               {renderFormFieldError(quantityInputError, "quantity")}
-              <h6 className="details__form-title">Warehouse</h6>
+              <h6 className="inventoryForm__form-title">Warehouse</h6>
               {renderWarehouseListOptions()}
             </div>
           </div>
-          <div className="details__button-container">
-            <Link to="/inventories" className="details__cancel">
-              <button className="details__cancel--text">Cancel</button>
+          <div className="inventoryForm__button-container">
+            <Link to="/inventories" className="inventoryForm__cancel">
+              <button className="inventoryForm__cancel--text">Cancel</button>
             </Link>
-            <button className="details__save">Save</button>
+            <button className="inventoryForm__save">Save</button>
           </div>
         </form>
       </div>
