@@ -1,0 +1,81 @@
+/*Fonts*/
+@font-face {
+  font-family: "Titillium Web Semi Bold";
+  src: url("../../assets//fonts/TitilliumWeb-SemiBold.ttf") format(truetype);
+}
+@font-face {
+  font-family: "Titillium Web Regular";
+  src: url("../../assets//fonts/TitilliumWeb-Regular.ttf") format(truetype);
+}
+/*Primary Colors*/
+/*Secondary Colors*/
+/*Background Colors*/
+/*Supporting Colors*/
+/*Breakpoints*/
+/*Fonts*/
+@font-face {
+  font-family: "Titillium Web Semi Bold";
+  src: url("../../assets//fonts/TitilliumWeb-SemiBold.ttf") format(truetype);
+}
+@font-face {
+  font-family: "Titillium Web Regular";
+  src: url("../../assets//fonts/TitilliumWeb-Regular.ttf") format(truetype);
+}
+/*Primary Colors*/
+/*Secondary Colors*/
+/*Background Colors*/
+/*Supporting Colors*/
+/*Breakpoints*/
+/*Desktop & Tablet*/
+/*Mobile*/
+/*List Styling*/
+/*Mixin for Stock Status Styling*/
+.add-warehouse__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 0;
+  border-bottom: solid #bdc5d5;
+  background-color: #ffffff;
+}
+.add-warehouse__title {
+  padding-left: 0.25rem;
+  font-size: 28px;
+  font-family: "Titillium Web Semi Bold";
+}
+.add-warehouse__component-container {
+  background-color: #ffffff;
+}
+@media (min-width: 768px) and (max-width: 1279px) {
+  .add-warehouse {
+    box-shadow: 0px 1px 2px 0px #bdc5d5;
+    position: absolute;
+    top: 5.2rem;
+    width: 90%;
+    left: 2.3rem;
+  }
+  .add-warehouse__container {
+    background-color: #ffffff;
+  }
+  .add-warehouse__component-container {
+    display: flex;
+    background-color: #ffffff;
+  }
+}
+@media (min-width: 1280px) {
+  .add-warehouse {
+    box-shadow: 0px 1px 2px 0px #bdc5d5;
+    position: absolute;
+    top: 9.5rem;
+    width: 85%;
+    right: 7rem;
+    left: 6rem;
+  }
+  .add-warehouse__container {
+    background-color: #ffffff;
+  }
+  .add-warehouse__component-container {
+    display: flex;
+    background-color: #ffffff;
+  }
+}/*# sourceMappingURL=AddWarehouse.css.map */

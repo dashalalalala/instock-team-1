@@ -6,7 +6,6 @@
   flex-direction: column;
   padding: 0.5rem 1.5rem;
   background-color: $white;
-  border-bottom: 1px solid $cloud;
 
   &__container {
     display: flex;
@@ -32,10 +31,11 @@
     color: $slate;
     font-family: "Titillium Web Regular";
     font-weight: 600;
+    padding-bottom: 0.25rem;
   }
 
   &__body {
-    @include mobile-body-small;
+    @include mobile-body-medium;
     margin: 0;
     white-space: initial;
   }
@@ -98,8 +98,8 @@
       }
 
       &--swq {
-        padding-left: 3rem;
-        gap: 10rem;
+        padding-left: 2.5rem;
+        gap: 10.5rem;
       }
     }
 

@@ -1,0 +1,59 @@
+/*Fonts*/
+@font-face {
+  font-family: "Titillium Web Semi Bold";
+  src: url("../../assets//fonts/TitilliumWeb-SemiBold.ttf") format(truetype);
+}
+@font-face {
+  font-family: "Titillium Web Regular";
+  src: url("../../assets//fonts/TitilliumWeb-Regular.ttf") format(truetype);
+}
+/*Primary Colors*/
+/*Secondary Colors*/
+/*Background Colors*/
+/*Supporting Colors*/
+/*Breakpoints*/
+/*Desktop & Tablet*/
+/*Mobile*/
+/*List Styling*/
+/*Mixin for Stock Status Styling*/
+/*Fonts*/
+@font-face {
+  font-family: "Titillium Web Semi Bold";
+  src: url("../../assets//fonts/TitilliumWeb-SemiBold.ttf") format(truetype);
+}
+@font-face {
+  font-family: "Titillium Web Regular";
+  src: url("../../assets//fonts/TitilliumWeb-Regular.ttf") format(truetype);
+}
+/*Primary Colors*/
+/*Secondary Colors*/
+/*Background Colors*/
+/*Supporting Colors*/
+/*Breakpoints*/
+.invDetails {
+  background-color: #f7f8f9;
+  height: 16rem;
+}
+.invDetails__content {
+  margin: 1rem;
+  box-shadow: 0px 1px 5px rgba(19, 24, 44, 0.1);
+  border-radius: 3px;
+  position: absolute;
+  top: 10rem;
+  width: -webkit-fill-available;
+}
+@media (min-width: 768px) and (max-width: 1279px) {
+  .invDetails__content {
+    top: 7rem;
+    margin: 1rem 2rem;
+  }
+}
+@media (min-width: 1280px) {
+  .invDetails {
+    height: 15rem;
+  }
+  .invDetails__content {
+    top: 5rem;
+    margin: 1rem 7rem;
+  }
+}/*# sourceMappingURL=InventoryDetailsPage.css.map */

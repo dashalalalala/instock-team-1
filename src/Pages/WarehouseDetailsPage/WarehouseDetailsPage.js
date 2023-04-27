@@ -3,7 +3,7 @@ import WarehouseHeader from "../../Components/WarehouseHeader/WarehouseHeader";
 import WarehouseInfo from "../../Components/WarehouseInfo/WarehouseInfo";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { apiUrl, inventoriesUrl } from "../../utils.js";
+import { apiUrl } from "../../utils.js";
 import axios from "axios";
 import InventoryListMobile from "../../Components/InventoryList/InventoryListMobile";
 import InventoryListTabletDesktop from "../../Components/InventoryList/InventoryListTabletDesktop";
