@@ -1,0 +1,281 @@
+/*Fonts*/
+@font-face {
+  font-family: "Titillium Web Semi Bold";
+  src: url("../../assets//fonts/TitilliumWeb-SemiBold.ttf") format(truetype);
+}
+@font-face {
+  font-family: "Titillium Web Regular";
+  src: url("../../assets//fonts/TitilliumWeb-Regular.ttf") format(truetype);
+}
+/*Primary Colors*/
+/*Secondary Colors*/
+/*Background Colors*/
+/*Supporting Colors*/
+/*Breakpoints*/
+/*Fonts*/
+@font-face {
+  font-family: "Titillium Web Semi Bold";
+  src: url("../../assets//fonts/TitilliumWeb-SemiBold.ttf") format(truetype);
+}
+@font-face {
+  font-family: "Titillium Web Regular";
+  src: url("../../assets//fonts/TitilliumWeb-Regular.ttf") format(truetype);
+}
+/*Primary Colors*/
+/*Secondary Colors*/
+/*Background Colors*/
+/*Supporting Colors*/
+/*Breakpoints*/
+/*Desktop & Tablet*/
+/*Mobile*/
+/*List Styling*/
+/*Mixin for Stock Status Styling*/
+#quantityInput {
+  margin-bottom: 0;
+}
+
+.details {
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff;
+}
+.details__form-subheader {
+  font-family: "Titillium Web Semi Bold";
+  font-size: 24px;
+}
+.details__form-warehouse {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem 2rem;
+  border-bottom: solid 1px #bdc5d5;
+}
+.details__form-container {
+  padding-bottom: 8px;
+  font-weight: 700;
+  margin-top: 20px;
+}
+.details__form-title {
+  font-weight: 700;
+  margin: 16px 0;
+  font-family: "Titillium Web Regular";
+}
+.details__form-input {
+  height: 36px;
+  width: 100%;
+  border: solid 1px #bdc5d5;
+  border-radius: 20px;
+  font-family: "Titillium Web Regular";
+  padding-left: 20px;
+  height: 40px;
+}
+.details__form-input:last-child {
+  margin-bottom: 20px;
+}
+.details__form-input::-moz-placeholder {
+  padding-left: 1rem;
+  color: #5c667e;
+}
+.details__form-input::placeholder {
+  padding-left: 1rem;
+  color: #5c667e;
+}
+.details__form-input:focus {
+  outline: none;
+  border-color: #2e66e5;
+}
+.details__form-input-error {
+  border: solid 2px #c94515;
+  background-image: url(../../assets/icons/error-24px.svg) no-repeat;
+  background-position: 50% 50%;
+}
+.details__form-description {
+  padding-top: 8px;
+  padding-bottom: 140px;
+  padding-right: 24px;
+  overflow: hidden;
+  resize: none;
+}
+.details__form--radio {
+  height: 16px;
+  width: 16px;
+  margin-right: 8px;
+}
+.details__form--radio-title {
+  padding-right: 30%;
+}
+.details__form--radioContainer {
+  display: flex;
+  align-items: center;
+}
+.details__form--selection {
+  -webkit-appearance: none;
+  padding-right: 20px;
+  background: url("../../assets/icons/arrow_drop_down-24px.svg") no-repeat center right;
+  background-position: 97%;
+}
+.details__form-contact {
+  padding: 0 2rem;
+}
+.details__button-container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  padding: 2rem;
+  background-color: #f7f8f9;
+  margin: 0;
+}
+.details__cancel {
+  padding: 0.75rem 1rem;
+  width: 100%;
+  background-color: #ffffff;
+  border: solid 2px #bdc5d5;
+  border-radius: 20px;
+  color: #5c667e;
+  font-weight: 700;
+  justify-content: center;
+  display: flex;
+}
+.details__cancel:hover {
+  border: solid 2px #2e66e5;
+  color: #2e66e5;
+}
+.details__cancel--text {
+  font-weight: 700;
+  font-family: "Titillium Web Regular";
+}
+.details__save {
+  padding: 0.5rem 1rem;
+  width: 100%;
+  background-color: #2e66e5;
+  color: #ffffff;
+  border: solid #2e66e5;
+  border-radius: 20px;
+  font-weight: 600;
+  letter-spacing: 0.05rem;
+  font-family: "Titillium Web Regular";
+}
+.details__save:hover {
+  background-color: #232940;
+  color: #ffffff;
+  border: solid 2px #232940;
+}
+.details__error {
+  color: #c94515;
+  margin: 0;
+  margin-top: 2px;
+  display: flex;
+  align-items: center;
+}
+.details__error--message {
+  background-image: url(../../assets/icons/error-24px.svg) no-repeat;
+  background-position: left;
+}
+.details__error--icon {
+  height: 20px;
+  width: 20px;
+  margin-right: 4px;
+}
+@media (min-width: 768px) and (max-width: 1279px) {
+  .details {
+    width: 100%;
+  }
+  .details__form {
+    display: flex;
+    align-items: start;
+    padding-top: 0;
+    margin-top: 24px;
+  }
+  .details__form-subheader {
+    margin: 0;
+  }
+  .details__form-title {
+    margin-top: 20px;
+  }
+  .details__form-warehouse {
+    width: 100%;
+    border-right: solid 2px #bdc5d5;
+    border-bottom: none;
+    padding-right: 2rem;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-bottom: 24px;
+  }
+  .details__form-contact {
+    width: 100%;
+    padding-left: 2rem;
+    align-items: start;
+  }
+  .details__form-description {
+    padding-bottom: 160px;
+  }
+  .details__button-container {
+    justify-content: flex-end;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    padding-right: 32px;
+    margin-top: 0;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .details__save, .details__cancel {
+    width: 100px;
+    border-radius: 40px;
+  }
+  .details__cancel:hover {
+    border: solid 2px #2e66e5;
+    color: #2e66e5;
+  }
+  .details #quantityInput {
+    margin-bottom: 20;
+  }
+}
+@media (min-width: 1280px) {
+  .details {
+    width: 100%;
+  }
+  .details__form {
+    display: flex;
+    align-items: start;
+    padding-top: 0;
+    margin-top: 24px;
+  }
+  .details__form-warehouse {
+    width: 100%;
+    border-right: solid 2px #bdc5d5;
+    border-bottom: none;
+    padding-right: 2rem;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-bottom: 24px;
+  }
+  .details__form-contact {
+    width: 100%;
+    padding-left: 2rem;
+    align-items: start;
+  }
+  .details__form-description {
+    padding-bottom: 160px;
+  }
+  .details__button-container {
+    justify-content: flex-end;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    padding-right: 32px;
+    margin-top: 0;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .details__save, .details__cancel {
+    width: 100px;
+    border-radius: 40px;
+  }
+  .details__save:hover {
+    background-color: #232940;
+    color: #ffffff;
+    border: solid 2px #232940;
+  }
+  .details__cancel:hover {
+    border: solid 2px #2e66e5;
+    color: #2e66e5;
+  }
+}/*# sourceMappingURL=EditInventoryForm.css.map */
