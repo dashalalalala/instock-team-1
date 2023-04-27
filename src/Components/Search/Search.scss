@@ -28,6 +28,11 @@
 
 		@include tablet {
 			margin: 0;
+			@include header;
+		}
+
+		@include desktop {
+			@include header;
 		}
 	}
 
