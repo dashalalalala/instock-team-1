@@ -4,15 +4,21 @@ import { useNavigate, useParams } from "react-router-dom";
 import { apiUrl } from "../../utils";
 import "./EditWarehouseForm.scss";
 
-const EditWarehouseForm = () => {
-  const [warehouseName, setwarehouseName] = useState();
-  const [address, setAddress] = useState();
-  const [city, setCity] = useState();
-  const [country, setCountry] = useState();
-  const [contactName, setContactName] = useState();
-  const [role, setRole] = useState();
-  const [phoneNumber, setPhoneNumber] = useState();
-  const [email, setEmail] = useState();
+const EditWarehouseForm = (details) => {
+  const [warehouseName, setwarehouseName] = useState(
+    details.warehouseDetails.warehouse_name
+  );
+  const [address, setAddress] = useState(details.warehouseDetails.address);
+  const [city, setCity] = useState(details.warehouseDetails.city);
+  const [country, setCountry] = useState(details.warehouseDetails.country);
+  const [contactName, setContactName] = useState(
+    details.warehouseDetails.contact_name
+  );
+  const [role, setRole] = useState(details.warehouseDetails.contact_position);
+  const [phoneNumber, setPhoneNumber] = useState(
+    details.warehouseDetails.contact_phone
+  );
+  const [email, setEmail] = useState(details.warehouseDetails.contact_email);
   const navigate = useNavigate();
   const warehouseId = useParams();
 
@@ -100,6 +106,7 @@ const EditWarehouseForm = () => {
                   className="details__form-input"
                   type="text"
                   name="Warehouse Name"
+                  value={warehouseName}
                   placeholder="Washington"
                   onChange={handleWarehouseNameChange}
                 />
@@ -111,6 +118,7 @@ const EditWarehouseForm = () => {
                   className="details__form-input"
                   type="text"
                   name="Street Address"
+                  value={address}
                   placeholder="33 Pearl Street SW"
                   onChange={handleAddressChange}
                 />
@@ -122,6 +130,7 @@ const EditWarehouseForm = () => {
                   className="details__form-input"
                   type="text"
                   name="City"
+                  value={city}
                   placeholder="Washington"
                   onChange={handleCityChange}
                 />
@@ -133,6 +142,7 @@ const EditWarehouseForm = () => {
                   className="details__form-input"
                   type="text"
                   name="Country"
+                  value={country}
                   placeholder="USA"
                   onChange={handleCountryChange}
                 />
@@ -147,6 +157,7 @@ const EditWarehouseForm = () => {
                   className="details__form-input"
                   type="text"
                   name="Contact Name"
+                  value={contactName}
                   placeholder="Graeme Lyon"
                   onChange={handleContactNameChange}
                 />
@@ -158,6 +169,7 @@ const EditWarehouseForm = () => {
                   className="details__form-input"
                   type="text"
                   name="Position"
+                  value={role}
                   placeholder="Warehouse Manager"
                   onChange={handleRoleChange}
                 />
@@ -169,6 +181,7 @@ const EditWarehouseForm = () => {
                   className="details__form-input"
                   type="text"
                   name="Phone Number"
+                  value={phoneNumber}
                   placeholder="+1 (647) 504-0911"
                   onChange={handlePhoneNumberChange}
                 />
@@ -180,6 +193,7 @@ const EditWarehouseForm = () => {
                   className="details__form-input"
                   type="text"
                   name="Email"
+                  value={email}
                   placeholder="glyon@instock.com"
                   onChange={handleEmailChange}
                 />
