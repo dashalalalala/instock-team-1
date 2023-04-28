@@ -104,13 +104,13 @@
 	}
 
 	@include tablet {
-		padding: 2rem;
+		padding: 1.75rem;
 		flex-direction: row;
 		justify-content: space-between;
 	}
 
 	@include desktop {
-		padding: 2rem;
+		padding: 1.75rem;
 		flex-direction: row;
 		justify-content: space-between;
 	}

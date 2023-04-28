@@ -208,16 +208,9 @@ function EditInventoryForm(item) {
 		} else {
 			setQuantityInputError(false);
 
-			const warehouse = event.target.warehouseSelect.value;
+			const warehouse = event.target.warehouseSelect.value
 
-			const inventoryItemData = {
-				item_name: itemNameInput,
-				description: descriptionInput,
-				category: categoryInput,
-				status: statusInput,
-				quantity: quantityInput,
-				warehouse_id: findWarehouseId(warehouse, warehouseList),
-			};
+			console.log(`${inventoriesUrl}/${inventoryItemId.inventoryItemId}`)
 
 			if (
 				!itemNameInput ||
@@ -232,18 +225,22 @@ function EditInventoryForm(item) {
 			} else {
 				axios
 					.put(`${inventoriesUrl}/${inventoryItemId.inventoryItemId}`, {
-						inventoryItemData,
+						item_name: itemNameInput,
+						description: descriptionInput,
+						category: categoryInput,
+						status: statusInput,
+						quantity: quantityInput,
+						warehouse_id: findWarehouseId(warehouse, warehouseList),
 					})
 					.then((result) => {
-						if (result.status === 200) {
-							navigate("/inventories");
-						}
+						alert("Inventory Item Updated");
+						navigate("/inventories");
 						event.target.reset();
 					})
 					.catch((error) => {
 						console.error(error);
+						alert("Error updating inventory item");
 					});
-				alert("Inventory Item Updated");
 			}
 		}
 	};

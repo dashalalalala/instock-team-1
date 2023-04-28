@@ -1,9 +1,6 @@
 import "../../styles/listsStyling/List.scss";
 import InventoryItemMobile from "../InventoryItem/InventoryItemMobile";
 
-
-
-
 function InventoryListMobile({ list, hideWarehouseDiv }) {
 	return (
 		<>

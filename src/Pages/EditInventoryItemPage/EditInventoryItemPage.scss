@@ -10,14 +10,12 @@
 		align-items: center;
 		justify-content: flex-start;
 		padding: 1.75rem;
-
 		border-bottom: 1px solid $cloud;
 		background-color: $white;
 	}
 
 	&__title {
 		padding-left: 0.25rem;
-
 		font-size: 28px;
 		font-family: "Titillium Web Semi Bold";
 		line-height: 2rem;
@@ -45,12 +43,11 @@
 		}
 		&__component-container {
 			display: flex;
-
 			background-color: $white;
 		}
 	}
 	@include desktop {
-		margin: -6.025rem 7rem 1rem 7rem;
+		margin: -6.025rem 8.125rem 1rem 8.125rem;
 
 		&__container {
 			background-color: $white;
@@ -59,7 +56,6 @@
 		}
 		&__component-container {
 			display: flex;
-
 			background-color: $white;
 		}
 	}
