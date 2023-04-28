@@ -249,6 +249,8 @@ function AddInventoryItemForm(list) {
 			warehouse_id: findWarehouseId(warehouse, list.list),
 		};
 
+		console.log(inventoryItemData)
+
 		if (
 			!itemNameInput ||
 			!descriptionInput ||
@@ -261,13 +263,20 @@ function AddInventoryItemForm(list) {
 			);
 		} else {
 			axios
-				.post(`${inventoriesUrl}`, { inventoryItemData })
+				.post(`${inventoriesUrl}`, { 
+					item_name: itemNameInput,
+					description: descriptionInput,
+					category: categoryInput,
+					status: statusInput,
+					quantity: quantityInput,
+					warehouse_id: findWarehouseId(warehouse, list.list),
+				})
 				.then((result) => {
-					if (result.status === 200) {
+						console.log("GO YOU WENCH")
+						event.target.reset();
 						alert("Inventory Item Added");
-						navigate("/inventories");
-					}
-					event.target.reset();
+						navigate('/inventories');
+					
 				})
 				.catch((error) => {
 					alert("There was an issue adding your inventory item");
