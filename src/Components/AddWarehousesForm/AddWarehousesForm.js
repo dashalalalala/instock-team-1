@@ -74,7 +74,6 @@ const AddWarehousesForm = () => {
         })
         .then((result) => {
           if (result.status === 200) {
-            navigate("/warehouses");
           }
           event.target.reset();
         })
@@ -82,6 +81,7 @@ const AddWarehousesForm = () => {
           console.error(error);
         });
       alert("Warehouse Added");
+      navigate("/warehouses");
     } else {
       alert("Failed to Add Warehouse");
     }

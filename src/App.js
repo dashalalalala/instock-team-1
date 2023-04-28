@@ -1,5 +1,5 @@
 import "./App.css";
-import Footer from "./Components/Footer/Footer";
+import Footer from "./Components/Footer/footer";
 import Header from "./Components/Header/header";
 import WarehouseDetailsPage from "./Pages/WarehouseDetailsPage/WarehouseDetailsPage";
 import WarehouseListPage from "./Pages/WarehouseListPage/WarehouseListPage";
@@ -18,7 +18,7 @@ function App() {
     <ChakraProvider theme={theme}>
       <div className="App">
         <BrowserRouter>
-            <Header />
+          <Header />
           <Routes>
             <Route path="/" element={<WarehouseListPage />} />
             <Route path="/warehouses" element={<WarehouseListPage />} />
@@ -40,10 +40,7 @@ function App() {
               path="/inventories/:inventoryItemId/edit"
               element={<EditInventoryItemPage />}
             />
-            <Route
-              path="/inventories/add"
-              element={<AddInventoryItemPage />}
-            />
+            <Route path="/inventories/add" element={<AddInventoryItemPage />} />
           </Routes>
         </BrowserRouter>
         <Footer />
