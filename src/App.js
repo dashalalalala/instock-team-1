@@ -1,5 +1,5 @@
 import "./App.css";
-import Footer from "./Components/Footer/Footer";
+import Footer from "./Components/Footer/footer";
 import Header from "./Components/Header/header";
 import WarehouseDetailsPage from "./Pages/WarehouseDetailsPage/WarehouseDetailsPage";
 import WarehouseListPage from "./Pages/WarehouseListPage/WarehouseListPage";
