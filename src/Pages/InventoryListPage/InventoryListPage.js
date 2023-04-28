@@ -21,7 +21,7 @@ function InventoryListPage() {
       .catch((error) => {
         console.error(error);
       });
-  }, [setList]);
+  }, [list, setList]);
 
   return (
     <div className="list-card">
