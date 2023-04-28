@@ -40,20 +40,18 @@
 		}
 		&__component-container {
 			display: flex;
-
 			background-color: $white;
 		}
 	}
 	@include desktop {
-		// width: 85%;
     margin: -6.025rem 8.125rem 1rem 8.125rem;
 
 		&__container {
 			background-color: $white;
 		}
+		
 		&__component-container {
 			display: flex;
-
 			background-color: $white;
 		}
 	}
