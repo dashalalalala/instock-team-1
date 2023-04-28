@@ -1,0 +1,352 @@
+@import "../../styles/partials/variables";
+@import "../../styles/partials/mixins";
+
+#quantityInput {
+	margin-bottom: 0;
+}
+
+.inventoryForm {
+	margin: 0;
+	padding: 0;
+	background-color: $white;
+
+	&__form-subheader {
+		font-family: "Titillium Web Semi Bold";
+		font-size: 20px;
+		@include tablet {
+			@include subheader;
+		}
+
+		@include desktop {
+			@include subheader;
+		}
+	}
+
+	&__form-warehouse {
+		display: flex;
+		flex-direction: column;
+		padding: 1rem 1.5rem;
+
+		@include tablet {
+			padding: 0rem 2rem 0.5rem 2rem;
+		}
+
+		@include desktop {
+			padding: 0rem 2.5rem 0.5rem 2.5rem;
+		}
+	}
+
+	&__form-contact {
+		display: flex;
+		flex-direction: column;
+		padding: 1rem 1.5rem;
+		border-top: 1px solid #bdc5d5;
+
+		@include tablet {
+			padding: 0rem 2rem 0.5rem 2rem;
+			border-top: none;
+		}
+
+		@include desktop {
+			border-top: none;
+			padding: 0rem 2.5rem 0.5rem 2.5rem;
+		}
+	}
+
+	&__form-container {
+		padding-top: 1rem;
+		margin: 0.25rem 0;
+		font-family: "Titillium Web Semi Bold";
+		font-size: 13px;
+
+		@include tablet {
+			@include label-link-button;
+		}
+
+		@include desktop {
+			@include label-link-button;
+		}
+	}
+
+	&__form-title {
+		margin: 0.25rem 0;
+		font-family: "Titillium Web Semi Bold";
+		font-size: 13px;
+
+		@include tablet {
+			@include label-link-button;
+		}
+
+		@include desktop {
+			padding-top: 1rem;
+			@include label-link-button;
+		}
+	}
+
+	&__form-input {
+		height: 36px;
+		width: 100%;
+		border: solid 1px $cloud;
+		border-radius: 20px;
+		font-family: "Titillium Web Regular";
+		padding-left: 20px;
+		height: 40px;
+		font-size: 13px;
+
+		@include tablet {
+			@include mobile-body-medium;
+		}
+
+		@include desktop {
+			@include mobile-body-medium;
+		}
+
+		border: 1px solid $cloud;
+		border-radius: 20px;
+		font-family: "Titillium Web Regular";
+
+		&::placeholder {
+			//padding-left: 1rem;
+			color: $slate;
+			font-size: 13px;
+		}
+
+		&:focus {
+			outline: none;
+			border-color: $instock-indigo;
+		}
+
+		&-error {
+			border: solid 2px $red;
+			background-image: url(../../assets/icons/error-24px.svg) no-repeat;
+			background-position: 50% 50%;
+		}
+	}
+
+	&__form-description {
+		padding-top: 8px;
+		padding-bottom: 140px;
+		padding-right: 24px;
+		overflow: hidden;
+		resize: none;
+	}
+
+	&__form--radio {
+		height: 16px;
+		width: 16px;
+		margin-right: 8px;
+	}
+
+	&__form--radio-title {
+		padding-right: 10%;
+		font-size: 13px;
+
+		@include tablet {
+			@include mobile-body-medium;
+		}
+
+		@include desktop {
+			@include mobile-body-medium;
+		}
+	}
+
+	&__form--radioContainer {
+		display: flex;
+		align-items: center;
+	}
+
+	&__form--selection {
+		appearance: none;
+		padding-right: 20px;
+		background: url("../../assets/icons/arrow_drop_down-24px.svg") no-repeat
+			center right;
+		background-position: 97%;
+	}
+
+	&__button-container {
+		display: flex;
+		justify-content: center;
+		gap: 1rem;
+		padding: 1rem 1.5rem;
+		background-color: $light-grey;
+		margin: 0;
+	}
+
+	&__cancel {
+		padding: 0.5rem 1rem;
+		width: 100%;
+
+		background-color: $white;
+		border: solid 1px $cloud;
+		border-radius: 20px;
+		color: $slate;
+		justify-content: center;
+		display: flex;
+
+		font-family: "Titillium Web Regular";
+		font-size: 13px;
+		font-weight: 600;
+
+		&:hover {
+			border: solid 1px $instock-indigo;
+			color: $instock-indigo;
+		}
+
+		&--text {
+			font-weight: 700;
+			font-family: "Titillium Web Regular";
+		}
+	}
+
+	&__save {
+		padding: 0.5rem 1rem;
+		width: 100%;
+
+		background-color: $instock-indigo;
+		color: $white;
+		border: 1px solid $instock-indigo;
+		border-radius: 20px;
+		font-weight: 600;
+		letter-spacing: 0.05rem;
+
+		font-family: "Titillium Web Regular";
+		font-size: 13px;
+	}
+
+	&__save:hover {
+		background-color: $graphite;
+		color: $white;
+		border: solid 1px $graphite;
+	}
+
+	&__error {
+		color: $red;
+		margin: 0;
+		margin-top: 2px;
+		display: flex;
+		align-items: center;
+
+		&--message {
+			background-image: url(../../assets/icons/error-24px.svg) no-repeat;
+			background-position: left;
+		}
+
+		&--icon {
+			height: 20px;
+			width: 20px;
+			margin-right: 4px;
+		}
+	}
+
+	@include tablet {
+		width: 100%;
+
+		&__form {
+			display: flex;
+			align-items: start;
+			padding: 1.5rem 0;
+
+			&-subheader {
+				margin: 0;
+			}
+
+			&-title {
+				margin-top: 20px;
+			}
+		}
+
+		&__form-warehouse {
+			width: 100%;
+			border-right: 1px solid $cloud;
+			// padding-right: 2rem;
+		}
+
+		&__form-contact {
+			width: 100%;
+			// padding-left: 2rem;
+		}
+
+		&__form-description {
+			padding-bottom: 160px;
+		}
+
+		&__button-container {
+			justify-content: flex-end;
+			padding-top: 16px;
+			padding-bottom: 16px;
+			padding-right: 32px;
+			margin-top: 0;
+			margin-left: 0;
+			margin-right: 0;
+		}
+
+		&__save,
+		&__cancel {
+			width: 100px;
+			border-radius: 40px;
+		}
+
+		&__cancel {
+			&:hover {
+				border: solid 1px $instock-indigo;
+				color: $instock-indigo;
+			}
+		}
+
+		#quantityInput {
+			margin-bottom: 20;
+		}
+	}
+
+	@include desktop {
+		width: 100%;
+
+		&__form {
+			display: flex;
+			align-items: start;
+			padding: 1.5rem 0;
+		}
+
+		&__form-warehouse {
+			width: 100%;
+			border-right: 1px solid $cloud;
+		}
+
+		&__form-contact {
+			width: 100%;
+		}
+
+		&__form-description {
+			padding-bottom: 160px;
+		}
+
+		&__button-container {
+			justify-content: flex-end;
+			padding-top: 16px;
+			padding-bottom: 16px;
+			padding-right: 32px;
+			margin-top: 0;
+			margin-left: 0;
+			margin-right: 0;
+		}
+
+		&__save,
+		&__cancel {
+			width: 100px;
+			border-radius: 40px;
+		}
+
+		&__save:hover {
+			background-color: $graphite;
+			color: $white;
+			border: solid 1px $graphite;
+		}
+
+		&__cancel {
+			&:hover {
+				border: solid 1px $instock-indigo;
+				color: $instock-indigo;
+			}
+		}
+	}
+}

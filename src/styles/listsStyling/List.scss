@@ -1,0 +1,198 @@
+@import "../partials/mixins";
+@import "../partials/variables";
+
+//Mobile List Styling for both Warehouse & Inventory
+.details {
+	display: flex;
+	flex-direction: column;
+	gap: 0;
+}
+
+.title {
+	@include mobile-list-title;
+}
+
+.label {
+	@include mobile-body-medium;
+	margin: 0;
+	font-weight: 600;
+	color: $instock-indigo;
+	display: flex;
+	gap: 0.25rem;
+	width: max-content;
+	align-items: center;
+
+	&:hover {
+		text-decoration: underline 1px solid $instock-indigo;
+		text-underline-offset: 0.1rem;
+	}
+}
+
+.icons {
+	display: flex;
+	justify-content: space-between;
+	width: -webkit-fill-available;
+
+	&__img {
+		width: 1.125rem;
+		height: 1.125rem;
+		cursor: pointer;
+	}
+}
+
+//Mobile Warehouse List
+.inventory {
+	@include mobile-list;
+
+	&__name {
+		width: 40%;
+	}
+
+	&__status {
+		width: 40%;
+	}
+
+	&__category {
+		width: 40%;
+	}
+}
+
+.body {
+	@include mobile-list-body;
+
+	&__name {
+		color: $instock-indigo;
+		font-weight: 600;
+
+		&:hover {
+			text-decoration: underline 1px solid $instock-indigo;
+			text-underline-offset: 0.1rem;
+		}
+	}
+}
+
+.vstack {
+	width: 40%;
+	align-items: flex-start !important;
+	gap: 1rem;
+}
+
+.in-stock {
+	@include stock-status;
+	background: rgba(21, 132, 99, 0.07);
+	color: $green;
+
+	@include tablet {
+		line-height: 1.625rem;
+	}
+
+	@include desktop {
+		line-height: 1.625rem;
+	}
+}
+
+.out-of-stock {
+	@include stock-status;
+	background: rgba(201, 69, 21, 0.07);
+	color: $red;
+
+	@include tablet {
+		line-height: 1.625rem;
+		margin: 0;
+	}
+
+	@include desktop {
+		line-height: 1.625rem;
+		margin: 0;
+	}
+}
+
+//Mobile Inventory List
+.warehouse {
+	@include mobile-list;
+
+	&__address {
+		width: 40%;
+	}
+
+	&__name {
+		width: 40%;
+	}
+
+	&__contact--name,
+	&__contact--info {
+		width: 48%;
+
+		@include tablet {
+			width: fit-content;
+		}
+	}
+
+	&__contact--info {
+		display: flex;
+		flex-direction: column;
+	}
+}
+
+.body {
+	@include mobile-list-body;
+
+	&__warehouse-name {
+		color: $instock-indigo;
+		font-weight: 600;
+
+		&:hover {
+			text-decoration: underline 1px solid $instock-indigo;
+			text-underline-offset: 0.1rem;
+		}
+	}
+}
+
+//Tablet & Desktop Inventory and Warehouse List Styling
+.responsive {
+	background-color: rgba(46, 102, 230, 0.07);
+	display: none;
+
+	@include tablet {
+		display: table-header-group;
+	}
+
+	@include desktop {
+		display: table-header-group;
+	}
+
+	&__title {
+		@include table-header;
+		color: $slate;
+		margin: 0;
+		text-align: right;
+	}
+
+	&__icon {
+		height: 1rem;
+		width: 1rem;
+	}
+}
+
+.chakra-button {
+	background: none;
+	min-width: 0.25rem;
+	cursor: pointer;
+}
+
+.chakra-table {
+	display: none;
+	background-color: white;
+
+	@include tablet {
+		display: table;
+	}
+
+	@include desktop {
+		display: table;
+	}
+}
+
+.row:hover {
+	background-color: rgba(46, 102, 230, 0.07);
+}

@@ -1,0 +1,117 @@
+@import "../../styles/partials/_mixins";
+@import "../../styles/partials/_variables";
+
+.inventory-general {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	padding: 1.5rem;
+	background-color: $white;
+	border-bottom: 1px solid $cloud;
+
+	&__left {
+		display: flex;
+		align-items: center;
+		gap: 0.45rem;
+	}
+
+	&__back {
+		&:hover {
+			cursor: pointer;
+		}
+	}
+
+	&__header {
+		@include mobile-header;
+		font-family: "Titillium Web Semi Bold";
+		margin-bottom: 0.25rem;
+
+		@include tablet {
+			@include header;
+			margin: 0;
+		}
+
+		@include desktop {
+			@include header;
+			margin: 0;
+		}
+	}
+
+	&__button {
+		background-color: $instock-indigo;
+		padding: 5px;
+		border-radius: 100%;
+		border: none;
+		margin-bottom: 0.25rem;
+
+		&:hover {
+			background-color: $graphite;
+			cursor: pointer;
+		}
+
+		@include tablet {
+			color: $white;
+			height: 2.375rem;
+			width: 5rem;
+			display: flex;
+			align-items: center;
+			justify-content: space-evenly;
+			border-radius: 20px;
+			margin-bottom: 0;
+			padding: 0 1rem;
+			gap: 0.25rem;
+
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+
+		@include desktop {
+			color: $white;
+			height: 2.375rem;
+			width: 5rem;
+			display: flex;
+			align-items: center;
+			justify-content: space-evenly;
+			border-radius: 20px;
+			margin-bottom: 0;
+			padding: 0 1rem;
+			gap: 0.25rem;
+
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+	}
+
+	&__edit {
+		filter: brightness(0) invert(1);
+	}
+
+	&__edit-text {
+		display: none;
+
+		@include tablet {
+			display: contents;
+			text-decoration: underline;
+		}
+
+		@include desktop {
+			display: contents;
+			text-decoration: underline;
+		}
+	}
+
+	@include tablet {
+		padding: 1.75rem;
+		flex-direction: row;
+		justify-content: space-between;
+	}
+
+	@include desktop {
+		padding: 1.75rem;
+		flex-direction: row;
+		justify-content: space-between;
+	}
+}

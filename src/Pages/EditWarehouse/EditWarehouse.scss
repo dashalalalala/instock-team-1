@@ -1,0 +1,58 @@
+@import "../../styles/partials/variables";
+@import "../../styles/partials/mixins";
+
+.page {
+	@include list;
+	flex-direction: column;
+	background-color: $white;
+
+	&__container {
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		padding: 1.75rem;
+
+		border-bottom: 1px solid $cloud;
+	}
+
+	&__title {
+		padding-left: 0.75rem;
+
+		font-size: 28px;
+		font-family: "Titillium Web Semi Bold";
+		line-height: 2rem;
+
+		@include tablet {
+			@include header;
+		}
+
+		@include desktop {
+			@include header;
+		}
+	}
+
+	@include tablet {
+		margin: -6.1rem 2rem 1rem 2rem;
+
+		&__container {
+			background-color: $white;
+			padding: 1.75rem;
+		}
+		&__component-container {
+			display: flex;
+			background-color: $white;
+		}
+	}
+	@include desktop {
+    margin: -6.025rem 8.125rem 1rem 8.125rem;
+
+		&__container {
+			background-color: $white;
+		}
+		
+		&__component-container {
+			display: flex;
+			background-color: $white;
+		}
+	}
+}

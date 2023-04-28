@@ -1,0 +1,8 @@
+@import "../../styles/partials/_mixins";
+@import "../../styles/partials/_variables";
+
+.invDetails {
+	&__content {
+		@include list;
+	}
+}
